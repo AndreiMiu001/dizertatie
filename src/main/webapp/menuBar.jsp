@@ -20,7 +20,7 @@
                     <li ><a href="#" id="upEl">Update Elections</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.jsp"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    <li><a href="#" id="loggout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>    </body>
@@ -78,6 +78,18 @@
             event.preventDefault(); // don't "execute" the link
 
             var $form = $("<form action='UpdateRedirectServlet' method='get'>" +
+                    "<input type='hidden' name='foo' value='bar' />" +
+                    "<input type='submit' />" +
+                    "</form>").appendTo($('body'));
+            $form.submit();
+            $form.remove();
+        });
+    </script>
+        <script>
+        $("#loggout").click(function (event) {
+            event.preventDefault(); // don't "execute" the link
+
+            var $form = $("<form action='LogoutServlet' method='post'>" +
                     "<input type='hidden' name='foo' value='bar' />" +
                     "<input type='submit' />" +
                     "</form>").appendTo($('body'));

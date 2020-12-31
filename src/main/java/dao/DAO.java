@@ -7,43 +7,66 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import login.UserBean;
 
 /**
  *
  * @author Andrei
  */
 public class DAO {
-    private Connection con = null;
-    private final String connectionDatabaseName = "jdbc:mysql://127.0.0.1:3306/evot2";
-    private final String connectionUserName = "root";
-    private final String connectionPassword = "admin";
+    private Connection mConnection = null;
+    private final String mConnectionDatabaseName = "jdbc:mysql://127.0.0.1:3306/evot2";
+    private final String mConnectionUserName = "root";
+    private final String mConnectionPassword = "admin";
     
     public void connect() throws ClassNotFoundException, SQLException {
-        if (con == null) {
+        if (mConnection == null) {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(connectionDatabaseName, connectionUserName, connectionPassword);
-            if (con != null) {
-                con.setAutoCommit(false);
+            mConnection = DriverManager.getConnection(  mConnectionDatabaseName,
+                                                        mConnectionUserName, mConnectionPassword);
+            if (mConnection != null) {
+                mConnection.setAutoCommit(false);
             }
         }
     }
 
     public void disconnect() throws SQLException {
-        if (con != null) {
-            con.commit();
-            con.close();
+        if (mConnection != null) {
+            mConnection.commit();
+            mConnection.close();
         }
     }
         
     public void disconnect(boolean errState) throws SQLException {
-        if (con != null && errState == true) {
-            con.commit();
-            con.close();
+        if (mConnection != null && errState == true) {
+            mConnection.commit();
+            mConnection.close();
         } else if (errState == false) {
-            con.rollback();
-            con.close();
+            mConnection.rollback();
+            mConnection.close();
         }
     }
     
+    public boolean readFromUsers(UserBean user) {
+        String query = "SELECT * FROM `users` WHERE `username`=? AND `password`=?";
+        boolean userExists = false;
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next() == true) {
+                user.setPrivilege(rs.getShort("privilege"));
+                user.setIdUser(rs.getInt("idUsers"));
+                userExists = true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return userExists;
+    }
 }

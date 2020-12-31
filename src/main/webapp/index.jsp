@@ -6,8 +6,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <link href="Style/CSS/index.css" rel="stylesheet" id="bootstrap-css"/>
+    <link href="Style/CSS/bootstrap400.css" rel="stylesheet" id="bootstrap-css"/>
     <link rel="stylesheet" href="Style/CSS/IndexStyle.css">
+    <script src="Style/JS/bootstrap.js"></script>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>

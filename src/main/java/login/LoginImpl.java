@@ -15,21 +15,27 @@ import java.util.logging.Logger;
  * @author Andrei
  */
 public class LoginImpl {
-    private DAO dao;
-    
+
+    private final DAO dao;
+
     LoginImpl() {
         dao = new DAO();
     }
-    
+
     public boolean checkIfUserExists(UserBean user) {
         boolean userExists = false;
         try {
             dao.connect();
+            String salt = dao.getFieldFromUsers("salt", user.getUsername());
+            if (salt.isEmpty()) {
+                dao.disconnect();
+                return false;
+            }
+            BCryptWrapper bCrypt = new BCryptWrapper(11);
+            user.setPasswordHash(bCrypt.hash(user.getPassword(), salt));
             userExists = dao.readFromUsers(user);
             dao.disconnect();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LoginImpl.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(LoginImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return userExists;

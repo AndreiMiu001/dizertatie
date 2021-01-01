@@ -12,8 +12,11 @@ import java.io.Serializable;
  * @author Andrei
  */
 public class UserBean implements Serializable {
+
     private String mUsername;
     private String mPassword;
+    private String mPasswordHash;
+
     private int mPrivilege;
     private int mIdUser;
 
@@ -23,13 +26,27 @@ public class UserBean implements Serializable {
         this.mPrivilege = mPrivilege;
         this.mIdUser = mIdUser;
     }
-    
-    public UserBean(String mUsername, String mPassword) {
-        this.mUsername = mUsername;
-        this.mPassword = mPassword;
+
+    public UserBean(String username, String password, String passwordHash) {
+        this.mUsername = username;
+        this.mPassword = password;
+        this.mPasswordHash = passwordHash;
+    }
+
+    public UserBean(String username, String password) {
+        this.mUsername = username;
+        this.mPassword = password;
     }
 
     public UserBean() {
+    }
+
+    public String getPasswordHash() {
+        return mPasswordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.mPasswordHash = passwordHash;
     }
 
     public String getUsername() {
@@ -63,8 +80,5 @@ public class UserBean implements Serializable {
     public void setIdUser(int idUser) {
         this.mIdUser = idUser;
     }
-    
-    
+
 }
-    
-   

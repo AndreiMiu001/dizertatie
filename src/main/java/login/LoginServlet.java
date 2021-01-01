@@ -25,10 +25,6 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        UpdatableBCrypt bCrypt = new UpdatableBCrypt(11);
-        String hashedPass = bCrypt.hash(password);
-        // TODO
-        // crypt the password
         UserBean user = new UserBean(username, password);
         LoginImpl userLogin = new LoginImpl();
         if (userLogin.checkIfUserExists(user)) {

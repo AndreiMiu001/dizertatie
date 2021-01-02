@@ -5,36 +5,36 @@
  */
 package login;
 
-import dao.DAO;
-import java.sql.SQLException;
+import common.Implementation;
+import common.BCryptWrapper;
+import common.UserBean;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.SQLException;
+
 
 /**
  *
  * @author Andrei
  */
-public class LoginImpl {
+public class LoginImpl extends Implementation {
 
-    private final DAO dao;
-
-    LoginImpl() {
-        dao = new DAO();
-    }
+    public LoginImpl() {}
 
     public boolean checkIfUserExists(UserBean user) {
         boolean userExists = false;
         try {
-            dao.connect();
-            String salt = dao.getFieldFromUsers("salt", user.getUsername());
+            mDao.connect();
+            String salt = mDao.getFieldFromUsers("salt", user.getUsername());
             if (salt.isEmpty()) {
-                dao.disconnect();
+                mDao.disconnect();
                 return false;
             }
             BCryptWrapper bCrypt = new BCryptWrapper(11);
             user.setPasswordHash(bCrypt.hash(user.getPassword(), salt));
-            userExists = dao.readFromUsers(user);
-            dao.disconnect();
+            userExists = mDao.readFromUsers(user);
+            mDao.disconnect();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(LoginImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

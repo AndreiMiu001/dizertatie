@@ -5,12 +5,15 @@
  */
 package dao;
 
+import common.ElectionBean;
+import common.UserBean;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import login.UserBean;
+import java.util.ArrayList;
 
 /**
  *
@@ -84,5 +87,24 @@ public class DAO {
             ex.printStackTrace();
         }
         return userExists;
+    }
+    
+    public ArrayList<ElectionBean> getElections() {
+        String query = "SELECT * FROM `elections`";
+        ArrayList<ElectionBean> electionArray = new ArrayList<>();
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ElectionBean elTemp = new ElectionBean();
+                elTemp.setElectionName(rs.getString("nameElections"));
+                elTemp.setIdElection(rs.getInt("idElections"));
+                elTemp.setStartingDate(rs.getDate("startDate"));
+                elTemp.setEndingDate(rs.getDate("endDate"));
+                electionArray.add(elTemp);
+            }
+        } catch (SQLException ex) {
+        }
+        return electionArray;
     }
 }

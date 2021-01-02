@@ -3,10 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package login;
+package view;
 
+import common.ElectionBean;
 import common.UserBean;
+import common.ObjectToJson;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,23 +21,21 @@ import javax.servlet.http.HttpSession;
  *
  * @author Andrei
  */
-public class LoginServlet extends HttpServlet {
+public class ViewElectionsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        UserBean user = new UserBean(username, password);
-        LoginImpl userLogin = new LoginImpl();
-        if (userLogin.checkIfUserExists(user)) {
-            session.setAttribute("user", user);
-            request.getRequestDispatcher("/mainPage.jsp").forward(request, response);
-        } else {
-            request.setAttribute("response", "Username or password are invalid ! Please try again.");
+        UserBean user = (UserBean) session.getAttribute("user");
+        if (user == null) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
+        ViewElectionsImpl viewImpl = new ViewElectionsImpl();
+        ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();      
+        String electionsArrayJson = ObjectToJson.convertElectionsArray(electionsArray);
+        request.setAttribute("electionsArrayJson", electionsArrayJson);
+        request.getRequestDispatcher("/viewElections.jsp").forward(request, response);
     }
+
 }

@@ -99,8 +99,8 @@ public class DAO {
                 ElectionBean elTemp = new ElectionBean();
                 elTemp.setElectionName(rs.getString("nameElections"));
                 elTemp.setIdElection(rs.getInt("idElections"));
-                elTemp.setStartingDate(rs.getDate("startDate"));
-                elTemp.setEndingDate(rs.getDate("endDate"));
+                elTemp.setStartingDate(rs.getDate("startDate").toString());
+                elTemp.setEndingDate(rs.getDate("endDate").toString());
                 electionArray.add(elTemp);
             }
         } catch (SQLException ex) {

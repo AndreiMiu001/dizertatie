@@ -2,10 +2,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" href="Style/CSS/bootstrap340.css">
-    <script src="Style/JS/jquery340.css"></script>
-    <script src="Style/JS/bootstrap340.css"></script>
-    <head>
+    <head>    
+        <link rel="stylesheet" href="Style/CSS/bootstrap340.css">
+        <script src="Style/JS/jquery340.css"></script>
+        <script src="Style/JS/bootstrap340.css"></script>
+        <title>Bar de meniu</title>
     </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -65,7 +66,7 @@
         $("#createEl").click(function (event) {
             event.preventDefault(); // don't "execute" the link
 
-            var $form = $("<form action='CreateRedirectServlet' method='get'>" +
+            var $form = $("<form action='InsertDataServlet' method='get'>" +
                     "<input type='hidden' name='foo' value='bar' />" +
                     "<input type='submit' />" +
                     "</form>").appendTo($('body'));
@@ -85,7 +86,7 @@
             $form.remove();
         });
     </script>
-        <script>
+    <script>
         $("#loggout").click(function (event) {
             event.preventDefault(); // don't "execute" the link
 

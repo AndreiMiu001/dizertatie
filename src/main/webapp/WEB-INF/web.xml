@@ -12,6 +12,14 @@
         <servlet-name>ViewElectionsServlet</servlet-name>
         <servlet-class>view.ViewElectionsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertDataServlet</servlet-name>
+        <servlet-class>insert.InsertDataServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateElectionServlet</servlet-name>
+        <servlet-class>insert.CreateElectionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>ViewElectionsServlet</servlet-name>
         <url-pattern>/ViewElectionsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertDataServlet</servlet-name>
+        <url-pattern>/InsertDataServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateElectionServlet</servlet-name>
+        <url-pattern>/CreateElectionServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

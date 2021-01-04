@@ -1,12 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" href="Style/CSS/bootstrap340.css">
-    <link rel="stylesheet" href="CSS/DefaultStyle.css">
-    <script src="Style/JS/jquery340.js"></script>
-    <script src="Style/JS/bootstrap340.js"></script>
     <head>
+        <link rel="stylesheet" href="Style/CSS/bootstrap340.css">
+        <link rel="stylesheet" href="CSS/DefaultStyle.css">
+        <script src="Style/JS/jquery340.js"></script>
+        <script src="Style/JS/bootstrap340.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>eVot Meniul Principal</title>
     </head>
     <div id="navigationMenu"></div>
     <div class="center">
@@ -25,7 +26,7 @@
                 <button  class="themeBtn2">Delete election</button>
             </div>
         </form>
-        <form method="get" action="CreateRedirectServlet">
+        <form method="get" action="InsertDataServlet">
             <div class="container-fluid  margin">
                 <button    class="themeBtn2">Create election</button>
             </div>

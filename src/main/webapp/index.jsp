@@ -6,11 +6,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <link href="Style/CSS/bootstrap400.css" rel="stylesheet" id="bootstrap-css"/>
-    <link rel="stylesheet" href="Style/CSS/IndexStyle.css">
-    <script src="Style/JS/bootstrap.js"></script>
+
     <head>
+        <link href="Style/CSS/bootstrap400.css" rel="stylesheet" id="bootstrap-css"/>
+        <link rel="stylesheet" href="Style/CSS/IndexStyle.css">
+        <script src="Style/JS/bootstrap.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Platforma eVot</title>
     </head>
     <body>
         <div class="myclass">

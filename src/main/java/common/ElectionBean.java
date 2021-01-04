@@ -6,35 +6,88 @@
 package common;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
  * @author Andrei
  */
 public class ElectionBean implements Serializable {
-    private Date mStartingDate;
-    private Date mEndingDate;
-    private String mElectionName;
 
-    private ArrayList<String> mEandidatesNameArray;
-    private ArrayList<String> mDescriptionArray;
+    private String mCategory;
+    private String mElectionName;
+    private String mLocalitate;
+    private String mJudet;
+    private LocalDate mStartingDate;
+    private LocalDate mEndingDate;
+
+    private ArrayList<Candidate> mCandidatesArray;
     private int mIdElection;
 
-    public Date getStartingDate() {
+    public ElectionBean() {
+        mStartingDate = null;
+        mEndingDate = null;
+        mElectionName = "";
+        mLocalitate = "";
+        mJudet = "";
+        mCategory = "";
+        mIdElection = 0;
+        mCandidatesArray = new ArrayList<>();
+    }
+
+    public String getLocalitate() {
+        return mLocalitate;
+    }
+
+    public void setLocalitate(String mLocalitate) {
+        this.mLocalitate = mLocalitate;
+    }
+
+    public String getJudet() {
+        return mJudet;
+    }
+
+    public void setJudet(String mJudet) {
+        this.mJudet = mJudet;
+    }
+    
+    
+
+    public String getCategory() {
+        return mCategory;
+    }
+
+    public void setCategory(String mCategory) {
+        this.mCategory = mCategory;
+    }
+
+    public void setCandidatesArray(ArrayList<Candidate> candidatesArr) {
+        this.mCandidatesArray = candidatesArr;
+    }
+
+    public void addCandidate(Candidate candidate) {
+        mCandidatesArray.add(candidate);
+    }
+
+    public ArrayList<Candidate> getCandidates() {
+        return mCandidatesArray;
+    }
+
+    public LocalDate getStartingDate() {
         return mStartingDate;
     }
 
-    public void setStartingDate(Date mStartingDate) {
+    public void setStartingDate(LocalDate mStartingDate) {
         this.mStartingDate = mStartingDate;
     }
 
-    public Date getEndingDate() {
+    public LocalDate getEndingDate() {
         return mEndingDate;
     }
 
-    public void setEndingDate(Date mEndingDate) {
+    public void setEndingDate(LocalDate mEndingDate) {
         this.mEndingDate = mEndingDate;
     }
 
@@ -46,22 +99,6 @@ public class ElectionBean implements Serializable {
         this.mElectionName = mElectionName;
     }
 
-    public ArrayList<String> getEandidatesNameArray() {
-        return mEandidatesNameArray;
-    }
-
-    public void setEandidatesNameArray(ArrayList<String> mEandidatesNameArray) {
-        this.mEandidatesNameArray = mEandidatesNameArray;
-    }
-
-    public ArrayList<String> getDescriptionArray() {
-        return mDescriptionArray;
-    }
-
-    public void setDescriptionArray(ArrayList<String> mDescriptionArray) {
-        this.mDescriptionArray = mDescriptionArray;
-    }
-
     public int getIdElection() {
         return mIdElection;
     }
@@ -69,6 +106,17 @@ public class ElectionBean implements Serializable {
     public void setIdElection(int idElection) {
         this.mIdElection = idElection;
     }
-    
-    
+
+    public void setStartingDate(String date) {
+        date = date.replace('/', '-');
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        mStartingDate = LocalDate.parse(date, formatter);
+    }
+
+    public void setEndingDate(String date) {
+        date = date.replace('/', '-');
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        mEndingDate = LocalDate.parse(date, formatter);
+    }
+
 }

@@ -63,4 +63,5 @@ html,body
 .navbar {
     margin: 0;
     border: 0;
+    overflow: auto;
 }

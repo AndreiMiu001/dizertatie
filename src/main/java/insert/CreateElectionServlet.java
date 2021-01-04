@@ -30,6 +30,7 @@ public class CreateElectionServlet extends HttpServlet {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
         ElectionBean election = new ElectionBean();
+        session.removeAttribute("electionObject");
         boolean formCompletionFlag = true;
         // get election category
         String electionCategory = request.getParameter("category");
@@ -83,7 +84,9 @@ public class CreateElectionServlet extends HttpServlet {
                 formCompletionFlag = false;
                 request.setAttribute("candidatesNumberNull", "Please introduce a number");
             }
-            request.setAttribute("partiesNumber", Integer.parseInt(partiesCountStr));
+            int partiesCount = Integer.parseInt(partiesCountStr);
+            request.setAttribute("candidatesNumber", partiesCount);
+            election.setCandidatesCount(partiesCount);
         }
         // get election starting date
         String electionDateStart = request.getParameter("electionDateStart");
@@ -105,6 +108,7 @@ public class CreateElectionServlet extends HttpServlet {
         if (formCompletionFlag == false) {
             request.getRequestDispatcher("/createElection.jsp").forward(request, response);
         }
+        session.setAttribute("electionObject", election);
         request.getRequestDispatcher("/insertCandidates.jsp").forward(request, response);
     }
 }

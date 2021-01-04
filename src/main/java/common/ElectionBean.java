@@ -25,6 +25,7 @@ public class ElectionBean implements Serializable {
 
     private ArrayList<Candidate> mCandidatesArray;
     private int mIdElection;
+    private int mCandidatesCount;
 
     public ElectionBean() {
         mStartingDate = null;
@@ -34,7 +35,20 @@ public class ElectionBean implements Serializable {
         mJudet = "";
         mCategory = "";
         mIdElection = 0;
+        mCandidatesCount = 0;
         mCandidatesArray = new ArrayList<>();
+    }
+
+    public void dropCandidates() {
+        mCandidatesArray.clear();
+    }
+    
+    public int getCandidatesCount() {
+        return mCandidatesCount;
+    }
+
+    public void setCandidatesCount(int mCandidatesCount) {
+        this.mCandidatesCount = mCandidatesCount;
     }
 
     public String getLocalitate() {

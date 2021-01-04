@@ -10,9 +10,51 @@ package common;
  * @author Andrei
  */
 public class Candidate {
-    private String mName;
+    private String mCandidateName;
     private String mPoliticalParty;
     private String mDescription;
-    private int idCandidate;
-    private int idElection;
+    private int mIdCandidate;
+    private int mIdElection;
+
+    public String getCandidateName() {
+        return mCandidateName;
+    }
+
+    public void setCandidateName(String mName) {
+        this.mCandidateName = mName;
+    }
+
+    public String getPoliticalParty() {
+        return mPoliticalParty;
+    }
+
+    public void setPoliticalParty(String mPoliticalParty) {
+        this.mPoliticalParty = mPoliticalParty;
+    }
+
+    public String getDescription() {
+        return mDescription;
+    }
+
+    public void setDescription(String mDescription) {
+        this.mDescription = mDescription;
+    }
+
+    public int getIdCandidate() {
+        return mIdCandidate;
+    }
+
+    public void setIdCandidate(int idCandidate) {
+        this.mIdCandidate = idCandidate;
+    }
+
+    public int getIdElection() {
+        return mIdElection;
+    }
+
+    public void setIdElection(int idElection) {
+        this.mIdElection = idElection;
+    }
+    
+    
 }

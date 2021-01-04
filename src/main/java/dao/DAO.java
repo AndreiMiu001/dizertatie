@@ -5,11 +5,13 @@
  */
 package dao;
 
+import common.Candidate;
 import common.ElectionBean;
 import common.UserBean;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +27,7 @@ public class DAO {
     private final String mConnectionDatabaseName = "jdbc:mysql://127.0.0.1:3306/evot2";
     private final String mConnectionUserName = "root";
     private final String mConnectionPassword = "admin";
+    
 
     public void connect() throws ClassNotFoundException, SQLException {
         if (mConnection == null) {
@@ -88,7 +91,7 @@ public class DAO {
         }
         return userExists;
     }
-    
+
     public ArrayList<ElectionBean> getElections() {
         String query = "SELECT * FROM `elections`";
         ArrayList<ElectionBean> electionArray = new ArrayList<>();
@@ -106,5 +109,58 @@ public class DAO {
         } catch (SQLException ex) {
         }
         return electionArray;
+    }
+
+    public boolean insertElection(ElectionBean election) {
+        String queryInsertElection = "INSERT INTO `elections` (`nameElections`, `startDate`, `endDate`) VALUES (?, ?, ?);";
+        String queryGetId = "SELECT `idElections` FROM `elections` WHERE `nameElections`=? AND `startDate`=? AND `endDate`=?";
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(queryInsertElection);
+            ps.setString(1, election.getElectionName());
+            ps.setDate(2, Date.valueOf(election.getStartingDate()));
+            ps.setDate(3, Date.valueOf(election.getEndingDate()));
+            int state = ps.executeUpdate();
+            if (state != 0) {
+                PreparedStatement ps2 = mConnection.prepareStatement(queryGetId);
+                ps2.setString(1, election.getElectionName());
+                ps2.setDate(2, Date.valueOf(election.getStartingDate()));
+                ps2.setDate(3, Date.valueOf(election.getEndingDate()));
+                ResultSet rs = ps2.executeQuery();
+                while (rs.next()) {
+                    int index = 0;
+                    election.setIdElection(rs.getInt("idElections"));
+                    index++;
+                    if (index != 1) {
+                        mConnection.rollback();
+                        return false;
+                    } else {
+                        return insertCandidates(election.getCandidates(), election.getIdElection());
+                    }
+                }
+            } else {
+                mConnection.rollback();
+            }
+        } catch (SQLException ex) {
+        }
+        return true;
+    }
+
+    private boolean insertCandidates(ArrayList<Candidate> candidateArray, int idElection) {
+        String query = "INSERT INTO `candidates` (`idElections`, `nameCandidates`, `description`) VALUES (?, ?, ?);";
+        try {
+            for (int i = 0; i < candidateArray.size(); i++) {
+                PreparedStatement ps = mConnection.prepareStatement(query);
+                ps.setInt(1, idElection);
+                ps.setString(2, candidateArray.get(i).getCandidateName());
+                ps.setString(3, candidateArray.get(i).getDescription());
+                int state = ps.executeUpdate();
+                if (state == 0) {
+                    mConnection.rollback();
+                    return false;
+                }
+            }
+        } catch (SQLException ex) {
+        }
+        return true;
     }
 }

@@ -15,7 +15,31 @@ public class Candidate {
     private String mDescription;
     private int mIdCandidate;
     private int mIdElection;
+    private int mVotesCount;
+    
+    public Candidate() {
+        mCandidateName = "";
+        mPoliticalParty = "";
+        mDescription = "";
+        mIdCandidate = 0;
+        mIdElection = 0;
+        mVotesCount = 0;
+    }
+    
+    public Candidate(String name, int votes) {
+        super();
+        mCandidateName = name;
+        mVotesCount = votes;
+    }
 
+    public int getVotesCount() {
+        return mVotesCount;
+    }
+
+    public void setVotesCount(int mVotesCount) {
+        this.mVotesCount = mVotesCount;
+    }    
+    
     public String getCandidateName() {
         return mCandidateName;
     }

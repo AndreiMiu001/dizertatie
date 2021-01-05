@@ -14,29 +14,23 @@ import java.time.format.DateTimeFormatter;
  *
  * @author Andrei
  */
-public class ElectionBean implements Serializable {
+public class ElectionBean extends ElectionResultsBean {
 
     private String mCategory;
-    private String mElectionName;
     private String mLocalitate;
     private String mJudet;
     private LocalDate mStartingDate;
     private LocalDate mEndingDate;
-
-    private ArrayList<Candidate> mCandidatesArray;
-    private int mIdElection;
     private int mCandidatesCount;
 
     public ElectionBean() {
+        super();
         mStartingDate = null;
         mEndingDate = null;
-        mElectionName = "";
         mLocalitate = "";
         mJudet = "";
         mCategory = "";
-        mIdElection = 0;
         mCandidatesCount = 0;
-        mCandidatesArray = new ArrayList<>();
     }
 
     public void dropCandidates() {
@@ -77,18 +71,6 @@ public class ElectionBean implements Serializable {
         this.mCategory = mCategory;
     }
 
-    public void setCandidatesArray(ArrayList<Candidate> candidatesArr) {
-        this.mCandidatesArray = candidatesArr;
-    }
-
-    public void addCandidate(Candidate candidate) {
-        mCandidatesArray.add(candidate);
-    }
-
-    public ArrayList<Candidate> getCandidates() {
-        return mCandidatesArray;
-    }
-
     public LocalDate getStartingDate() {
         return mStartingDate;
     }
@@ -103,22 +85,6 @@ public class ElectionBean implements Serializable {
 
     public void setEndingDate(LocalDate mEndingDate) {
         this.mEndingDate = mEndingDate;
-    }
-
-    public String getElectionName() {
-        return mElectionName;
-    }
-
-    public void setElectionName(String mElectionName) {
-        this.mElectionName = mElectionName;
-    }
-
-    public int getIdElection() {
-        return mIdElection;
-    }
-
-    public void setIdElection(int idElection) {
-        this.mIdElection = idElection;
     }
 
     public void setStartingDate(String date) {

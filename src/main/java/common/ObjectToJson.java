@@ -8,12 +8,19 @@ package common;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
- 
-public class ObjectToJson {   
 
-    public static String convertElectionsArray(ArrayList<ElectionBean> election) {     
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    String jsonInString = gson.toJson(election);
-    return jsonInString;
+public class ObjectToJson {
+
+    public static String convertElectionsArray(ArrayList<ElectionBean> election) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonInString = gson.toJson(election);
+        return jsonInString;
     }
+
+    public static String convertResultsArray(ElectionResultsBean candidatesArray) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonInString = gson.toJson(candidatesArray);
+        return jsonInString;
+    }
+
 }

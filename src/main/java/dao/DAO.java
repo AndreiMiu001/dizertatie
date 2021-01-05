@@ -7,6 +7,7 @@ package dao;
 
 import common.Candidate;
 import common.ElectionBean;
+import common.ElectionResultsBean;
 import common.UserBean;
 
 import java.sql.Connection;
@@ -16,6 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +30,6 @@ public class DAO {
     private final String mConnectionDatabaseName = "jdbc:mysql://127.0.0.1:3306/evot2";
     private final String mConnectionUserName = "root";
     private final String mConnectionPassword = "admin";
-    
 
     public void connect() throws ClassNotFoundException, SQLException {
         if (mConnection == null) {
@@ -143,6 +145,42 @@ public class DAO {
         } catch (SQLException ex) {
         }
         return true;
+    }
+
+    public ElectionResultsBean getElectionResults(int idElection) {
+        ElectionResultsBean election = new ElectionResultsBean();
+        try {
+            String query = "SELECT c.idCandidates, c.idElections, c.nameCandidates, COUNT(idVotes) as vote"
+                    + " FROM votes as v NATURAL RIGHT JOIN candidates as c WHERE c.idElections=? GROUP BY idCandidates";
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setInt(1, idElection);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String name = rs.getString("nameCandidates");
+                int votes = rs.getInt("vote");
+                Candidate candidateTemp = new Candidate(name, votes);
+                election.addCandidate(candidateTemp);
+            }
+            election.setElectionName(fetchElectionName(idElection));
+        } catch (SQLException ex) {
+        }
+        return election;
+    }
+
+    private String fetchElectionName(int idElection) {
+        String query = "SELECT `nameElections` FROM `elections` WHERE `idElections`=?";
+        String electionName = "";
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setInt(1, idElection);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                electionName = rs.getString("nameElections");
+            }
+            } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return electionName;
     }
 
     private boolean insertCandidates(ArrayList<Candidate> candidateArray, int idElection) {

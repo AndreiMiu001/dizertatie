@@ -28,6 +28,14 @@
         <servlet-name>HomeRedirectServlet</servlet-name>
         <servlet-class>login.HomeRedirectServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewResultsServlet</servlet-name>
+        <servlet-class>view.ViewResultsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>HomeRedirectServlet</servlet-name>
         <url-pattern>/HomeRedirectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/GetData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewResultsServlet</servlet-name>
+        <url-pattern>/ViewResultsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

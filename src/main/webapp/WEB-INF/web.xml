@@ -36,6 +36,18 @@
         <servlet-name>ViewResultsServlet</servlet-name>
         <servlet-class>view.ViewResultsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateElectionServlet</servlet-name>
+        <servlet-class>update.UpdateElectionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteElectionServlet</servlet-name>
+        <servlet-class>delete.DeleteElectionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCandidatesServlet</servlet-name>
+        <servlet-class>update.UpdateCandidatesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -71,6 +83,18 @@
     <servlet-mapping>
         <servlet-name>ViewResultsServlet</servlet-name>
         <url-pattern>/ViewResultsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateElectionServlet</servlet-name>
+        <url-pattern>/UpdateElectionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteElectionServlet</servlet-name>
+        <url-pattern>/DeleteElectionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCandidatesServlet</servlet-name>
+        <url-pattern>/UpdateCandidatesServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -48,6 +48,10 @@
         <servlet-name>UpdateCandidatesServlet</servlet-name>
         <servlet-class>update.UpdateCandidatesServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteElectionViewServlet</servlet-name>
+        <servlet-class>delete.DeleteElectionViewServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>UpdateCandidatesServlet</servlet-name>
         <url-pattern>/UpdateCandidatesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteElectionViewServlet</servlet-name>
+        <url-pattern>/DeleteElectionViewServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

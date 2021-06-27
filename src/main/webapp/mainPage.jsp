@@ -20,8 +20,7 @@
                 <button  class="themeBtn2">View Results</button>
             </div>
         </form>
-        <form method="post" action="DeleteElectionServlet1">
-
+        <form method="post" action="DeleteElectionViewServlet">
             <div class="container-fluid  margin">
                 <button  class="themeBtn2">Delete election</button>
             </div>

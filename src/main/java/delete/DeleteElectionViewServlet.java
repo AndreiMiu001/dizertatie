@@ -5,20 +5,23 @@
  */
 package delete;
 
+import common.ElectionBean;
+import common.ObjectToJson;
 import common.UserBean;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import view.ViewElectionsImpl;
 
 /**
  *
  * @author Andrei
  */
-public class DeleteElectionServlet extends HttpServlet {
+public class DeleteElectionViewServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -27,6 +30,11 @@ public class DeleteElectionServlet extends HttpServlet {
         UserBean user = (UserBean) session.getAttribute("user");
         if (user == null) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
-        }    
+        }
+        ViewElectionsImpl viewImpl = new ViewElectionsImpl();
+        ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();
+        String electionsArrayJson = ObjectToJson.convertElectionsArray(electionsArray);
+        request.setAttribute("electionsArrayJson", electionsArrayJson);
+        request.getRequestDispatcher("/deleteElection.jsp").forward(request, response);
     }
 }

@@ -10,7 +10,27 @@
         <link rel="stylesheet" href="CSS/DefaultStyle.css"> 
         <script src="Style/JS/jquery340.js"></script>
         <script src="Style/JS/bootstrap340.js"></script>
-        <script src="Style/JS/datepicker.js"></script>           
+        <script src="Style/JS/datepicker.js"></script>         
+            <style>
+        .row {
+
+            width: 50%;
+        }
+        .row2{
+            width:35%;
+        }
+        .row3{
+            width:10%;
+        }
+        .mypdg {
+            padding: 5px;
+        }
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+    </style>
     </head>
     <body>
         <div id="navigationMenu"></div>
@@ -19,9 +39,7 @@
                 <div>
                     <div class="container">
                         <div class="mypdg">
-                            <h1></h1>
                             <h1>Create election</h1>
-                            <h1></h1>
                         </div>
                         <h3>Tip Alegere</h3>
                         <div class="row2">
@@ -33,8 +51,8 @@
                         </div>
                         <div class="row2">
                             <br><br>
-                            Localitate <input type="text" name="localitate" id="localitateInput"/>
-                            Judet <input type="text" name="judet" id="judetInput" />
+                            <h4>Localitate</h4> <input class="form-control" type="text" name="localitate" id="localitateInput"/>
+                            <h4>Judet</h4> <input class="form-control" type="text" name="judet" id="judetInput" />
                             <br><br>
                         </div>
                         <h3>Nume alegeri</h3>

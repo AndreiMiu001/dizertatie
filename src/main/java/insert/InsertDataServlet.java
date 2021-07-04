@@ -30,7 +30,7 @@ public class InsertDataServlet extends HttpServlet {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
         InsertDataImpl insertDataImpl = new InsertDataImpl();
-        ArrayList<Category> electionCategoryArray = insertDataImpl.makeElectionCategory();
+        ArrayList<Category> electionCategoryArray = insertDataImpl.getElectionCategories();
         request.setAttribute("listCategory", electionCategoryArray);
         request.getRequestDispatcher("/createElection.jsp").forward(request, response);
     }

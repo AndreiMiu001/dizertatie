@@ -5,8 +5,6 @@
  */
 package common;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -16,7 +14,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class ElectionBean extends ElectionResultsBean {
 
-    private String mCategory;
+    private Category mCategory;
     private String mLocalitate;
     private String mJudet;
     private LocalDate mStartingDate;
@@ -29,7 +27,7 @@ public class ElectionBean extends ElectionResultsBean {
         mEndingDate = null;
         mLocalitate = "";
         mJudet = "";
-        mCategory = "";
+        mCategory = new Category();
         mCandidatesCount = 0;
     }
 
@@ -63,11 +61,11 @@ public class ElectionBean extends ElectionResultsBean {
     
     
 
-    public String getCategory() {
+    public Category getCategory() {
         return mCategory;
     }
 
-    public void setCategory(String mCategory) {
+    public void setCategory(Category mCategory) {
         this.mCategory = mCategory;
     }
 

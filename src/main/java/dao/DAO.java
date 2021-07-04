@@ -6,6 +6,7 @@
 package dao;
 
 import common.Candidate;
+import common.Category;
 import common.ElectionBean;
 import common.ElectionResultsBean;
 import common.UserBean;
@@ -127,13 +128,14 @@ public class DAO {
     }
 
     public boolean insertElection(ElectionBean election) {
-        String queryInsertElection = "INSERT INTO `elections` (`nameElections`, `startDate`, `endDate`) VALUES (?, ?, ?);";
+        String queryInsertElection = "INSERT INTO `elections` (`nameElections`, `startDate`, `endDate`, `idElectionType`) VALUES (?, ?, ?, ?);";
         String queryGetId = "SELECT `idElections` FROM `elections` WHERE `nameElections`=? AND `startDate`=? AND `endDate`=?";
         try {
             PreparedStatement ps = mConnection.prepareStatement(queryInsertElection);
             ps.setString(1, election.getElectionName());
             ps.setDate(2, Date.valueOf(election.getStartingDate()));
             ps.setDate(3, Date.valueOf(election.getEndingDate()));
+            ps.setInt(4, election.getCategory().getId());
             int state = ps.executeUpdate();
             if (state != 0) {
                 PreparedStatement ps2 = mConnection.prepareStatement(queryGetId);
@@ -156,6 +158,7 @@ public class DAO {
                 mConnection.rollback();
             }
         } catch (SQLException ex) {
+            System.out.println(ex);
         }
         return true;
     }
@@ -213,5 +216,23 @@ public class DAO {
         } catch (SQLException ex) {
         }
         return true;
+    }
+
+    public ArrayList<Category> getElectionCategories() {
+        String query = "SELECT `idElectionType`, `nameElectionType` FROM `election_types`";
+        ArrayList<Category> categories = new ArrayList<>();
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("idElectionType");
+                String name = rs.getString("nameElectionType");
+                Category cat = new Category(id, name);
+                categories.add(cat);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return categories;
     }
 }

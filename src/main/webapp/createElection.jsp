@@ -45,7 +45,7 @@
                         <div class="row2">
                             <select name="category" id="category">
                                 <c:forEach items="${listCategory}" var="category">
-                                    <option value="${category.name}">${category.name}</option>
+                                    <option value="${category.id}">${category.name}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -118,10 +118,10 @@
             var judetInput = document.getElementById("judetInput");
             nameField.addEventListener("change", function () {
                 //Update this to your logic...
-                if (nameField.value === "Nationala") {
+                if (nameField.value === "1") {
                     localitateInput.disabled = true;
                     judetInput.disabled = true;
-                } else if (nameField.value === "Judeteana") {
+                } else if (nameField.value === "2") {
                     localitateInput.disabled = true;
                 }
             });

@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-       
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
@@ -48,6 +48,8 @@
                 var divCheckbox = document.createElement("div");
                 divCheckbox.setAttribute('class', "custom-control custom-checkbox");
                 var inputCheckbox = document.createElement("input");
+                inputCheckbox.setAttribute('value', electionsArrayJson[i]["mIdElection"]);
+                inputCheckbox.setAttribute('name', "idCheckbox");
                 inputCheckbox.setAttribute("type", "checkbox");
                 inputCheckbox.setAttribute("class", "custom-control-input");
                 inputCheckbox.setAttribute("id", "customCheck" + i);
@@ -75,9 +77,17 @@
             divCol.appendChild(table);
             table.appendChild(thead);
             table.appendChild(tBody);
+            var form = document.createElement("form");
+            form.setAttribute('method', "post");
+            form.setAttribute('action', "DeleteElectionIdsServlet");
+            form.appendChild(divContainer);
+            var sendBtn = document.createElement("button");
+            var textDelete = document.createTextNode("Delete selected");
+            sendBtn.appendChild(textDelete);
+            form.appendChild(sendBtn);
 
+            document.getElementsByTagName('body')[0].appendChild(form);
 
-            document.getElementsByTagName('body')[0].appendChild(divContainer);
         </script>
 
         <script>

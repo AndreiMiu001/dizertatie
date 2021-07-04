@@ -59,6 +59,19 @@ public class DAO {
         }
     }
 
+    public int deleteId(int id) {
+        int state = -1;
+        try {
+            String query = "DELETE FROM `elections` WHERE `idElections`=?";
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setInt(1, id);
+            state = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return state;
+    }
+
     public String getFieldFromUsers(String fieldName, String username) {
         String query = "SELECT `" + fieldName + "` FROM `users` WHERE `username`=?";
         String salt = "";
@@ -177,7 +190,7 @@ public class DAO {
             while (rs.next()) {
                 electionName = rs.getString("nameElections");
             }
-            } catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return electionName;

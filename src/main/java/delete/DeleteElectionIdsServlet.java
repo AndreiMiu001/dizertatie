@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Andrei
  */
-public class DeleteElectionServlet extends HttpServlet {
+public class DeleteElectionIdsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -26,6 +26,15 @@ public class DeleteElectionServlet extends HttpServlet {
         UserBean user = (UserBean) session.getAttribute("user");
         if (user == null) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
-        }    
+        }
+        String[] idsStr = request.getParameterValues("idCheckbox");
+        for (String idStr : idsStr) {
+            int id = Integer.parseInt(idStr);
+            DeleteElectionIdImpl deleteElection = new DeleteElectionIdImpl();
+            if (deleteElection.deleteId(id)) {
+                System.out.println("Could not delete election with id:" + id);
+            }
+        }
+        request.getRequestDispatcher("/deleteElection.jsp").forward(request, response);
     }
 }

@@ -7,6 +7,7 @@ package insert;
 
 import common.ElectionBean;
 import common.UserBean;
+import common.Category;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -38,12 +39,13 @@ public class CreateElectionServlet extends HttpServlet {
             formCompletionFlag = false;
             request.setAttribute("electionCategoryNull", "Please provide an election name");
         } else {
-            election.setCategory(electionCategory);
+            Category category = new Category(Integer.parseInt(electionCategory));
+            election.setCategory(category);
             // get judet and localitate names
             switch (electionCategory) {
-                case "Nationala":
+                case "1": // Nationala
                     break;
-                case "Locala":
+                case "3": // Locala
                     String localitate = request.getParameter("localitate");
                     if (localitate == null || localitate.isEmpty()) {
                         formCompletionFlag = false;
@@ -51,7 +53,7 @@ public class CreateElectionServlet extends HttpServlet {
                     } else {
                         election.setJudet(localitate);
                     }
-                case "Judeteana":
+                case "2": // Judeteana
                     String judet = request.getParameter("judet");
                     if (judet == null || judet.isEmpty()) {
                         formCompletionFlag = false;

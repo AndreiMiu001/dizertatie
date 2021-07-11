@@ -8,9 +8,9 @@
 <html>
 
     <head>
-        <link href="Style/CSS/bootstrap400.css" rel="stylesheet" id="bootstrap-css"/>
         <link rel="stylesheet" href="Style/CSS/IndexStyle.css">
-        <script src="Style/JS/bootstrap.js"></script>
+        <link rel="stylesheet" href="Style/CSS/bootstrap502.css">
+        <script src="Style/JS/bootstrap502.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Platforma eVot</title>
     </head>

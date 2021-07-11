@@ -2,34 +2,10 @@
 <!DOCTYPE html>
 <html>
     <head>    
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="Style/CSS/bootstrap502.css">
+        <script src="Style/JS/bootstrap502.js"></script>
+        <link rel="stylesheet" href="Style/CSS/menuBar.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
-                justify-content: start;
-            }
-            .navbar-brand {
-                padding-left: 1.5rem;
-                font-size: 1.6rem;
-                padding-top: .5rem;
-                padding-bottom: .5rem;
-            }
-            navbar-nav, .nav-link active, .nav-item {
-                text-indent: 1.8rem;
-            }
-            .nav-link:hover {
-                color:#abc;
-            }
-            .nav-link {
-                color:#fff
-            }
-            .nav-link-align {
-                display: inline-flex;
-                margin-left: auto;
-                margin-right: 0;
-            }
-        </style>
         <title>Bar de meniu</title>
     </head>
     <body> 

@@ -1,21 +1,16 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="menuBar.jsp" />
+<jsp:include page="menuBarUpdated.jsp" />
+
 <!DOCTYPE html>
 <html>
     <head>
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Delete elections</title>
     </head>
     <body>
-
-        <h2>My Customers</h2>
-
-        <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Search for names.." title="Type in a name">
-
+        <h2>Elections list</h2>
+        <input type="text" id="deleteElectionsFunc" onkeyup="deleteElections()" placeholder="Search for elections" title="Type in a name">
         <script>
             var electionsArrayJson = ${electionsArrayJson};
             var electionsArrayLenght = Object.keys(electionsArrayJson).length;
@@ -91,9 +86,9 @@
         </script>
 
         <script>
-            function myFunction2() {
+            function deleteElections() {
                 var input, filter, table, tr, td, i, txtValue, tBody;
-                input = document.getElementById("myInput2");
+                input = document.getElementById("deleteElectionsFunc");
                 filter = input.value.toUpperCase();
                 table = document.getElementById("electionTable");
                 debugger;

@@ -1,36 +1,35 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<jsp:include page="menuBarUpdated.jsp" />
+
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="Style/CSS/bootstrap340.css">
         <link rel="stylesheet" href="Style/CSS/datepicker3.css">       
         <link rel="stylesheet" href="CSS/DefaultStyle.css"> 
-        <script src="Style/JS/jquery340.js"></script>
-        <script src="Style/JS/bootstrap340.js"></script>
         <script src="Style/JS/datepicker.js"></script>         
-            <style>
-        .row {
+        <style>
+            .row {
 
-            width: 50%;
-        }
-        .row2{
-            width:35%;
-        }
-        .row3{
-            width:10%;
-        }
-        .mypdg {
-            padding: 5px;
-        }
-        .center {
-            margin: auto;
-            width: 50%;
-            padding: 10px;
-        }
-    </style>
+                width: 50%;
+            }
+            .row2{
+                width:35%;
+            }
+            .row3{
+                width:10%;
+            }
+            .mypdg {
+                padding: 5px;
+            }
+            .center {
+                margin: auto;
+                width: 50%;
+                padding: 10px;
+            }
+        </style>
     </head>
     <body>
         <div id="navigationMenu"></div>
@@ -108,11 +107,6 @@
             </div>
         </form>
         <script>
-            $(document).ready(function () {
-                $('#navigationMenu').load('menuBar.jsp');
-            });
-        </script>
-        <script>
             var nameField = document.getElementById("category");
             var localitateInput = document.getElementById("localitateInput");
             var judetInput = document.getElementById("judetInput");
@@ -121,8 +115,15 @@
                 if (nameField.value === "1") {
                     localitateInput.disabled = true;
                     judetInput.disabled = true;
+                    localitateInput.value = '';
+                    judetInput.value = '';
                 } else if (nameField.value === "2") {
                     localitateInput.disabled = true;
+                    judetInput.disabled = false;
+                    localitateInput.value = '';
+                } else {
+                    localitateInput.disabled = false;
+                    judetInput.disabled = false;
                 }
             });
         </script>

@@ -25,4 +25,12 @@ public class LogoutServlet extends HttpServlet {
         session.invalidate();
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
+    
+        @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
+    }
 }

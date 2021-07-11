@@ -1,5 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="menuBarUpdated.jsp" />
+
 <!DOCTYPE html>
 <html>
     <style>
@@ -15,9 +17,6 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="Style/CSS/bootstrap3400.css">
-        <script src="Style/JS/jquery340.js"></script>
-        <script src="Style/JS/bootstrap340.js"></script>
     </head>
     <body>
         <div id="navigationMenu"></div>
@@ -102,11 +101,6 @@
 
             document.getElementsByTagName('body')[0].appendChild(divMyClass);
 
-        </script>
-        <script>
-            $(document).ready(function () {
-                $('#navigationMenu').load('menuBar.jsp');
-            });
         </script>
     </body>
 </html>

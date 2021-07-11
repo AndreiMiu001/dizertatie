@@ -26,6 +26,6 @@ public class DeleteElectionServlet extends HttpServlet {
         UserBean user = (UserBean) session.getAttribute("user");
         if (user == null) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
-        }    
+        }
     }
 }

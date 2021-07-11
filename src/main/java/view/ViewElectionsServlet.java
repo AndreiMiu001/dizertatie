@@ -27,12 +27,21 @@ public class ViewElectionsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        session.invalidate();
+        request.setAttribute("response", "Called doPost from view servlet");
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute("user");
         if (user == null) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
         ViewElectionsImpl viewImpl = new ViewElectionsImpl();
-        ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();      
+        ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();
         String electionsArrayJson = ObjectToJson.convertElectionsArray(electionsArray);
         request.setAttribute("electionsArrayJson", electionsArrayJson);
         request.getRequestDispatcher("/viewElections.jsp").forward(request, response);

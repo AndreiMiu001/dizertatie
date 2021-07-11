@@ -27,6 +27,15 @@ public class DeleteElectionViewServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        session.invalidate();
+        request.setAttribute("response", "Called doPost from delete servlet");
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute("user");
         if (user == null) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);

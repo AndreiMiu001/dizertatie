@@ -1,12 +1,11 @@
 <%@page import="java.util.ArrayList"%>
+<jsp:include page="menuBarUpdated.jsp" />
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="Style/CSS/bootstrap340.css">     
         <link rel="stylesheet" href="CSS/DefaultStyle.css"> 
-        <script src="Style/JS/jquery340.js"></script>
-        <script src="Style/JS/bootstrap340.js"></script>
         <title>eVot adauga candidati</title>
     </head>
     <body>
@@ -104,11 +103,6 @@
             finalDiv.appendChild(f);
 
             document.getElementsByTagName('body')[0].appendChild(finalDiv);
-        </script>
-        <script>
-            $(document).ready(function () {
-                $('#navigationMenu').load('menuBar.jsp');
-            });
         </script>
     </body>
 </html>

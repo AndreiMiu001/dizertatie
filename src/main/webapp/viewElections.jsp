@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="menuBarUpdated.jsp" />
+
 <!DOCTYPE html>
 <html>
     <style>
@@ -14,9 +16,6 @@
         }
     </style>
     <head>
-        <link rel="stylesheet" href="Style/CSS/bootstrap340.css">
-        <script src="Style/JS/jquery340.js"></script>
-        <script src="Style/JS/bootstrap340.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista alegeri</title>
@@ -72,10 +71,6 @@
             divp.appendChild(div2);
             div1.appendChild(divp);
             document.getElementsByTagName('body')[0].appendChild(div1);
-
-            $(document).ready(function () {
-                $('#navigationMenu').load('menuBar.jsp');
-            });
         </script>
     </body>
 </html>

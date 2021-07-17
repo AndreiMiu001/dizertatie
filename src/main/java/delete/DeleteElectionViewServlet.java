@@ -42,7 +42,7 @@ public class DeleteElectionViewServlet extends HttpServlet {
         }
         ViewElectionsImpl viewImpl = new ViewElectionsImpl();
         ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();
-        String electionsArrayJson = ObjectToJson.convertElectionsArray(electionsArray);
+        String electionsArrayJson = ObjectToJson.convert(electionsArray);
         request.setAttribute("electionsArrayJson", electionsArrayJson);
         request.getRequestDispatcher("/deleteElection.jsp").forward(request, response);
     }

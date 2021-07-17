@@ -28,7 +28,7 @@
                 <button    class="themeBtn2">Create election</button>
             </div>
         </form>
-        <form method="get" action="UpdateRedirectServlet">
+        <form method="get" action="UpdateElectionViewListServlet">
             <div class="container-fluid  margin">
                 <button    class="themeBtn2">Update election</button>
             </div>

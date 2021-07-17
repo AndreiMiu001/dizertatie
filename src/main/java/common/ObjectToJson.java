@@ -11,15 +11,21 @@ import java.util.ArrayList;
 
 public class ObjectToJson {
 
-    public static String convertElectionsArray(ArrayList<ElectionBean> election) {
+    public static String convert(ArrayList<ElectionBean> elections) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonInString = gson.toJson(election);
+        String jsonInString = gson.toJson(elections);
         return jsonInString;
     }
 
-    public static String convertResultsArray(ElectionResultsBean candidatesArray) {
+    public static String convert(ElectionResultsBean electionResults) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonInString = gson.toJson(candidatesArray);
+        String jsonInString = gson.toJson(electionResults);
+        return jsonInString;
+    }
+
+    public static String convert(ElectionBean election) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonInString = gson.toJson(election);
         return jsonInString;
     }
 

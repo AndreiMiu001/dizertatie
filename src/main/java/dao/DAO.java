@@ -127,6 +127,41 @@ public class DAO {
         return electionArray;
     }
 
+    public ElectionBean getSingleElection(int id) {
+        String query = "SELECT * FROM `elections` WHERE `idElections`=?";
+        ElectionBean election = new ElectionBean();
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                election.setElectionName(rs.getString("nameElections"));
+                election.setIdElection(rs.getInt("idElections"));
+                election.setStartingDate(rs.getDate("startDate").toString());
+                election.setEndingDate(rs.getDate("endDate").toString());
+                election.setCategory(getSingleElectionCategory(rs.getInt("idElectionType")));
+                election.setCandidatesCount(getCandidatesNum(id));
+            }
+        } catch (SQLException ex) {
+        }
+        return election;
+    }
+
+    public int getCandidatesNum(int id) {
+        int candidatesNum = 0;
+        String query = "SELECT COUNT(*) AS candidatesNum FROM `candidates` WHERE `idElections`=?";
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                candidatesNum = rs.getInt("candidatesNum");
+            }
+        } catch (SQLException ex) {
+        }
+        return candidatesNum;
+    }
+
     public boolean insertElection(ElectionBean election) {
         String queryInsertElection = "INSERT INTO `elections` (`nameElections`, `startDate`, `endDate`, `idElectionType`) VALUES (?, ?, ?, ?);";
         String queryGetId = "SELECT `idElections` FROM `elections` WHERE `nameElections`=? AND `startDate`=? AND `endDate`=?";
@@ -234,5 +269,23 @@ public class DAO {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return categories;
+    }
+
+    public Category getSingleElectionCategory(int idElectionType) {
+        String query = "SELECT `idElectionType`, `nameElectionType` FROM `election_types` WHERE `idElectionType`=?";
+        Category category = new Category();
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setInt(1, idElectionType);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int idReturned = rs.getInt("idElectionType");
+                String name = rs.getString("nameElectionType");
+                category = new Category(idReturned, name);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return category;
     }
 }

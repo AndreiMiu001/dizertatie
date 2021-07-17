@@ -1,31 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="menuBarUpdated.jsp" />
-
 <!DOCTYPE html>
 <html>
-    <style>
-        .myclass
-        {
-            margin: auto;
-            width: 45%;
-            padding: 10px;
-        }
-        .divPadding
-        {
-            padding: 6px;
-        }
-    </style>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="scripts/searchFunctionView.js"></script> 
-
-        <title>Lista alegeri</title>
+        <title>Update elections</title>
     </head>
     <body onload="init(electionsArrayJson);" >
         <div id="navigationMenu"></div>
         <input type="text" id="searchBar" onkeyup="searchElectionsView()" placeholder="Search for elections" title="Type in a name">
-
         <script>
             var electionsArrayJson = ${electionsArrayJson};
             var electionsArrayLenght = Object.keys(electionsArrayJson).length;
@@ -48,11 +32,10 @@
             div2.setAttribute('class', "list-group");
             div2.setAttribute('id', 'electionList');
 
-
             for (var i = 1; i <= electionsArrayLenght; i++) {
                 var f = document.createElement("form");
                 f.setAttribute('method', "post");
-                f.setAttribute('action', "ViewResultsServlet");
+                f.setAttribute('action', "UpdateElectionViewListServlet");
 
                 var in1 = document.createElement("input");
                 in1.setAttribute('type', "hidden");

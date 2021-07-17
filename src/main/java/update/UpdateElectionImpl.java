@@ -5,7 +5,12 @@
  */
 package update;
 
+import common.ElectionBean;
 import common.Implementation;
+import insert.InsertCandidatesImpl;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,4 +18,16 @@ import common.Implementation;
  */
 public class UpdateElectionImpl extends Implementation {
     
+    private ElectionBean election;
+    
+    public ElectionBean getElectionForUpdate(int id) {
+        try {
+            mDao.connect();
+            election = mDao.getSingleElection(id);
+            mDao.disconnect();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(InsertCandidatesImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return election;
+    }
 }

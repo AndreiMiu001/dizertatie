@@ -56,6 +56,10 @@
         <servlet-name>DeleteElectionIdsServlet</servlet-name>
         <servlet-class>delete.DeleteElectionIdsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateElectionViewListServlet</servlet-name>
+        <servlet-class>update.UpdateElectionViewListServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>DeleteElectionIdsServlet</servlet-name>
         <url-pattern>/DeleteElectionIdsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateElectionViewListServlet</servlet-name>
+        <url-pattern>/UpdateElectionViewListServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

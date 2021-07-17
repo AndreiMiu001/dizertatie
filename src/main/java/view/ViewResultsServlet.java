@@ -32,7 +32,7 @@ public class ViewResultsServlet extends HttpServlet {
         ViewResultsImpl viewImpl = new ViewResultsImpl();
         int idElection = Integer.parseInt(request.getParameter("hiddenButton"));
         ElectionResultsBean electionResults = viewImpl.getVoteResults(idElection);
-        String electionsResultsJson = ObjectToJson.convertResultsArray(electionResults);
+        String electionsResultsJson = ObjectToJson.convert(electionResults);
         System.out.println(electionsResultsJson);
         request.setAttribute("electionsResultsJson", electionsResultsJson);
         request.getRequestDispatcher("/viewResults.jsp").forward(request, response);

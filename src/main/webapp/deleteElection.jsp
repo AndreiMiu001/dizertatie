@@ -6,11 +6,12 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="scripts/searchFunctionDelete.js"></script> 
         <title>Delete elections</title>
     </head>
     <body>
         <h2>Elections list</h2>
-        <input type="text" id="deleteElectionsFunc" onkeyup="deleteElections()" placeholder="Search for elections" title="Type in a name">
+        <input type="text" id="searchBar" onkeyup="searchElectionsDelete()" placeholder="Search for elections" title="Type in a name">
         <script>
             var electionsArrayJson = ${electionsArrayJson};
             var electionsArrayLenght = Object.keys(electionsArrayJson).length;
@@ -83,29 +84,6 @@
 
             document.getElementsByTagName('body')[0].appendChild(form);
 
-        </script>
-
-        <script>
-            function deleteElections() {
-                var input, filter, table, tr, td, i, txtValue, tBody;
-                input = document.getElementById("deleteElectionsFunc");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("electionTable");
-                debugger;
-                tBody = table.getElementsByTagName("tbody");
-                tr = tBody[0].getElementsByTagName("tr");
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[1];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-            }
         </script>
     </body>
 </html>

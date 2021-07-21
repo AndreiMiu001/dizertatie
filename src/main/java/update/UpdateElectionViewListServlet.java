@@ -11,7 +11,6 @@ import common.ObjectToJson;
 import common.UserBean;
 import insert.InsertDataImpl;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.servlet.ServletException;
@@ -37,7 +36,8 @@ public class UpdateElectionViewListServlet extends HttpServlet {
         }
         ViewElectionsImpl viewImpl = new ViewElectionsImpl();
         ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();
-        String electionsArrayJson = ObjectToJson.convert(electionsArray);
+        ObjectToJson<ArrayList<ElectionBean>> jsonConverter = new ObjectToJson<>();
+        String electionsArrayJson = jsonConverter.convert(electionsArray);
         request.setAttribute("electionsArrayJson", electionsArrayJson);
         request.getRequestDispatcher("/updateElectionsViewList.jsp").forward(request, response);
     }
@@ -52,8 +52,10 @@ public class UpdateElectionViewListServlet extends HttpServlet {
         }
         UpdateElectionImpl updateImpl = new UpdateElectionImpl();
         int idElection = Integer.parseInt(request.getParameter("hiddenButton"));
+        ////
         ElectionBean election = updateImpl.getElectionForUpdate(idElection);
         session.removeAttribute("electionObject");
+        // get election category
         InsertDataImpl insertDataImpl = new InsertDataImpl();
         ArrayList<Category> electionCategoryArray = insertDataImpl.getElectionCategories();
         Collections.reverse(electionCategoryArray);
@@ -63,6 +65,9 @@ public class UpdateElectionViewListServlet extends HttpServlet {
         request.setAttribute("candidatesNumber", election.getCandidatesCount());
         request.setAttribute("electionDateStart", election.getStartingDate().toString().replace('-', '/'));
         request.setAttribute("electionDateEnd", election.getEndingDate().toString().replace('-', '/'));
+        session.setAttribute("electionObject", election);
+        ////
         request.getRequestDispatcher("/updateElection.jsp").forward(request, response);
+
     }
 }

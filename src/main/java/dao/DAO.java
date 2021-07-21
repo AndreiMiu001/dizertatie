@@ -162,6 +162,25 @@ public class DAO {
         return candidatesNum;
     }
 
+    public ArrayList<Candidate> getCandidates(int id) {
+        ArrayList<Candidate> candidatesArr = new ArrayList<>();
+        String query = "SELECT * FROM `candidates` WHERE `idElections`=?";
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Candidate tempCandidate = new Candidate();
+                tempCandidate.setIdCandidate(rs.getInt("idCandidates"));
+                tempCandidate.setCandidateName(rs.getString("nameCandidates"));
+                tempCandidate.setDescription(rs.getString("description"));
+                candidatesArr.add(tempCandidate);
+            }
+        } catch (SQLException ex) {
+        }
+        return candidatesArr;
+    }
+
     public boolean insertElection(ElectionBean election) {
         String queryInsertElection = "INSERT INTO `elections` (`nameElections`, `startDate`, `endDate`, `idElectionType`) VALUES (?, ?, ?, ?);";
         String queryGetId = "SELECT `idElections` FROM `elections` WHERE `nameElections`=? AND `startDate`=? AND `endDate`=?";
@@ -287,5 +306,40 @@ public class DAO {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return category;
+    }
+
+    public boolean updateElection(ElectionBean election) {
+        String query = "UPDATE `elections` AS e SET "
+                + " e.`nameElections`=?, e.idElectionType=?, e.startDate=?, e.endDate=?"
+                + " WHERE e.`idElections`=?;";
+
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setString(1, election.getElectionName());
+            ps.setInt(2, election.getCategory().getId());
+            ps.setDate(3, Date.valueOf(election.getStartingDate()));
+            ps.setDate(4, Date.valueOf(election.getEndingDate()));
+            ps.setInt(5, election.getIdElection());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String queryCandidates = "UPDATE `candidates` AS c SET ";
+        for (Candidate candidate : election.getCandidates()) {
+            String queryUpdateCandidates = queryCandidates
+                    + "c.nameCandidates=?, c.description=? WHERE c.idCandidates=? and c.idElections=?";
+            try {
+                PreparedStatement ps = mConnection.prepareStatement(queryUpdateCandidates);
+                ps.setString(1, candidate.getCandidateName());
+                ps.setString(2, candidate.getDescription());
+                ps.setInt(3, candidate.getIdCandidate());
+                ps.setInt(4, candidate.getIdElection());
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return true;
     }
 }

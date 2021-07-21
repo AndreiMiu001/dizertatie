@@ -42,7 +42,8 @@ public class ViewElectionsServlet extends HttpServlet {
         }
         ViewElectionsImpl viewImpl = new ViewElectionsImpl();
         ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();
-        String electionsArrayJson = ObjectToJson.convert(electionsArray);
+        ObjectToJson<ArrayList<ElectionBean>> jsonConverter = new ObjectToJson<>();
+        String electionsArrayJson = jsonConverter.convert(electionsArray);
         request.setAttribute("electionsArrayJson", electionsArrayJson);
         request.getRequestDispatcher("/viewElections.jsp").forward(request, response);
     }

@@ -10,13 +10,14 @@ package common;
  * @author Andrei
  */
 public class Candidate {
+
     private String mCandidateName;
     private String mPoliticalParty;
     private String mDescription;
     private int mIdCandidate;
     private int mIdElection;
     private int mVotesCount;
-    
+
     public Candidate() {
         mCandidateName = "";
         mPoliticalParty = "";
@@ -25,11 +26,17 @@ public class Candidate {
         mIdElection = 0;
         mVotesCount = 0;
     }
-    
+
     public Candidate(String name, int votes) {
         super();
         mCandidateName = name;
         mVotesCount = votes;
+    }
+
+    public Candidate(String name, String description) {
+        super();
+        mCandidateName = name;
+        mDescription = description;
     }
 
     public int getVotesCount() {
@@ -38,8 +45,8 @@ public class Candidate {
 
     public void setVotesCount(int mVotesCount) {
         this.mVotesCount = mVotesCount;
-    }    
-    
+    }
+
     public String getCandidateName() {
         return mCandidateName;
     }
@@ -79,6 +86,5 @@ public class Candidate {
     public void setIdElection(int idElection) {
         this.mIdElection = idElection;
     }
-    
-    
+
 }

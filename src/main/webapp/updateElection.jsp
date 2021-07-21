@@ -33,7 +33,7 @@
     </head>
     <body>
         <div id="navigationMenu"></div>
-        <form method="post" action="UpdateCandidatesServlet">
+        <form method="get" action="UpdateElectionServlet">
             <div class ="center">
                 <div>
                     <div class="container">

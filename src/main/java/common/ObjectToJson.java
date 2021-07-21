@@ -7,26 +7,12 @@ package common;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.util.ArrayList;
 
-public class ObjectToJson {
+public class ObjectToJson<T> {
 
-    public static String convert(ArrayList<ElectionBean> elections) {
+    public String convert(T obj) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonInString = gson.toJson(elections);
+        String jsonInString = gson.toJson(obj);
         return jsonInString;
     }
-
-    public static String convert(ElectionResultsBean electionResults) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonInString = gson.toJson(electionResults);
-        return jsonInString;
-    }
-
-    public static String convert(ElectionBean election) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonInString = gson.toJson(election);
-        return jsonInString;
-    }
-
 }

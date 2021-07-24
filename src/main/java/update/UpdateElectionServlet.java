@@ -12,6 +12,7 @@ import common.ObjectToJson;
 import common.UserBean;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,16 +43,23 @@ public class UpdateElectionServlet extends HttpServlet {
         String candidateNumb = request.getParameter("candidatesNumber");
         String elDateStart = request.getParameter("electionDateStart");
         String elDateEnd = request.getParameter("electionDateEnd");
+        int cNumb = Integer.parseInt(candidateNumb);
         election.setElectionName(elName);
         election.setEndingDate(elDateEnd);
         election.setStartingDate(elDateStart);
-        election.setCandidatesCount(Integer.parseInt(candidateNumb));
+        election.setOldCandidatesCount(election.getCandidatesCount());
+        election.setCandidatesCount(cNumb);
         Category category = new Category(Integer.parseInt(elCategoryId), elCategoryName);
         election.setCategory(category);
+        while (cNumb > candidatesArr.size()) {
+            Candidate newCand = new Candidate();
+            election.addCandidate(newCand);
+        }
         session.setAttribute("electionObject", election);
         ObjectToJson<ArrayList<Candidate>> jsonConverter = new ObjectToJson<>();
         String jsonString = jsonConverter.convert(candidatesArr);
         request.setAttribute("candidatesArrayJson", jsonString);
+        request.setAttribute("candidatesNumber", cNumb);
         request.getRequestDispatcher("/updateCandidates.jsp").forward(request, response);
     }
 
@@ -65,18 +73,25 @@ public class UpdateElectionServlet extends HttpServlet {
         }
         ElectionBean election = (ElectionBean) session.getAttribute("electionObject");
         ArrayList<Candidate> candidates = election.getCandidates();
-        int i = 0;
-        for (Candidate candidate : candidates) {
+        ArrayList<Candidate> candidatesUpdated = new ArrayList<>();
+        for (int i = 0; i < election.getCandidatesCount(); i++) {
             String candidateName = request.getParameter("candidateName" + i);
             String candidateDescription = request.getParameter("candidateDescription" + i);
-            candidate.setCandidateName(candidateName);
-            candidate.setDescription(candidateDescription);
-            candidate.setIdElection(election.getIdElection());
-            i++;
+            Candidate tempCand = new Candidate();
+            tempCand.setCandidateName(candidateName);
+            tempCand.setDescription(candidateDescription);
+            tempCand.setIdElection(election.getIdElection());
+            tempCand.setIdCandidate(candidates.get(i).getIdCandidate());
+            candidatesUpdated.add(tempCand);
         }
-        election.setCandidatesArray(candidates);
         UpdateElectionImpl updateElection = new UpdateElectionImpl();
-        updateElection.update(election);
+        election.setCandidatesArray(candidatesUpdated);
+        int sizeDif = election.getOldCandidatesCount() - election.getCandidatesCount();
+        if (sizeDif == 0) {
+            updateElection.update(election);
+        } else {
+            updateElection.updateWithInsertOrDelete(election);
+        } 
         session.removeAttribute("electionObject");
         request.getRequestDispatcher("/mainPage.jsp").forward(request, response);
     }

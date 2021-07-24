@@ -4,6 +4,7 @@
     <head>    
         <link rel="stylesheet" href="Style/CSS/bootstrap502.css">
         <script src="Style/JS/bootstrap502.js"></script>
+        <script src="Style/JS/jquery340.js"></script>
         <link rel="stylesheet" href="Style/CSS/menuBar.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Bar de meniu</title>

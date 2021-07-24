@@ -20,6 +20,7 @@ public class ElectionBean extends ElectionResultsBean {
     private LocalDate mStartingDate;
     private LocalDate mEndingDate;
     private int mCandidatesCount;
+    private int mOldCandidatesCount;
 
     public ElectionBean() {
         super();
@@ -29,12 +30,13 @@ public class ElectionBean extends ElectionResultsBean {
         mJudet = "";
         mCategory = new Category();
         mCandidatesCount = 0;
+        mOldCandidatesCount = 0;
     }
 
     public void dropCandidates() {
         mCandidatesArray.clear();
     }
-    
+
     public int getCandidatesCount() {
         return mCandidatesCount;
     }
@@ -58,8 +60,6 @@ public class ElectionBean extends ElectionResultsBean {
     public void setJudet(String mJudet) {
         this.mJudet = mJudet;
     }
-    
-    
 
     public Category getCategory() {
         return mCategory;
@@ -97,4 +97,11 @@ public class ElectionBean extends ElectionResultsBean {
         mEndingDate = LocalDate.parse(date, formatter);
     }
 
+    public void setOldCandidatesCount(int i) {
+        mOldCandidatesCount = i;
+    }
+
+    public int getOldCandidatesCount() {
+        return mOldCandidatesCount;
+    }
 }

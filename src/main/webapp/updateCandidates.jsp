@@ -13,7 +13,7 @@
 
         <script>
             var candidatesArrayJson = ${candidatesArrayJson};
-            var candidatesArrayLenght = Object.keys(candidatesArrayJson).length;
+            var candidatesArrayLenght = ${candidatesNumber};
             debugger;
             var f = document.createElement("form");
             f.setAttribute('method', "post");

@@ -51,19 +51,19 @@
                         <div class="row2">
                             <br><br>
                             <h4>Localitate</h4> <input class="form-control" type="text" name="localitate" id="localitateInput"/>
-                            <h4>Judet</h4> <input class="form-control" type="text" name="judet" id="judetInput" />
+                            <h4>Judet</h4> <input class="form-control" type="text" name="judet" id="judetInput" autocomplete="off"/>
                             <br><br>
                         </div>
                         <h3>Nume alegeri</h3>
                         <div class="row2">
-                            <input type="text" class="form-control" name="electionName" value="${electionName}"/>
+                            <input type="text" class="form-control" name="electionName" value="${electionName}" autocomplete="off"/>
                         </div>
                         <h5 style="color:red;font-size:90%">${electionNameNull}</h5>
                     </div>
                     <div class="container">
                         <h3>Numar intrari (partide/candidati)</h3>
                         <div class="row3">
-                            <input type="text" class="form-control" name="candidatesNumber" value="${candidatesNumber}"/>
+                            <input type="text" class="form-control" name="candidatesNumber" value="${candidatesNumber}" autocomplete="off"/>
                         </div>
                         <h5 style="color:red;font-size:90%">${candidatesNumberNull}</h5>
                     </div>
@@ -73,7 +73,7 @@
                             <div class="form-group">
                                 <div class="col-xs-5 date">
                                     <div class="input-group input-append date" id="datePicker1">
-                                        <input type="text" class="form-control" name="electionDateStart" value="${electionDateStart}"/>
+                                        <input type="text" class="form-control" name="electionDateStart" value="${electionDateStart}" autocomplete="off"/>
                                         <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                             <div class="form-group">
                                 <div class="col-xs-5 date">
                                     <div class="input-group input-append date" id="datePicker2">
-                                        <input type="text" class="form-control" name="electionDateEnd" value="${electionDateEnd}"/>
+                                        <input type="text" class="form-control" name="electionDateEnd" value="${electionDateEnd}" autocomplete="off"/>
                                         <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                                     </div>
                                 </div>

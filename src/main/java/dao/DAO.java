@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -253,14 +254,21 @@ public class DAO {
         return electionName;
     }
 
-    private boolean insertCandidates(ArrayList<Candidate> candidateArray, int idElection) {
+    public boolean insertCandidates(ArrayList<Candidate> candidateArray, int idElection) {
         String query = "INSERT INTO `candidates` (`idElections`, `nameCandidates`, `description`) VALUES (?, ?, ?);";
+        String queryIdCandidate =  "INSERT INTO `candidates` (`idElections`, `nameCandidates`, `description`, `idCandidates`) VALUES (?, ?, ?, ?);";
         try {
-            for (int i = 0; i < candidateArray.size(); i++) {
-                PreparedStatement ps = mConnection.prepareStatement(query);
+            for (Candidate candidate : candidateArray) {
+                PreparedStatement ps;
+                if (candidate.getIdCandidate() == 0 ) {
+                    ps = mConnection.prepareStatement(query);
+                } else {
+                    ps = mConnection.prepareStatement(queryIdCandidate);
+                    ps.setInt(4, candidate.getIdCandidate());
+                }
                 ps.setInt(1, idElection);
-                ps.setString(2, candidateArray.get(i).getCandidateName());
-                ps.setString(3, candidateArray.get(i).getDescription());
+                ps.setString(2, candidate.getCandidateName());
+                ps.setString(3, candidate.getDescription());
                 int state = ps.executeUpdate();
                 if (state == 0) {
                     mConnection.rollback();
@@ -341,5 +349,18 @@ public class DAO {
             }
         }
         return true;
+    }
+
+    public int deleteCandidates(int idElection) {
+        String query = "DELETE FROM `candidates` WHERE `idElections`=?";
+        int state = -1;
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setInt(1, idElection);
+            state = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return state;
     }
 }

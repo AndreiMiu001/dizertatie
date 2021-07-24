@@ -11,6 +11,7 @@ import common.Implementation;
 import insert.InsertCandidatesImpl;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,6 +50,18 @@ public class UpdateElectionImpl extends Implementation {
         try {
             mDao.connect();
             mDao.updateElection(election);
+            mDao.disconnect();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(InsertCandidatesImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+
+    public boolean updateWithInsertOrDelete(ElectionBean election) {
+        try {
+            mDao.connect();
+            mDao.deleteCandidates(election.getIdElection());
+            mDao.insertCandidates(election.getCandidates(), election.getIdElection());
             mDao.disconnect();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(InsertCandidatesImpl.class.getName()).log(Level.SEVERE, null, ex);

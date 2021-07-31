@@ -66,11 +66,13 @@
                 h3.appendChild(t3);
 
                 var candName = document.createElement("input"); //input element, text
+                candName.setAttribute("autocomplete", "off");
                 candName.setAttribute('type', "text");
                 candName.setAttribute('name', "candidate" + i);
                 candName.setAttribute('class', 'form-control');
                 candName.setAttribute('value', nameValue[i - 1]);
                 var candDesc = document.createElement("input"); //input element, text
+                candDesc.setAttribute("autocomplete", "off");
                 candDesc.setAttribute('type', "text");
                 candDesc.setAttribute('name', "description" + i);
                 candDesc.setAttribute('class', 'form-control');

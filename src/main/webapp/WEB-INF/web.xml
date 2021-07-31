@@ -45,10 +45,6 @@
         <servlet-class>delete.DeleteElectionServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateCandidatesServlet</servlet-name>
-        <servlet-class>update.UpdateCandidatesServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>DeleteElectionViewServlet</servlet-name>
         <servlet-class>delete.DeleteElectionViewServlet</servlet-class>
     </servlet>
@@ -103,10 +99,6 @@
     <servlet-mapping>
         <servlet-name>DeleteElectionServlet</servlet-name>
         <url-pattern>/DeleteElectionServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateCandidatesServlet</servlet-name>
-        <url-pattern>/UpdateCandidatesServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteElectionViewServlet</servlet-name>

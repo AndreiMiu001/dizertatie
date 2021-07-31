@@ -144,6 +144,11 @@ public class DAO {
                 election.setStartingDate(rs.getDate("startDate").toString());
                 election.setEndingDate(rs.getDate("endDate").toString());
                 election.setCategory(getSingleElectionCategory(rs.getInt("idElectionType")));
+                Pair<Integer, String> city = new Pair<>(rs.getInt("idCity"), "");
+                Pair<Integer, String> county = new Pair<>(rs.getInt("idCounty"), "");
+                Category cat = election.getCategory();
+                cat.setCity(city);
+                cat.setCounty(county);
                 election.setCandidatesCount(getCandidatesNum(id));
             }
         } catch (SQLException ex) {
@@ -323,7 +328,7 @@ public class DAO {
 
     public boolean updateElection(ElectionBean election) {
         String query = "UPDATE `elections` AS e SET "
-                + " e.`nameElections`=?, e.idElectionType=?, e.startDate=?, e.endDate=?"
+                + " e.`nameElections`=?, e.idElectionType=?, e.startDate=?, e.endDate=?, e.idCounty=?, e.idCity=?"
                 + " WHERE e.`idElections`=?;";
 
         try {
@@ -332,12 +337,17 @@ public class DAO {
             ps.setInt(2, election.getCategory().getId());
             ps.setDate(3, Date.valueOf(election.getStartingDate()));
             ps.setDate(4, Date.valueOf(election.getEndingDate()));
-            ps.setInt(5, election.getIdElection());
+            ps.setInt(5, election.getCategory().getCounty().first);
+            ps.setInt(6, election.getCategory().getCity().first);
+            ps.setInt(7, election.getIdElection());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return true;
+    }
 
+    public boolean updateCandidates(ElectionBean election) {
         String queryCandidates = "UPDATE `candidates` AS c SET ";
         for (Candidate candidate : election.getCandidates()) {
             String queryUpdateCandidates = queryCandidates
@@ -370,7 +380,7 @@ public class DAO {
     }
 
     public ArrayList<ElectionBean> getElectionsForUpdate() {
-        String query = "SELECT * FROM `elections` WHERE startDate < current_date";
+        String query = "SELECT * FROM `elections` WHERE current_date() < startDate";
         ArrayList<ElectionBean> electionArray = new ArrayList<>();
         try {
             PreparedStatement ps = mConnection.prepareStatement(query);

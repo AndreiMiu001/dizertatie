@@ -54,7 +54,7 @@
                             <br><br>
                             <h4>Localitate</h4>
                             <div class="autocomplete">
-                                <input class="form-control" type="text" name="localitate" id="localitateInput"/>
+                                <input class="form-control" type="text" name="localitate" id="localitateInput" autocomplete="off"/>
                             </div>
                             <h4>Judet</h4>
                             <div class="autocomplete">

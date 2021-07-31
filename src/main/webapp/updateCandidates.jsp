@@ -31,11 +31,13 @@
                 var t3 = document.createTextNode("Candidate description");
                 h3.appendChild(t3);
                 var candName = document.createElement("input"); //input element, text
+                candName.setAttribute("autocomplete", "off");
                 candName.setAttribute('type', "text");
                 candName.setAttribute('name', "candidateName" + i);
                 candName.setAttribute('class', 'form-control');
                 candName.setAttribute('value', candidatesArrayJson[i]["mCandidateName"]);
                 var candDesc = document.createElement("input"); //input element, text
+                candDesc.setAttribute("autocomplete", "off");
                 candDesc.setAttribute('type', "text");
                 candDesc.setAttribute('name', "candidateDescription" + i);
                 candDesc.setAttribute('class', 'form-control');

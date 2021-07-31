@@ -21,6 +21,9 @@ public class ElectionBean extends ElectionResultsBean {
     private LocalDate mEndingDate;
     private int mCandidatesCount;
     private int mOldCandidatesCount;
+    public boolean isNational;
+    public boolean isLocal;
+    public boolean isCounty;
 
     public ElectionBean() {
         super();
@@ -31,6 +34,9 @@ public class ElectionBean extends ElectionResultsBean {
         mCategory = new Category();
         mCandidatesCount = 0;
         mOldCandidatesCount = 0;
+        isNational = false;
+        isLocal = false;
+        isCounty = false;
     }
 
     public void dropCandidates() {

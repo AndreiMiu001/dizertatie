@@ -8,8 +8,10 @@ package insert;
 import common.ElectionBean;
 import common.UserBean;
 import common.Category;
+import common.Pair;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,10 +42,10 @@ public class CreateElectionServlet extends HttpServlet {
             request.setAttribute("electionCategoryNull", "Please provide an election name");
         } else {
             Category category = new Category(Integer.parseInt(electionCategory));
-            election.setCategory(category);
             // get judet and localitate names
             switch (electionCategory) {
                 case "1": // Nationala
+                    election.isNational = true;
                     break;
                 case "3": // Locala
                     String localitate = request.getParameter("localitate");
@@ -51,22 +53,43 @@ public class CreateElectionServlet extends HttpServlet {
                         formCompletionFlag = false;
                         request.setAttribute("localitateNull", "Please provide an localitate name");
                     } else {
-                        election.setJudet(localitate);
+                        ArrayList<Pair<Integer, String>> cityArr = (ArrayList<Pair<Integer, String>>) session.getAttribute("cityArr");
+                        for (Pair<Integer, String> city : cityArr) {
+                            if (city.second.equals(localitate)) {
+                                category.setCity(city);
+                                break;
+                            }
+                        }
+                        election.isLocal = true;
                     }
                 case "2": // Judeteana
                     String judet = request.getParameter("judet");
+
                     if (judet == null || judet.isEmpty()) {
                         formCompletionFlag = false;
                         request.setAttribute("judetNull", "Please provide an judet name");
                     } else {
+                        ArrayList<Pair<Integer, String>> countyArr = (ArrayList<Pair<Integer, String>>) session.getAttribute("countyArr");
+                        for (Pair<Integer, String> county : countyArr) {
+                            if (county.second.equals(judet)) {
+                                category.setCounty(county);
+                                break;
+                            }
+                        }
                         election.setJudet(judet);
+                        if (election.isLocal = false) {
+                            election.isCounty = true;
+
+                        }
                     }
                     break;
                 default:
                     formCompletionFlag = false;
                     assert (false);
             }
+            election.setCategory(category);
         }
+
         // get election name
         String electionName = request.getParameter("electionName");
         if (electionName == null || electionName.isEmpty()) {
@@ -99,7 +122,7 @@ public class CreateElectionServlet extends HttpServlet {
             election.setStartingDate(electionDateStart);
         }
         // get election ending date
-        String electionEndStart = request.getParameter("electionDateStart");
+        String electionEndStart = request.getParameter("electionDateEnd");
         if (electionEndStart == null || electionEndStart.isEmpty()) {
             formCompletionFlag = false;
             request.setAttribute("electionDateStartNull", "Please provide a electionEndStart date");

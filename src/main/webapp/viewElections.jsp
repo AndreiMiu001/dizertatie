@@ -66,7 +66,10 @@
                 btn.setAttribute('style', "text-align: center;");
                 btn.setAttribute('value', electionsArrayJson[i - 1]["mIdElection"]);
                 btn.setAttribute('onclick', "{document.frm.hdnbt.value = this.value; document.frm.submit();}");
-                var t = document.createTextNode(electionsArrayJson[i - 1]["mElectionName"]);
+                var text = electionsArrayJson[i - 1]["mElectionName"] + " --- " +  electionsArrayJson[i - 1]["mStartingDate"]["year"] + 
+                        "/" + electionsArrayJson[i - 1]["mStartingDate"]["month"] + "/" + electionsArrayJson[i - 1]["mStartingDate"]["day"] + " - " + 
+                        electionsArrayJson[i - 1]["mEndingDate"]["year"] + "/" + electionsArrayJson[i - 1]["mEndingDate"]["month"] + "/" + electionsArrayJson[i - 1]["mEndingDate"]["day"];
+                var t = document.createTextNode(text);
                 btn.appendChild(t);
 
                 f.appendChild(in1);

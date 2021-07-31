@@ -8,6 +8,7 @@ package update;
 import common.Category;
 import common.ElectionBean;
 import common.ObjectToJson;
+import common.Pair;
 import common.UserBean;
 import insert.InsertDataImpl;
 import java.io.IOException;
@@ -34,8 +35,8 @@ public class UpdateElectionViewListServlet extends HttpServlet {
         if (user == null) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
-        ViewElectionsImpl viewImpl = new ViewElectionsImpl();
-        ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();
+        UpdateElectionImpl updateImpl = new UpdateElectionImpl();
+        ArrayList<ElectionBean> electionsArray = updateImpl.getElectionsForUpdate();
         ObjectToJson<ArrayList<ElectionBean>> jsonConverter = new ObjectToJson<>();
         String electionsArrayJson = jsonConverter.convert(electionsArray);
         request.setAttribute("electionsArrayJson", electionsArrayJson);
@@ -53,7 +54,7 @@ public class UpdateElectionViewListServlet extends HttpServlet {
         UpdateElectionImpl updateImpl = new UpdateElectionImpl();
         int idElection = Integer.parseInt(request.getParameter("hiddenButton"));
         ////
-        ElectionBean election = updateImpl.getElectionForUpdate(idElection);
+        ElectionBean election = updateImpl.getSingleElectionForUpdate(idElection);
         session.removeAttribute("electionObject");
         // get election category
         InsertDataImpl insertDataImpl = new InsertDataImpl();
@@ -66,6 +67,15 @@ public class UpdateElectionViewListServlet extends HttpServlet {
         request.setAttribute("electionDateStart", election.getStartingDate().toString().replace('-', '/'));
         request.setAttribute("electionDateEnd", election.getEndingDate().toString().replace('-', '/'));
         session.setAttribute("electionObject", election);
+
+        ArrayList<Pair<Integer, String>> cityArr = insertDataImpl.getCities();
+        ArrayList<Pair<Integer, String>> countyArr = insertDataImpl.getCounties();
+        ObjectToJson<ArrayList<Pair<Integer, String>>> converter = new ObjectToJson<>();
+        String countyJson = converter.convert(countyArr);
+        String cityJson = converter.convert(cityArr);
+        request.setAttribute("countyJson", countyJson);
+        request.setAttribute("cityJson", cityJson);
+
         ////
         request.getRequestDispatcher("/updateElection.jsp").forward(request, response);
 

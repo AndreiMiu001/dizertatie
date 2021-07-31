@@ -9,6 +9,7 @@ import common.Candidate;
 import common.Category;
 import common.ElectionBean;
 import common.ElectionResultsBean;
+import common.Pair;
 import common.UserBean;
 
 import java.sql.Connection;
@@ -48,6 +49,7 @@ public class DAO {
         if (mConnection != null) {
             mConnection.commit();
             mConnection.close();
+            mConnection = null;
         }
     }
 
@@ -121,6 +123,7 @@ public class DAO {
                 elTemp.setIdElection(rs.getInt("idElections"));
                 elTemp.setStartingDate(rs.getDate("startDate").toString());
                 elTemp.setEndingDate(rs.getDate("endDate").toString());
+                elTemp.setCategory(getSingleElectionCategory(rs.getInt("idElectionType")));
                 electionArray.add(elTemp);
             }
         } catch (SQLException ex) {
@@ -183,7 +186,7 @@ public class DAO {
     }
 
     public boolean insertElection(ElectionBean election) {
-        String queryInsertElection = "INSERT INTO `elections` (`nameElections`, `startDate`, `endDate`, `idElectionType`) VALUES (?, ?, ?, ?);";
+        String queryInsertElection = "INSERT INTO `elections` (`nameElections`, `startDate`, `endDate`, `idElectionType`, `idCounty`, `idCity`) VALUES (?, ?, ?, ?, ?, ?);";
         String queryGetId = "SELECT `idElections` FROM `elections` WHERE `nameElections`=? AND `startDate`=? AND `endDate`=?";
         try {
             PreparedStatement ps = mConnection.prepareStatement(queryInsertElection);
@@ -191,6 +194,8 @@ public class DAO {
             ps.setDate(2, Date.valueOf(election.getStartingDate()));
             ps.setDate(3, Date.valueOf(election.getEndingDate()));
             ps.setInt(4, election.getCategory().getId());
+            ps.setInt(5, election.getCategory().getCounty().first);
+            ps.setInt(6, election.getCategory().getCity().first);
             int state = ps.executeUpdate();
             if (state != 0) {
                 PreparedStatement ps2 = mConnection.prepareStatement(queryGetId);
@@ -256,11 +261,11 @@ public class DAO {
 
     public boolean insertCandidates(ArrayList<Candidate> candidateArray, int idElection) {
         String query = "INSERT INTO `candidates` (`idElections`, `nameCandidates`, `description`) VALUES (?, ?, ?);";
-        String queryIdCandidate =  "INSERT INTO `candidates` (`idElections`, `nameCandidates`, `description`, `idCandidates`) VALUES (?, ?, ?, ?);";
+        String queryIdCandidate = "INSERT INTO `candidates` (`idElections`, `nameCandidates`, `description`, `idCandidates`) VALUES (?, ?, ?, ?);";
         try {
             for (Candidate candidate : candidateArray) {
                 PreparedStatement ps;
-                if (candidate.getIdCandidate() == 0 ) {
+                if (candidate.getIdCandidate() == 0) {
                     ps = mConnection.prepareStatement(query);
                 } else {
                     ps = mConnection.prepareStatement(queryIdCandidate);
@@ -362,5 +367,62 @@ public class DAO {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return state;
+    }
+
+    public ArrayList<ElectionBean> getElectionsForUpdate() {
+        String query = "SELECT * FROM `elections` WHERE startDate < current_date";
+        ArrayList<ElectionBean> electionArray = new ArrayList<>();
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ElectionBean elTemp = new ElectionBean();
+                elTemp.setElectionName(rs.getString("nameElections"));
+                elTemp.setIdElection(rs.getInt("idElections"));
+                elTemp.setStartingDate(rs.getDate("startDate").toString());
+                elTemp.setEndingDate(rs.getDate("endDate").toString());
+                electionArray.add(elTemp);
+            }
+        } catch (SQLException ex) {
+        }
+        return electionArray;
+    }
+
+    public ArrayList<Pair<Integer, String>> getCities() {
+        ArrayList<Pair<Integer, String>> cityArr = new ArrayList<>();
+        String query = "SELECT * FROM `cities` ORDER BY `idCity`";
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            while (rs.next()) {
+                int idTemp = rs.getInt("idCity");
+                String strTemp = rs.getString("nameCity");
+                Pair<Integer, String> cityTemp = new Pair<>(idTemp, strTemp);
+                cityArr.add(cityTemp);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cityArr;
+    }
+
+    public ArrayList<Pair<Integer, String>> geteCounties() {
+        ArrayList<Pair<Integer, String>> countyArr = new ArrayList<>();
+        String query = "SELECT * FROM `counties` ORDER BY `idCounty`";
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            while (rs.next()) {
+                int idTemp = rs.getInt("idCounty");
+                String strTemp = rs.getString("nameCounty");
+                Pair<Integer, String> countyTemp = new Pair<>(idTemp, strTemp);
+                countyArr.add(countyTemp);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return countyArr;
     }
 }

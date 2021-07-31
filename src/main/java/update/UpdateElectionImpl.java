@@ -23,7 +23,7 @@ public class UpdateElectionImpl extends Implementation {
 
     private ElectionBean election;
 
-    public ElectionBean getElectionForUpdate(int id) {
+    public ElectionBean getSingleElectionForUpdate(int id) {
         try {
             mDao.connect();
             election = mDao.getSingleElection(id);
@@ -67,5 +67,19 @@ public class UpdateElectionImpl extends Implementation {
             Logger.getLogger(InsertCandidatesImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
+    }
+
+    public ArrayList<ElectionBean> getElectionsForUpdate() {
+        ArrayList<ElectionBean> electionsArray = new ArrayList<>();
+        try {
+            mDao.connect();
+            electionsArray = mDao.getElectionsForUpdate();
+            mDao.disconnect();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UpdateElectionImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateElectionImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return electionsArray;
     }
 }

@@ -8,7 +8,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="Style/CSS/datepicker3.css">       
-        <link rel="stylesheet" href="CSS/DefaultStyle.css"> 
+        <link rel="stylesheet" href="Style/CSS/DefaultStyle.css"> 
+        <link rel="stylesheet" href="Style/CSS/AutocompleteInput.css">
+        <script src="scripts/inputAutoComplete.js"></script>
+
         <script src="Style/JS/datepicker.js"></script>         
         <style>
             .row {
@@ -33,7 +36,7 @@
     </head>
     <body>
         <div id="navigationMenu"></div>
-        <form method="get" action="UpdateElectionServlet">
+        <form autocomplete="off" method="get" action="UpdateElectionServlet">
             <div class ="center">
                 <div>
                     <div class="container">
@@ -174,6 +177,14 @@
                     }
                 });
             });
+        </script>
+
+        <script>
+            var counties = ${countyJson};
+            var cities = ${cityJson};
+            debugger;
+            autocomplete(document.getElementById("localitateInput"), cities);
+            autocomplete(document.getElementById("judetInput"), counties);
         </script>
     </body>
 </html>

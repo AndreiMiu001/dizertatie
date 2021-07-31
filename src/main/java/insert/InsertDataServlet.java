@@ -6,6 +6,8 @@
 package insert;
 
 import common.Category;
+import common.ObjectToJson;
+import common.Pair;
 import common.UserBean;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,6 +36,28 @@ public class InsertDataServlet extends HttpServlet {
         ArrayList<Category> electionCategoryArray = insertDataImpl.getElectionCategories();
         Collections.reverse(electionCategoryArray);
         request.setAttribute("listCategory", electionCategoryArray);
+                ArrayList<Pair<Integer, String>> cityArr;
+                ArrayList<Pair<Integer, String>> countyArr;
+
+        Object cityObj = session.getAttribute("cityArr");
+        Object countyObj = session.getAttribute("countyArr");
+        if (cityObj != null) {
+            cityArr = (ArrayList<Pair<Integer, String>>)cityObj;
+        } else {
+            cityArr = insertDataImpl.getCities();
+        }
+        if (countyObj != null) {
+            countyArr = (ArrayList<Pair<Integer, String>>)countyObj;
+        } else {
+            countyArr = insertDataImpl.getCounties();
+        }
+        ObjectToJson<ArrayList<Pair<Integer, String>>> converter = new ObjectToJson<>(); 
+        String countyJson = converter.convert(countyArr);
+        String cityJson = converter.convert(cityArr);
+        session.setAttribute("cityArr", cityArr);
+        session.setAttribute("countyArr", countyArr);
+        request.setAttribute("countyJson", countyJson);
+        request.setAttribute("cityJson", cityJson);
         request.getRequestDispatcher("/createElection.jsp").forward(request, response);
     }
 }

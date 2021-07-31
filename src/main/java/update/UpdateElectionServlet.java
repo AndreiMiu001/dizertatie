@@ -9,7 +9,9 @@ import common.Candidate;
 import common.Category;
 import common.ElectionBean;
 import common.ObjectToJson;
+import common.Pair;
 import common.UserBean;
+import insert.InsertDataImpl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +62,16 @@ public class UpdateElectionServlet extends HttpServlet {
         String jsonString = jsonConverter.convert(candidatesArr);
         request.setAttribute("candidatesArrayJson", jsonString);
         request.setAttribute("candidatesNumber", cNumb);
+        
+        InsertDataImpl insertDataImpl = new InsertDataImpl();
+        ArrayList<Pair<Integer, String>> cityArr = insertDataImpl.getCities();
+        ArrayList<Pair<Integer, String>> countyArr = insertDataImpl.getCounties();
+        ObjectToJson<ArrayList<Pair<Integer, String>>> converter = new ObjectToJson<>();
+        String countyJson = converter.convert(countyArr);
+        String cityJson = converter.convert(cityArr);
+        request.setAttribute("countyJson", countyJson);
+        request.setAttribute("cityJson", cityJson);
+
         request.getRequestDispatcher("/updateCandidates.jsp").forward(request, response);
     }
 
@@ -91,7 +103,7 @@ public class UpdateElectionServlet extends HttpServlet {
             updateElection.update(election);
         } else {
             updateElection.updateWithInsertOrDelete(election);
-        } 
+        }
         session.removeAttribute("electionObject");
         request.getRequestDispatcher("/mainPage.jsp").forward(request, response);
     }

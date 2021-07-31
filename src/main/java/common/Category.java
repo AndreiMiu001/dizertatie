@@ -13,17 +13,23 @@ public class Category {
 
     private int id;
     private String name;
+    private Pair<Integer, String> county;
+    private Pair<Integer, String> city;
 
     public Category(int id, String name) {
         super();
         this.id = id;
         this.name = name;
+        county = null;
+        city = null;
     }
 
     public Category(int id) {
         super();
         this.id = id;
         this.name = "";
+        county  = null;
+        city = null;              
     }
 
     public Category() {
@@ -46,4 +52,21 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Pair<Integer, String> getCounty() {
+        return county;
+    }
+
+    public void setCounty(Pair<Integer, String> county) {
+        this.county = county;
+    }
+
+    public Pair<Integer, String> getCity() {
+        return city;
+    }
+
+    public void setCity(Pair<Integer, String> city) {
+        this.city = city;
+    }
+    
 }

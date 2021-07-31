@@ -7,6 +7,7 @@ package insert;
 
 import common.Category;
 import common.Implementation;
+import common.Pair;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,6 +47,30 @@ public class InsertDataImpl extends Implementation {
             Logger.getLogger(InsertCandidatesImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return categories;
+    }
+
+    public ArrayList<Pair<Integer, String>> getCities() {
+        ArrayList<Pair<Integer, String>> cityArr = null;
+        try {
+            mDao.connect();
+            cityArr = mDao.getCities();
+            mDao.disconnect();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(InsertDataImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cityArr;
+    }
+
+    public ArrayList<Pair<Integer, String>> getCounties() {
+        ArrayList<Pair<Integer, String>> countyArr = null;
+        try {
+            mDao.connect();
+            countyArr = mDao.geteCounties();
+            mDao.disconnect();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(InsertDataImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return countyArr;
     }
 
 }

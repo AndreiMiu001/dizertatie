@@ -8,7 +8,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="Style/CSS/datepicker3.css">       
-        <link rel="stylesheet" href="CSS/DefaultStyle.css"> 
+        <link rel="stylesheet" href="Style/CSS/DefaultStyle.css"> 
+        <link rel="stylesheet" href="Style/CSS/AutocompleteInput.css">
+        <script src="scripts/inputAutoComplete.js"></script>
         <script src="Style/JS/datepicker.js"></script>         
         <style>
             .row {
@@ -33,7 +35,7 @@
     </head>
     <body>
         <div id="navigationMenu"></div>
-        <form method="post" action="CreateElectionServlet">
+        <form autocomplete="off" method="post" action="CreateElectionServlet">
             <div class ="center">
                 <div>
                     <div class="container">
@@ -50,8 +52,14 @@
                         </div>
                         <div class="row2">
                             <br><br>
-                            <h4>Localitate</h4> <input class="form-control" type="text" name="localitate" id="localitateInput"/>
-                            <h4>Judet</h4> <input class="form-control" type="text" name="judet" id="judetInput" autocomplete="off"/>
+                            <h4>Localitate</h4>
+                            <div class="autocomplete">
+                                <input class="form-control" type="text" name="localitate" id="localitateInput"/>
+                            </div>
+                            <h4>Judet</h4>
+                            <div class="autocomplete">
+                                <input class="form-control" type="text" name="judet" id="judetInput" autocomplete="off"/>
+                            </div>
                             <br><br>
                         </div>
                         <h3>Nume alegeri</h3>
@@ -167,6 +175,13 @@
                     }
                 });
             });
+        </script>
+
+        <script>
+            var counties = ${countyJson};
+            var cities = ${cityJson};
+            autocomplete(document.getElementById("localitateInput"), cities);
+            autocomplete(document.getElementById("judetInput"), counties);
         </script>
     </body>
 </html>

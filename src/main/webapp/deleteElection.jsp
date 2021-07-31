@@ -22,7 +22,7 @@
             var divCol = document.createElement("div");
             var table = document.createElement("table");
             table.setAttribute('class', "table");
-            table.setAttribute('id', "electionTable")
+            table.setAttribute('id', "electionTable");
             var thead = document.createElement("thead");
             thead.setAttribute('class', "table-dark");
 

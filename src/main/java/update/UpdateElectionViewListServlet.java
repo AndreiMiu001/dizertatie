@@ -14,12 +14,12 @@ import insert.InsertDataImpl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import view.ViewElectionsImpl;
 
 /**
  *
@@ -68,16 +68,33 @@ public class UpdateElectionViewListServlet extends HttpServlet {
         request.setAttribute("electionDateEnd", election.getEndingDate().toString().replace('-', '/'));
         session.setAttribute("electionObject", election);
 
-        ArrayList<Pair<Integer, String>> cityArr = insertDataImpl.getCities();
-        ArrayList<Pair<Integer, String>> countyArr = insertDataImpl.getCounties();
-        ObjectToJson<ArrayList<Pair<Integer, String>>> converter = new ObjectToJson<>();
-        String countyJson = converter.convert(countyArr);
-        String cityJson = converter.convert(cityArr);
-        request.setAttribute("countyJson", countyJson);
-        request.setAttribute("cityJson", cityJson);
-
-        ////
+        ArrayList<Pair<Integer, String>> cityArr = (ArrayList<Pair<Integer, String>>) session.getAttribute("cityArr");
+        ArrayList<Pair<Integer, String>> countyArr = (ArrayList<Pair<Integer, String>>) session.getAttribute("countyArr");
+        if (election.isLocal) {
+            Category category = election.getCategory();
+            for (Pair<Integer, String> city : cityArr) {
+                if (Objects.equals(city.first, election.getCategory().getCity().first)) {
+                    request.setAttribute("cityName", city.second);
+                    category.setCity(city);
+                }
+            }
+            for (Pair<Integer, String> county : countyArr) {
+                if (Objects.equals(county.first, election.getCategory().getCounty().first)) {
+                    request.setAttribute("countyName", county.second);
+                    category.setCounty(county);
+                    break;
+                }
+            }
+        } else if (election.isCounty) {
+            Category category = election.getCategory();
+            for (Pair<Integer, String> county : countyArr) {
+                if (Objects.equals(county.first, election.getCategory().getCounty().first)) {
+                    request.setAttribute("countyName", county.second);
+                    category.setCounty(county);
+                    break;
+                }
+            }
+        }
         request.getRequestDispatcher("/updateElection.jsp").forward(request, response);
-
     }
 }

@@ -53,8 +53,14 @@
                         </div>
                         <div class="row2">
                             <br><br>
-                            <h4>Localitate</h4> <input class="form-control" type="text" name="localitate" id="localitateInput"/>
-                            <h4>Judet</h4> <input class="form-control" type="text" name="judet" id="judetInput" />
+                            <h4>Localitate</h4>
+                            <div class="autocomplete">
+                                <input class="form-control" type="text" name="localitate" value="${cityName}" id="localitateInput" autocomplete="off"/>
+                            </div>
+                            <h4>Judet</h4>
+                            <div class="autocomplete">
+                                <input class="form-control" type="text" name="judet" id="judetInput" value="${countyName}" autocomplete="off"/>
+                            </div>
                             <br><br>
                         </div>
                         <h3>Nume alegeri</h3>

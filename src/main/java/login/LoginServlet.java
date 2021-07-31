@@ -5,8 +5,11 @@
  */
 package login;
 
+import common.ObjectToJson;
+import common.Pair;
 import common.UserBean;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +33,15 @@ public class LoginServlet extends HttpServlet {
         LoginImpl userLogin = new LoginImpl();
         if (userLogin.checkIfUserExists(user)) {
             session.setAttribute("user", user);
+            ArrayList<Pair<Integer, String>> countyArr = userLogin.getCounties();
+            ArrayList<Pair<Integer, String>> cityArr = userLogin.getCities();
+            session.setAttribute("countyArr", countyArr);
+            session.setAttribute("cityArr", cityArr);
+            ObjectToJson<ArrayList<Pair<Integer, String>>> converter = new ObjectToJson<>();
+            String countyJson = converter.convert(countyArr);
+            String cityJson = converter.convert(cityArr);
+            session.setAttribute("countyJson", countyJson);
+            session.setAttribute("cityJson", cityJson);
             request.getRequestDispatcher("/mainPage.jsp").forward(request, response);
         } else {
             request.setAttribute("response", "Username or password are invalid ! Please try again.");

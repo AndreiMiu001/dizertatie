@@ -31,6 +31,16 @@ public class UpdateElectionImpl extends Implementation {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(InsertCandidatesImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        switch (election.getCategory().getId()) {
+            case 3:
+                election.isLocal = true;
+                break;
+            case 2:
+                election.isCounty = true;
+                break;
+            default:
+                election.isNational = true;
+        }
         return election;
     }
 
@@ -50,6 +60,7 @@ public class UpdateElectionImpl extends Implementation {
         try {
             mDao.connect();
             mDao.updateElection(election);
+            mDao.updateCandidates(election);
             mDao.disconnect();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(InsertCandidatesImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,6 +71,7 @@ public class UpdateElectionImpl extends Implementation {
     public boolean updateWithInsertOrDelete(ElectionBean election) {
         try {
             mDao.connect();
+            mDao.updateElection(election);
             mDao.deleteCandidates(election.getIdElection());
             mDao.insertCandidates(election.getCandidates(), election.getIdElection());
             mDao.disconnect();

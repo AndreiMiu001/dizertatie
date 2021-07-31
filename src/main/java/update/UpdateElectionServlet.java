@@ -11,10 +11,8 @@ import common.ElectionBean;
 import common.ObjectToJson;
 import common.Pair;
 import common.UserBean;
-import insert.InsertDataImpl;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,21 +37,105 @@ public class UpdateElectionServlet extends HttpServlet {
         UpdateElectionImpl updateElection = new UpdateElectionImpl();
         ArrayList<Candidate> candidatesArr = updateElection.getCandidates(election.getIdElection());
         election.setCandidatesArray(candidatesArr);
-        String elCategoryName = request.getParameter("listCategory");
-        String elCategoryId = request.getParameter("category");
-        String elName = request.getParameter("electionName");
+        boolean formCompletionFlag = true;
+        // Check Category
+        String electionCategoryId = request.getParameter("category");
+        // get election category
+        if (electionCategoryId == null || electionCategoryId.isEmpty()) {
+            formCompletionFlag = false;
+            request.setAttribute("electionCategoryNull", "Please provide an election name");
+        } else {
+            Category category = new Category(Integer.parseInt(electionCategoryId));
+            // get judet and localitate names
+            switch (electionCategoryId) {
+                case "1": // Nationala
+                    election.isNational = true;
+                    break;
+                case "3": // Locala
+                    String localitate = request.getParameter("localitate");
+                    if (localitate == null || localitate.isEmpty()) {
+                        formCompletionFlag = false;
+                        request.setAttribute("localitateNull", "Please provide an localitate name");
+                    } else {
+                        ArrayList<Pair<Integer, String>> cityArr = (ArrayList<Pair<Integer, String>>) session.getAttribute("cityArr");
+                        for (Pair<Integer, String> city : cityArr) {
+                            if (city.second.equals(localitate)) {
+                                category.setCity(city);
+                                break;
+                            }
+                        }
+                        election.isLocal = true;
+                    }
+                case "2": // Judeteana
+                    String judet = request.getParameter("judet");
+
+                    if (judet == null || judet.isEmpty()) {
+                        formCompletionFlag = false;
+                        request.setAttribute("judetNull", "Please provide an judet name");
+                    } else {
+                        ArrayList<Pair<Integer, String>> countyArr = (ArrayList<Pair<Integer, String>>) session.getAttribute("countyArr");
+                        for (Pair<Integer, String> county : countyArr) {
+                            if (county.second.equals(judet)) {
+                                category.setCounty(county);
+                                break;
+                            }
+                        }
+                        election.setJudet(judet);
+                        if (election.isLocal = false) {
+                            election.isCounty = true;
+                        }
+                    }
+                    break;
+                default:
+                    formCompletionFlag = false;
+                    assert (false);
+            }
+            election.setCategory(category);
+        }
+
+        String electionName = request.getParameter("electionName");
+        if (electionName == null || electionName.isEmpty()) {
+            formCompletionFlag = false;
+            request.setAttribute("electionNameNull", "Please provide an election name");
+        } else {
+            election.setElectionName(electionName);
+        }
+
         String candidateNumb = request.getParameter("candidatesNumber");
-        String elDateStart = request.getParameter("electionDateStart");
-        String elDateEnd = request.getParameter("electionDateEnd");
-        int cNumb = Integer.parseInt(candidateNumb);
-        election.setElectionName(elName);
-        election.setEndingDate(elDateEnd);
-        election.setStartingDate(elDateStart);
-        election.setOldCandidatesCount(election.getCandidatesCount());
-        election.setCandidatesCount(cNumb);
-        Category category = new Category(Integer.parseInt(elCategoryId), elCategoryName);
-        election.setCategory(category);
-        while (cNumb > candidatesArr.size()) {
+        String partiesCountStr = request.getParameter("candidatesNumber");
+        if (partiesCountStr == null || partiesCountStr.isEmpty()) {
+            formCompletionFlag = false;
+            request.setAttribute("candidatesNumberNull", "Please provide the number of candidates");
+        } else {
+            partiesCountStr = partiesCountStr.trim();
+            if (!partiesCountStr.matches("[0-9]+")) {
+                formCompletionFlag = false;
+                request.setAttribute("candidatesNumberNull", "Please introduce a number");
+            }
+            int partiesCount = Integer.parseInt(partiesCountStr);
+            request.setAttribute("candidatesNumber", partiesCount);
+            election.setOldCandidatesCount(election.getCandidatesCount());
+            election.setCandidatesCount(partiesCount);
+        }
+        
+// get election starting date
+        String electionDateStart = request.getParameter("electionDateStart");
+        if (electionDateStart == null || electionDateStart.isEmpty()) {
+            formCompletionFlag = false;
+            request.setAttribute("electionDateStartNull", "Please provide a starting date");
+        } else {
+            election.setStartingDate(electionDateStart);
+        }
+        // get election ending date
+        String electionEndStart = request.getParameter("electionDateEnd");
+        if (electionEndStart == null || electionEndStart.isEmpty()) {
+            formCompletionFlag = false;
+            request.setAttribute("electionDateStartNull", "Please provide a electionEndStart date");
+        } else {
+            election.setEndingDate(electionEndStart);
+        }
+        
+        while (election.getCandidatesCount() > candidatesArr.size()) {
             Candidate newCand = new Candidate();
             election.addCandidate(newCand);
         }
@@ -61,17 +143,7 @@ public class UpdateElectionServlet extends HttpServlet {
         ObjectToJson<ArrayList<Candidate>> jsonConverter = new ObjectToJson<>();
         String jsonString = jsonConverter.convert(candidatesArr);
         request.setAttribute("candidatesArrayJson", jsonString);
-        request.setAttribute("candidatesNumber", cNumb);
-        
-        InsertDataImpl insertDataImpl = new InsertDataImpl();
-        ArrayList<Pair<Integer, String>> cityArr = insertDataImpl.getCities();
-        ArrayList<Pair<Integer, String>> countyArr = insertDataImpl.getCounties();
-        ObjectToJson<ArrayList<Pair<Integer, String>>> converter = new ObjectToJson<>();
-        String countyJson = converter.convert(countyArr);
-        String cityJson = converter.convert(cityArr);
-        request.setAttribute("countyJson", countyJson);
-        request.setAttribute("cityJson", cityJson);
-
+        request.setAttribute("candidatesNumber", election.getCandidatesCount());
         request.getRequestDispatcher("/updateCandidates.jsp").forward(request, response);
     }
 

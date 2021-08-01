@@ -47,9 +47,12 @@ public class UpdateElectionServlet extends HttpServlet {
         } else {
             Category category = new Category(Integer.parseInt(electionCategoryId));
             // get judet and localitate names
+            election.resetCategoryState();
             switch (electionCategoryId) {
                 case "1": // Nationala
                     election.isNational = true;
+                    category.setCity(new Pair<>(1, "N/A"));
+                    category.setCounty(new Pair<>(1, "N/A"));
                     break;
                 case "3": // Locala
                     String localitate = request.getParameter("localitate");
@@ -81,7 +84,8 @@ public class UpdateElectionServlet extends HttpServlet {
                             }
                         }
                         election.setJudet(judet);
-                        if (election.isLocal = false) {
+                        if (election.isLocal == false) {
+                            category.setCity(new Pair<>(1, ""));
                             election.isCounty = true;
                         }
                     }
@@ -117,7 +121,7 @@ public class UpdateElectionServlet extends HttpServlet {
             election.setOldCandidatesCount(election.getCandidatesCount());
             election.setCandidatesCount(partiesCount);
         }
-        
+
 // get election starting date
         String electionDateStart = request.getParameter("electionDateStart");
         if (electionDateStart == null || electionDateStart.isEmpty()) {
@@ -134,7 +138,7 @@ public class UpdateElectionServlet extends HttpServlet {
         } else {
             election.setEndingDate(electionEndStart);
         }
-        
+
         while (election.getCandidatesCount() > candidatesArr.size()) {
             Candidate newCand = new Candidate();
             election.addCandidate(newCand);

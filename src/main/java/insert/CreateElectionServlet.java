@@ -46,6 +46,8 @@ public class CreateElectionServlet extends HttpServlet {
             switch (electionCategory) {
                 case "1": // Nationala
                     election.isNational = true;
+                    category.setCity(new Pair<>(1, "N/A"));
+                    category.setCounty(new Pair<>(1, "N/A"));
                     break;
                 case "3": // Locala
                     String localitate = request.getParameter("localitate");
@@ -64,7 +66,6 @@ public class CreateElectionServlet extends HttpServlet {
                     }
                 case "2": // Judeteana
                     String judet = request.getParameter("judet");
-
                     if (judet == null || judet.isEmpty()) {
                         formCompletionFlag = false;
                         request.setAttribute("judetNull", "Please provide an judet name");
@@ -77,9 +78,9 @@ public class CreateElectionServlet extends HttpServlet {
                             }
                         }
                         election.setJudet(judet);
-                        if (election.isLocal = false) {
+                        if (election.isLocal == false) {
+                            category.setCity(new Pair<>(1, "N/A"));
                             election.isCounty = true;
-
                         }
                     }
                     break;

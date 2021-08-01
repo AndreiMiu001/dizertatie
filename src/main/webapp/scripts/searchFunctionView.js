@@ -10,10 +10,9 @@ function searchElectionsView() {
     filter = input.value.toUpperCase();
     table = document.getElementById("electionList");
     formCollection = table.getElementsByTagName("form");
-    debugger;
     for (i = 0; i < formCollection.length; i++) {
         form = formCollection[i];
-        button = form.getElementsByTagName("button")
+        button = form.getElementsByTagName("button");
         if (button) {
             txtValue = button[0].textContent || button[0].innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {

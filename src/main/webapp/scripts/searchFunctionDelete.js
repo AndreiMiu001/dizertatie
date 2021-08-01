@@ -8,7 +8,6 @@ function searchElectionsDelete() {
     input = document.getElementById("searchBar");
     filter = input.value.toUpperCase();
     table = document.getElementById("electionTable");
-    debugger;
     tBody = table.getElementsByTagName("tbody");
     tr = tBody[0].getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {

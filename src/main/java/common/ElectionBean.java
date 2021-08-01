@@ -39,6 +39,12 @@ public class ElectionBean extends ElectionResultsBean {
         isCounty = false;
     }
 
+    public void resetCategoryState() {
+        isLocal = false;
+        isCounty = false;
+        isNational = false;
+    }
+    
     public void dropCandidates() {
         mCandidatesArray.clear();
     }

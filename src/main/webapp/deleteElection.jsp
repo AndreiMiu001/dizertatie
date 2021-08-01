@@ -5,13 +5,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="Style/CSS/default.css"/> 
+        <link rel="stylesheet" href="Style/CSS/updateElectionsViewList.css"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="scripts/searchFunctionDelete.js"></script> 
         <title>Delete elections</title>
     </head>
     <body>
-        <h2>Elections list</h2>
-        <input type="text" id="searchBar" onkeyup="searchElectionsDelete()" placeholder="Search for elections" title="Type in a name">
+        <div id="content" class="content-all">
+            <h2 class="content">Election list to delete</h2>
+            <input class="content form-control" type="text" id="searchBar" onkeyup="searchElectionsDelete()" placeholder="Search for elections" title="Type in a name">
+        </div>
         <script>
             var electionsArrayJson = ${electionsArrayJson};
             var electionsArrayLenght = Object.keys(electionsArrayJson).length;
@@ -78,12 +82,13 @@
             form.setAttribute('action', "DeleteElectionIdsServlet");
             form.appendChild(divContainer);
             var sendBtn = document.createElement("button");
+            sendBtn.setAttribute("class", "btn btn-danger content");
             var textDelete = document.createTextNode("Delete selected");
             sendBtn.appendChild(textDelete);
             form.appendChild(sendBtn);
 
-            document.getElementsByTagName('body')[0].appendChild(form);
-
+            var contentDiv = document.getElementById("content");
+            contentDiv.appendChild(form);
         </script>
     </body>
 </html>

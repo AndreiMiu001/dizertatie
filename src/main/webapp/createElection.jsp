@@ -8,13 +8,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="Style/CSS/datepicker3.css">       
-        <link rel="stylesheet" href="Style/CSS/DefaultStyle.css"> 
+        <link rel="stylesheet" href="Style/CSS/default.css"> 
         <link rel="stylesheet" href="Style/CSS/AutocompleteInput.css">
         <script src="scripts/inputAutoComplete.js"></script>
         <script src="Style/JS/datepicker.js"></script>         
         <style>
             .row {
-
                 width: 50%;
             }
             .row2{
@@ -31,6 +30,9 @@
                 width: 50%;
                 padding: 10px;
             }
+            .form-select {
+                margin-top: 1rem;
+            }
         </style>
     </head>
     <body>
@@ -44,7 +46,7 @@
                         </div>
                         <h3>Tip Alegere</h3>
                         <div class="row2">
-                            <select name="category" id="category">
+                            <select name="category" id="category" class="form-select">
                                 <c:forEach items="${listCategory}" var="category">
                                     <option value="${category.id}">${category.name}</option>
                                 </c:forEach>

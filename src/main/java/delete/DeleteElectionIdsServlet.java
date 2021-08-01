@@ -31,10 +31,10 @@ public class DeleteElectionIdsServlet extends HttpServlet {
         for (String idStr : idsStr) {
             int id = Integer.parseInt(idStr);
             DeleteElectionIdImpl deleteElection = new DeleteElectionIdImpl();
-            if (deleteElection.deleteId(id)) {
+            if (!deleteElection.deleteId(id)) {
                 System.out.println("Could not delete election with id:" + id);
             }
         }
-        request.getRequestDispatcher("/deleteElection.jsp").forward(request, response);
+        request.getRequestDispatcher("/mainPage.jsp").forward(request, response);
     }
 }

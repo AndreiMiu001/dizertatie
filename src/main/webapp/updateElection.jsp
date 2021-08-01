@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="Style/CSS/datepicker3.css">       
-        <link rel="stylesheet" href="Style/CSS/DefaultStyle.css"> 
+        <link rel="stylesheet" href="Style/CSS/default.css"> 
         <link rel="stylesheet" href="Style/CSS/AutocompleteInput.css">
         <script src="scripts/inputAutoComplete.js"></script>
 
@@ -45,7 +45,7 @@
                         </div>
                         <h3>Tip Alegere</h3>
                         <div class="row2">
-                            <select name="category" id="category">
+                            <select name="category" id="category" class="form-select">
                                 <c:forEach items="${listCategory}" var="category">
                                     <option value="${category.id}">${category.name}</option>
                                 </c:forEach>

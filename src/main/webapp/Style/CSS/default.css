@@ -1,0 +1,10 @@
+.content-all {
+    text-align: -webkit-center;
+    padding: 1.2rem;
+}
+.content {
+    margin: 1.2rem;
+}
+.form-control {
+    width: 50%;
+}

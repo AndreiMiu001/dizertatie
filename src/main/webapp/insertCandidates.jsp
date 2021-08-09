@@ -5,7 +5,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="CSS/DefaultStyle.css"> 
+        <link rel="stylesheet" href="Style/CSS/default.css"> 
+        <link rel="stylesheet" href="Style/CSS/insertCandidates.css"> 
         <title>eVot adauga candidati</title>
     </head>
     <body>
@@ -69,13 +70,13 @@
                 candName.setAttribute("autocomplete", "off");
                 candName.setAttribute('type', "text");
                 candName.setAttribute('name', "candidate" + i);
-                candName.setAttribute('class', 'form-control');
+                candName.setAttribute('class', 'form-control central');
                 candName.setAttribute('value', nameValue[i - 1]);
                 var candDesc = document.createElement("input"); //input element, text
                 candDesc.setAttribute("autocomplete", "off");
                 candDesc.setAttribute('type', "text");
                 candDesc.setAttribute('name', "description" + i);
-                candDesc.setAttribute('class', 'form-control');
+                candDesc.setAttribute('class', 'form-control central centralDesc');
                 candDesc.setAttribute('value', descriptionValue[i - 1]);
 
                 f.appendChild(h);
@@ -101,7 +102,7 @@
             f.appendChild(div);
 
             var finalDiv = document.createElement("div");
-            finalDiv.setAttribute('class', "central");
+            finalDiv.setAttribute('class', "content");
             finalDiv.appendChild(f);
 
             document.getElementsByTagName('body')[0].appendChild(finalDiv);

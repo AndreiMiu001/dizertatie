@@ -12,7 +12,7 @@
         <title>Delete elections</title>
     </head>
     <body>
-        <div id="content" class="content-all">
+        <div id="content-all" class="content-all">
             <h2 class="content">Election list to delete</h2>
             <input class="content form-control" type="text" id="searchBar" onkeyup="searchElectionsDelete()" placeholder="Search for elections" title="Type in a name">
         </div>
@@ -87,7 +87,7 @@
             sendBtn.appendChild(textDelete);
             form.appendChild(sendBtn);
 
-            var contentDiv = document.getElementById("content");
+            var contentDiv = document.getElementById("content-all");
             contentDiv.appendChild(form);
         </script>
     </body>

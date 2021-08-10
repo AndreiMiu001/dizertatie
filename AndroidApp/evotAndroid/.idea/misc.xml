@@ -3,11 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_main.xml" value="0.136" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14270833333333333" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14270833333333333" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/drawable/text_edit_style.xml" value="0.14270833333333333" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/canditat_list.xml" value="0.11354166666666667" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/item_list.xml" value="0.12395833333333334" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/login_screen.xml" value="0.12395833333333334" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/return_screen.xml" value="0.12395833333333334" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/temp.xml" value="0.1265625" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/test2.xml" value="0.13802083333333334" />
       </map>
     </option>

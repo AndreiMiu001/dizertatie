@@ -16,7 +16,6 @@ public class LoginScreen extends AppCompatActivity {
     private EditText seriesPersET;
     private EditText numberPersET;
     private Context context = this;
-    String tempResultStr = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +38,12 @@ public class LoginScreen extends AppCompatActivity {
                     seriesPers = normalizeString(seriesPers);
                     String numberPers = numberPersET.getText().toString();
                     numberPers = normalizeString(numberPers);
-                    User.setCnp(cnp);
-                    User.setSeriesPers(seriesPers);
-                    User.setNumberPers(numberPers);
+                    User.mCnp = cnp;
+                    User.mPassword = seriesPers;
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-                LoginBW bg = new LoginBW(tempResultStr, context);
+                LoginBW bg = new LoginBW(context);
                 bg.execute();
             }
         });

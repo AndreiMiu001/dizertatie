@@ -4,75 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
+
+    <EditText
+        android:id="@+id/cnpET"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/text_edit_style"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="CNP"
+        android:inputType="textPersonName"
+        android:maxLength="17"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <EditText
+        android:id="@+id/passET"
+        android:layout_width="321dp"
+        android:layout_height="65dp"
+        android:background="@drawable/text_edit_style"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="serieCI"
+        android:inputType="textPassword"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/mainBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cnpET"
+        app:layout_constraintVertical_bias="0.262" />
 
     <Button
-        android:id="@+id/startBtn"
+        android:id="@+id/mainBtn"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="315dp"
+        android:layout_height="83dp"
         android:layout_marginBottom="88dp"
         android:backgroundTint="#D2BDB1"
-        android:text="NEXT"
+        android:text="Next"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        app:layout_constraintVertical_bias="0.82" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="306dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#D7E6ED"
-        android:contentDescription="Elections"
-        android:popupBackground="#D7E6ED"
-        android:spinnerMode="dropdown"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="25dp"/>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Please select one election:"
-        android:textSize="20sp"
-        android:textColor="#D2BDB1"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        android:id="@+id/title"
+        android:layout_width="362dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="eVot App"
+        android:textFontWeight="@integer/material_motion_duration_long_1"
+        android:textSize="60dp"
+        android:textStyle="bold"
+        android:typeface="sans"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="212dp"
-        android:layout_height="235dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.489" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

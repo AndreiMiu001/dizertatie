@@ -84,12 +84,12 @@ public class ReadCandidatesBW extends AsyncTask<String, Void, String> implements
     protected String doInBackground(String[] strings) {
         try {
             URL url = new URL(reg_url);
-            String post_data = URLEncoder.encode("cmd", "UTF-8") + "=" + URLEncoder.encode(cmd, "UTF-8") + "&" +
+            String post_data = "";/*URLEncoder.encode("cmd", "UTF-8") + "=" + URLEncoder.encode(cmd, "UTF-8") + "&" +
                     URLEncoder.encode("cnp", "UTF-8") + "=" + URLEncoder.encode(User.getCnp(), "UTF-8") + "&" +
                     URLEncoder.encode("seriesPers", "UTF-8") + "=" + URLEncoder.encode(User.getSeriesPers(), "UTF-8") + "&" +
                     URLEncoder.encode("numberPers", "UTF-8") + "=" + URLEncoder.encode(User.getNumberPers(), "UTF-8") + "&" +
                     URLEncoder.encode("idElections", "UTF-8") + "=" + URLEncoder.encode(User.getIdElection_(), "UTF-8");
-            queryServer(post_data, url);
+            queryServer(post_data, url);*/
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

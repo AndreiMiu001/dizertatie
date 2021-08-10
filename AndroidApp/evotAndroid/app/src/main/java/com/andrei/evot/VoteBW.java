@@ -61,11 +61,11 @@ public class VoteBW extends AsyncTask<String, Void, String> implements MyCertifi
             httpURLConnection.setDoInput(true);
             OutputStream outputStream = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8));
-            String post_data = URLEncoder.encode("cmd", "UTF-8") + "=" + URLEncoder.encode(cmd, "UTF-8") + "&" +
+            String post_data = "";/*URLEncoder.encode("cmd", "UTF-8") + "=" + URLEncoder.encode(cmd, "UTF-8") + "&" +
                     URLEncoder.encode("CNP", "UTF-8") + "=" + URLEncoder.encode(User.getCnp(), "UTF-8") + "&" +
                     URLEncoder.encode("idElections", "UTF-8") + "=" + URLEncoder.encode(User.getIdElection_(), "UTF-8") + "&" +
                     URLEncoder.encode("idCandidates", "UTF-8") + "=" + URLEncoder.encode(candidateId, "UTF-8");
-            bufferedWriter.write(post_data);
+            bufferedWriter.write(post_data);*/
             bufferedWriter.flush();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.ISO_8859_1));

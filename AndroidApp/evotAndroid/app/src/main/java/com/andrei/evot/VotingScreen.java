@@ -2,32 +2,32 @@ package com.andrei.evot;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.andrei.evot.callbacks.CandidatesCallback;
+import com.andrei.evot.bw.ReadCandidatesBW;
+import com.andrei.evot.bw.VoteBW;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.List;
 
 import model.CandidateModel;
 import model.ElectionModel;
+import model.User;
+import model.VoteModel;
 
 
-public class VotingScreen extends AppCompatActivity {
+public class VotingScreen extends CommonBasicActivity {
 
     private RecyclerView recyclerView;
     private MyAdapter adapter;
-    private List<CandidateModel> candidateList;
-    private Button voteBtn;
-    private WeakReference<Context> context = new WeakReference<>(this);
+    private ArrayList<CandidateModel> candidateList;
+    private final WeakReference<Context> context = new WeakReference<>(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,26 +39,44 @@ public class VotingScreen extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         candidateList = new ArrayList<>();
 
-        ReadCandidatesBW readBg = new ReadCandidatesBW(context, election, new CandidatesCallback() {
-            @Override
-            public void onResult(ArrayList<CandidateModel> cList) {
-                candidateList = cList;
-                adapter = new MyAdapter(candidateList);
-                recyclerView.setAdapter((RecyclerView.Adapter) adapter);
-                recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(context.get()));
-            }
+        ReadCandidatesBW readBg = new ReadCandidatesBW(context, election, cList -> {
+            candidateList = cList;
+            adapter = new MyAdapter(candidateList);
+            recyclerView.setAdapter(adapter);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(context.get()));
         });
         readBg.execute();
 
-
-        voteBtn = (Button) findViewById(R.id.voteBtn);
-        voteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            //    VoteBW bg = new VoteBW(context, candidateList);
-            //    bg.execute();
+        Button voteBtn = (Button) findViewById(R.id.voteBtn);
+        voteBtn.setOnClickListener(v -> {
+            VoteModel vote = new VoteModel();
+            CandidateModel candidate = getCheckedCandidate(candidateList);
+            if ( candidate != null) {
+                vote.setCandidate(candidate);
+                vote.setElection(election);
+                vote.setCnp(User.mCnp);
+                VoteBW bg = new VoteBW(context, vote, () -> {
+                    Intent showDetailActivity = new Intent(context.get(), ReturnScreen.class);
+                    context.get().startActivity(showDetailActivity);
+                });
+                bg.execute();
             }
         });
+    }
+
+    private CandidateModel getCheckedCandidate(ArrayList<CandidateModel> candidateList) {
+        CandidateModel returnCandidate = null;
+        int count = 0;
+        for (CandidateModel candidate : candidateList) {
+            if (candidate.isChecked()) {
+                returnCandidate = candidate;
+                count++;
+            }
+        }
+        if (count == 1) {
+            return returnCandidate;
+        }
+        return null;
     }
 }

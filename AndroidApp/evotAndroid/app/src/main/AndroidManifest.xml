@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EvotAndroid"
         android:usesCleartextTraffic="true">
+        <activity android:name=".CommonBasicActivity"
+            android:exported="true"
+            />
         <activity
             android:name=".SelectElection"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainMenu" />
         <activity
             android:name=".MainMenu"
             android:exported="true" />
@@ -23,12 +27,17 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VotingScreen" />
-        <activity android:name=".ReturnScreen" />
+        <activity
+            android:name=".VotingScreen"
+            android:exported="true"
+            android:parentActivityName=".MainMenu" />
+        <activity
+            android:name=".ReturnScreen"
+            android:exported="true"
+            android:parentActivityName=".MainMenu" />
     </application>
 
 </manifest>

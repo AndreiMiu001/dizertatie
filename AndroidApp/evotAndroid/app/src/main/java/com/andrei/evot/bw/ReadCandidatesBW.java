@@ -1,10 +1,11 @@
-package com.andrei.evot;
+package com.andrei.evot.bw;
 
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.andrei.evot.MyCertificateManager;
 import com.andrei.evot.callbacks.CandidatesCallback;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,7 +33,7 @@ public class ReadCandidatesBW extends AsyncTask<String, Void, String> implements
     private final WeakReference<Context> context;
     private final ElectionModel election;
 
-    ReadCandidatesBW(WeakReference<Context> context, ElectionModel election, CandidatesCallback candidatesCallback) {
+    public ReadCandidatesBW(WeakReference<Context> context, ElectionModel election, CandidatesCallback candidatesCallback) {
         this.candidatesCallback = candidatesCallback;
         this.context = context;
         this.election = election;

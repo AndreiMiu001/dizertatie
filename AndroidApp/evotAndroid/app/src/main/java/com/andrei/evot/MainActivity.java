@@ -1,7 +1,6 @@
 package com.andrei.evot;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -9,9 +8,15 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.andrei.evot.bw.LoginBW;
+
 import java.lang.ref.WeakReference;
 
-public class MainActivity extends Activity {
+import model.User;
+
+public class MainActivity extends AppCompatActivity {
 
     private EditText cnpET;
     private EditText passET;
@@ -29,7 +34,6 @@ public class MainActivity extends Activity {
         mainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String cmd = "loginBtn";
                 try {
                     String cnp = cnpET.getText().toString();
                     cnp = normalizeString(cnp);
@@ -43,7 +47,6 @@ public class MainActivity extends Activity {
                 bg.execute();
             }
         });
-
     }
 
     private String normalizeString(String str) {

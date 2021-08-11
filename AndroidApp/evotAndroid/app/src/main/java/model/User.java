@@ -1,4 +1,4 @@
-package com.andrei.evot;
+package model;
 
 public class User {
     public static String mCnp;

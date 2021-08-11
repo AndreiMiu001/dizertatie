@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.andrei.evot.callbacks.ElectionCallback;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +68,7 @@ public class SelectElection extends AppCompatActivity {
             public void onClick(View v) {
                 User.mIdElection = (String.valueOf(electionList.get(spinner.getSelectedItemPosition()).getIdElection()));
                 Intent showDetailActivity = new Intent(context.get(), VotingScreen.class);
+                showDetailActivity.putExtra("SelectedElection", electionList.get(spinner.getSelectedItemPosition()));
                 context.get().startActivity(showDetailActivity);
             }
         });

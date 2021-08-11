@@ -15,31 +15,32 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import model.CandidateModel;
 
 
 public class VoteBW extends AsyncTask<String, Void, String> implements MyCertificateManager {
 
     private String cmd = "vote";
     private Context context;
-    private List<Candidate> candidateList;
+    private List<CandidateModel> candidateList;
 
-    VoteBW(Context context, List<Candidate> candidateList) {
+    VoteBW(Context context, List<CandidateModel> candidateList) {
         this.context = context;
         this.candidateList = candidateList;
     }
 
     @Override
     protected String doInBackground(String[] strings) {
-        String str = null;
+     /*   String str = null;
         try {
             URL url = new URL(reg_url);
             for (int i = 0; i < candidateList.size(); i++) {
-                Candidate candidate = candidateList.get(i);
+                CandidateModel candidate = candidateList.get(i);
                 if (candidate.isChecked() == true) {
                     str = queryServerVote(url, candidate.getCandidateId());
                 }
@@ -48,7 +49,8 @@ public class VoteBW extends AsyncTask<String, Void, String> implements MyCertifi
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        return str;
+        return str;*/
+        return null;
     }
 
     private String queryServerVote(URL url, String candidateId) {

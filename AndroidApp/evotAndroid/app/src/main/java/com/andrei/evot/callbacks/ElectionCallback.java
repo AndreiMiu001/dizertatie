@@ -1,4 +1,4 @@
-package com.andrei.evot;
+package com.andrei.evot.callbacks;
 
 import java.util.ArrayList;
 

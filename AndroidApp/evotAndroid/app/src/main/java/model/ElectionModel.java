@@ -1,8 +1,15 @@
 package model;
 
-public class ElectionModel {
+import java.io.Serializable;
+
+public class ElectionModel implements Serializable {
     private String electionName;
     private int idElection;
+
+    public ElectionModel() {
+        electionName = "";
+        idElection = 0;
+    }
 
     public String getElectionName() {
         return electionName;

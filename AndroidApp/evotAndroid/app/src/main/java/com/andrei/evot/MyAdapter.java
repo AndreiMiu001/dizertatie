@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import model.CandidateModel;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    private List<Candidate> candidateList;
-    private Context context;
+    private final List<CandidateModel> candidateList;
 
-    public MyAdapter(List<Candidate> itemList, Context context) {
+    public MyAdapter(List<CandidateModel> itemList) {
         this.candidateList = itemList;
-        this.context = context;
     }
 
     @NonNull
@@ -31,10 +31,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        final Candidate tempList = candidateList.get(i);
+        final CandidateModel tempList = candidateList.get(i);
         viewHolder.nameTV.setText(tempList.getName());
-        viewHolder.infoTV.setText(tempList.getAdditionaInfo());
-        if (candidateList.get(i).getCandidateId() != null ) {
+        viewHolder.infoTV.setText(tempList.getDescription());
+        // look into
+        if (candidateList.get(i).getId() == 0 ) {
             viewHolder.checkBox.setTag(i);
         }
         else
@@ -60,9 +61,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameTV = (TextView) itemView.findViewById(R.id.nameTV);
-            infoTV = (TextView) itemView.findViewById(R.id.infoTV);
-            checkBox = (CheckBox) itemView.findViewById(R.id.checkBox);
+            nameTV = itemView.findViewById(R.id.nameTV);
+            infoTV = itemView.findViewById(R.id.infoTV);
+            checkBox = itemView.findViewById(R.id.checkBox);
         }
     }
 }

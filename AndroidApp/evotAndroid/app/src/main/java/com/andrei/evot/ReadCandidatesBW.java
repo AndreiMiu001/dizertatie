@@ -1,100 +1,84 @@
 package com.andrei.evot;
 
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
+import com.andrei.evot.callbacks.CandidatesCallback;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import javax.net.ssl.HttpsURLConnection;
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import model.CandidateModel;
+import model.ElectionModel;
 
 
 public class ReadCandidatesBW extends AsyncTask<String, Void, String> implements MyCertificateManager {
 
-    private String cmd = "readCandidates";
-    private List<Candidate> candidateList;
+    private final CandidatesCallback candidatesCallback;
+    private final WeakReference<Context> context;
+    private final ElectionModel election;
 
-    ReadCandidatesBW(List<Candidate> candidateList) {
-        this.candidateList = candidateList;
-    }
-
-    private void queryServer(String post_data, URL url) {
-        try {
-            trustAllCertificates();
-            HttpsURLConnection httpURLConnection = (HttpsURLConnection) url.openConnection();
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setDoInput(true);
-            OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8));
-            bufferedWriter.write(post_data);
-            bufferedWriter.flush();
-            bufferedWriter.close();
-            outputStream.close();
-            InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.ISO_8859_1));
-            String line = "";
-            String name = "";
-            String info = "";
-            String id = "";
-            boolean err = false;
-            Candidate il;
-            while ((line = bufferedReader.readLine()) != null) {
-                if (line.startsWith("0")) {
-                    name = line.substring(1);
-                } else if (line.startsWith("1")) {
-                    info = line.substring(1);
-
-                } else if (line.startsWith("2")) {
-                    id = line.substring(1);
-                    il = new Candidate(name, info, id);
-                    candidateList.add(il);
-                } else {
-                    err = true;
-                }
-            }
-            if (err == true) {
-                System.exit(0);
-            }
-            bufferedReader.close();
-            inputStream.close();
-            httpURLConnection.disconnect();
-        } catch (
-                MalformedURLException e) {
-            e.printStackTrace();
-        } catch (
-                IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    ReadCandidatesBW(WeakReference<Context> context, ElectionModel election, CandidatesCallback candidatesCallback) {
+        this.candidatesCallback = candidatesCallback;
+        this.context = context;
+        this.election = election;
     }
 
     @Override
     protected String doInBackground(String[] strings) {
-   /*     try {
-            URL url = new URL(reg_url);
-            String post_data = "";/*URLEncoder.encode("cmd", "UTF-8") + "=" + URLEncoder.encode(cmd, "UTF-8") + "&" +
-                    URLEncoder.encode("cnp", "UTF-8") + "=" + URLEncoder.encode(User.getCnp(), "UTF-8") + "&" +
-                    URLEncoder.encode("seriesPers", "UTF-8") + "=" + URLEncoder.encode(User.getSeriesPers(), "UTF-8") + "&" +
-                    URLEncoder.encode("numberPers", "UTF-8") + "=" + URLEncoder.encode(User.getNumberPers(), "UTF-8") + "&" +
-                    URLEncoder.encode("idElections", "UTF-8") + "=" + URLEncoder.encode(User.getIdElection_(), "UTF-8");
-            queryServer(post_data, url);
-        } catch (MalformedURLException e) {
+        String URL = "http://10.0.2.2:8080/evot/webapi/elections/candidates";
+        RequestQueue requestQueue = Volley.newRequestQueue(context.get());
+        Gson jsonConverter = new Gson();
+        ArrayList<ElectionModel> tempList = new ArrayList<>();
+        tempList.add(election);
+        String jsonString = jsonConverter.toJson(tempList);
+        JSONArray postData = null;
+        try {
+            postData = new JSONArray(jsonString);
+        } catch (JSONException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+        }
+        JsonArrayRequest objectRequest = new JsonArrayRequest(
+                Request.Method.POST,
+                URL,
+                postData,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.e("rest resp", response.toString());
+                        ArrayList<CandidateModel> candidateList = new ArrayList<>();
+                        Gson jsonConverter = new Gson();
+                        Type type = new TypeToken<ArrayList<CandidateModel>>(){}.getType();
+                        candidateList = jsonConverter.fromJson(response.toString(), type);
+                        for(CandidateModel election : candidateList) {
+                            Log.e("election: ", election.toString());
+                        }
+                        candidatesCallback.onResult(candidateList);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("rest err", error.toString());
+
+                    }
+                }
+        );
+        requestQueue.add(objectRequest);
         return null;
     }
 }

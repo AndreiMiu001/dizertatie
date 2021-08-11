@@ -1,4 +1,4 @@
-package com.andrei.evot;
+package com.andrei.evot.bw;
 
 
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.andrei.evot.MyCertificateManager;
 import com.andrei.evot.callbacks.ElectionCallback;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,7 +36,7 @@ public class GetElectionsBW extends AsyncTask<String, Void, String> implements A
     private final ElectionCallback myCallback;
 
 
-    GetElectionsBW(WeakReference<Context> context, ElectionCallback callBack) {
+    public GetElectionsBW(WeakReference<Context> context, ElectionCallback callBack) {
         this.electionList = new ArrayList<>();
         elections = new ArrayList<>();
         this.context = context;

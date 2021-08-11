@@ -6,10 +6,19 @@
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14270833333333333" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14270833333333333" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/drawable/text_edit_style.xml" value="0.14270833333333333" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_basic_common.xml" value="0.2" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_common_basic.xml" value="0.10914855072463768" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_main2.xml" value="0.2" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_main_menu.xml" value="0.1621376811594203" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_select_election.xml" value="0.128125" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/canditat_list.xml" value="0.20114472608340148" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/content_basic_common.xml" value="0.10914855072463768" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/fragment_dashboard.xml" value="0.11730072463768115" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/fragment_first.xml" value="0.10914855072463768" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/fragment_home.xml" value="0.11730072463768115" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/fragment_notifications.xml" value="0.11730072463768115" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/fragment_second.xml" value="0.10914855072463768" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/item_list.xml" value="0.4" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/login_screen.xml" value="0.12395833333333334" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/main_menu.xml" value="0.1621376811594203" />
@@ -18,6 +27,7 @@
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/test.xml" value="0.128125" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/test2.xml" value="0.13802083333333334" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/testt.xml" value="0.128125" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/top_menu.xml" value="0.12916666666666668" />
       </map>
     </option>
   </component>

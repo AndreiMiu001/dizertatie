@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import common.Candidate;
 import common.Election;
+import common.Vote;
 
 public class DaoElection extends DAO {
 
@@ -53,5 +54,26 @@ public class DaoElection extends DAO {
 			e.printStackTrace();
 		}
 		return candidateList;
+	}
+	
+	public void voteCandidate(Vote vote) {
+		String query = "INSERT INTO `votes` (`CNP`, `idElections`, `idCandidates`) VALUES (?, ?, ?);";
+		PreparedStatement ps;
+		try {
+			ps = mConnection.prepareStatement(query);
+			ps.setString(1, vote.cnp);
+			ps.setInt(2, vote.election.getIdElection());
+			ps.setInt(3, vote.candidate.id);
+			int state = ps.executeUpdate();
+			if (state != 0 ) {
+				System.out.print("vote succesful");
+			} else {
+				System.out.print("vote NOT succesful");
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

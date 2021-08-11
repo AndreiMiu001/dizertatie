@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import common.Candidate;
 import common.Election;
+import common.MyBoolean;
+import common.Vote;
 import dao.DaoElection;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -48,6 +50,24 @@ public class ElectionResource {
 			e.printStackTrace();
 		}
 		return candidateList;
+	}
+	
+	@POST
+	@Path("vote")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public MyBoolean voteCandidate(Vote vote) {
+		MyBoolean status = new MyBoolean(false);
+		DaoElection dao = new DaoElection();
+		try {
+			dao.connect();
+			status.state = true;
+			dao.voteCandidate(vote);
+			dao.disconnect();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return status;
 	}
 
 }

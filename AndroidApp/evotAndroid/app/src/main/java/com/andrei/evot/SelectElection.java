@@ -1,7 +1,5 @@
 package com.andrei.evot;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.andrei.evot.bw.GetElectionsBW;
 import com.andrei.evot.callbacks.ElectionCallback;
 
 import java.lang.ref.WeakReference;
@@ -18,8 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ElectionModel;
+import model.User;
 
-public class SelectElection extends AppCompatActivity {
+public class SelectElection extends CommonBasicActivity {
 
     private Spinner spinner;
     private Button startBtn;

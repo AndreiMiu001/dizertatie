@@ -10,19 +10,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ReturnScreen extends AppCompatActivity {
-    private TextView finalMsg;
-    private Button finishBtn;
+public class ReturnScreen extends CommonBasicActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.return_screen);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        Bundle b =getIntent().getExtras();
-        finalMsg = (TextView) findViewById(R.id.finalMsg);
-        finishBtn = (Button) findViewById(R.id.finishBtn);
-        finalMsg.setText(b.getString("final"));
+        TextView finalMsg = (TextView) findViewById(R.id.finalMsg);
+        Button finishBtn = (Button) findViewById(R.id.finishBtn);
+        finalMsg.setText("Success");
 
         finishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +33,7 @@ public class ReturnScreen extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        Intent intent = new Intent(getBaseContext(), MainActivity.class);
+        Intent intent = new Intent(getBaseContext(), MainMenu.class);
         startActivity(intent);
         finish();
     }

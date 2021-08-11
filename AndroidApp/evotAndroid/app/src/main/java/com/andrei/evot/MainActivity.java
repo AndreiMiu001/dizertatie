@@ -9,12 +9,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.lang.ref.WeakReference;
+
 public class MainActivity extends Activity {
 
-    private Button mainBtn;
     private EditText cnpET;
     private EditText passET;
-    private Context context = this;
+    private final WeakReference<Context> context = new WeakReference<>(this);
     String tempResultStr = "";
 
     @Override
@@ -22,7 +23,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        mainBtn = (Button) findViewById(R.id.mainBtn);
+        Button mainBtn = (Button) findViewById(R.id.mainBtn);
         cnpET = (EditText) findViewById(R.id.cnpET);
         passET = (EditText) findViewById(R.id.passET);
         mainBtn.setOnClickListener(new View.OnClickListener() {

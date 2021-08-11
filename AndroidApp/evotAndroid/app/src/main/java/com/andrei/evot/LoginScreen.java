@@ -9,20 +9,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.lang.ref.WeakReference;
+
 public class LoginScreen extends AppCompatActivity {
 
-    private Button mainBtn;
     private EditText cnpET;
     private EditText seriesPersET;
     private EditText numberPersET;
-    private Context context = this;
+    private final WeakReference<Context> context = new WeakReference<Context>(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        mainBtn = (Button) findViewById(R.id.mainBtn);
+        Button mainBtn = (Button) findViewById(R.id.mainBtn);
         cnpET = (EditText) findViewById(R.id.cnpET);
         seriesPersET = (EditText) findViewById(R.id.seriesPersET);
         numberPersET = (EditText) findViewById(R.id.numberPersET);

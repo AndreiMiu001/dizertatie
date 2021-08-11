@@ -1,46 +1,14 @@
-package common;
+package dao;
 
 import java.sql.Connection;
+import common.AppUser;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class DAO {
-    private final String mConnectionDatabaseName = "jdbc:mysql://127.0.0.1:3306/evot2";
-    private final String mConnectionUserName = "root";
-    private final String mConnectionPassword = "admin";
-    private Connection mConnection = null;
-	
-    public void connect() throws ClassNotFoundException, SQLException {
-        if (mConnection == null) {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            mConnection = DriverManager.getConnection(mConnectionDatabaseName,
-                    mConnectionUserName, mConnectionPassword);
-            if (mConnection != null) {
-                mConnection.setAutoCommit(false);
-            }
-        }
-    }
-
-    public void disconnect() throws SQLException {
-        if (mConnection != null) {
-            mConnection.commit();
-            mConnection.close();
-            mConnection = null;
-        }
-    }
-
-    public void disconnect(boolean errState) throws SQLException {
-        if (mConnection != null && errState == true) {
-            mConnection.commit();
-            mConnection.close();
-        } else if (errState == false) {
-            mConnection.rollback();
-            mConnection.close();
-        }
-    }
+public class DaoLogin extends DAO{
     
     public ArrayList<AppUser> getAllUsers() {
     	String query = "SELECT * FROM `users`";

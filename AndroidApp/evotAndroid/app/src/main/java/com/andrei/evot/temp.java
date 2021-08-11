@@ -23,7 +23,7 @@ public class temp extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+/*
         electionList = new ArrayList<ElectionType>();
         spinner = (Spinner) findViewById(R.id.spinner);
 
@@ -38,6 +38,6 @@ public class temp extends Activity {
                 Intent showDetailActivity = new Intent(context, LoginScreen.class);
                 context.startActivity(showDetailActivity);
             }
-        });
+        });*/
     }
 }

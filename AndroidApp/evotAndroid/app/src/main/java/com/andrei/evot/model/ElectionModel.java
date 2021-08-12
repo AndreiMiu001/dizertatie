@@ -5,10 +5,12 @@ import java.io.Serializable;
 public class ElectionModel implements Serializable {
     private String electionName;
     private int idElection;
+    private int idVotedCandidate;
 
     public ElectionModel() {
         electionName = "";
         idElection = 0;
+        idVotedCandidate = 0;
     }
 
     public String getElectionName() {
@@ -27,7 +29,15 @@ public class ElectionModel implements Serializable {
         this.idElection = idElection;
     }
 
+    public int getIdVotedCandidate() {
+        return idVotedCandidate;
+    }
+
+    public void setIdVotedCandidate(int idVotedCandidate) {
+        this.idVotedCandidate = idVotedCandidate;
+    }
+
     public String toString() {
-        return "Name: " + electionName + " id: " + idElection;
+        return "Name: " + electionName + " id: " + idElection + " idC: " + idVotedCandidate;
     }
 }

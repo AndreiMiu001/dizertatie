@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText cnpET;
     private EditText passET;
     private final WeakReference<Context> context = new WeakReference<>(this);
-    String tempResultStr = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

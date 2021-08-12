@@ -11,7 +11,7 @@ import common.Election;
 public class DaoView extends DAO {
 	
 	public ArrayList<Election> viewElectionsWhereUserVoted(AppUser user) {
-		String query = "SELECT `idElections` FROM `votes` WHERE `CNP`=?";
+		String query = "SELECT `idElections`, `idCandidates` FROM `votes` WHERE `CNP`=?";
 		ArrayList<Election> electionList = new ArrayList<>();
 		PreparedStatement ps;
 		try {
@@ -19,8 +19,10 @@ public class DaoView extends DAO {
 			ps.setString(1, user.getCnp());
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
+				Election election = new Election();
+				election.setIdVotedCandidate(rs.getInt("idCandidates"));
 				int id = rs.getInt("idElections");
-				electionList.add(getSingleElection(id));
+				electionList.add(getSingleElection(id, election));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -29,9 +31,8 @@ public class DaoView extends DAO {
 		return electionList;
 	}
 
-	private Election getSingleElection(int id) {
+	private Election getSingleElection(int id, Election election) {
 		String query = "SELECT * FROM `elections` WHERE `idElections`=?";
-		Election election = new Election();
 		PreparedStatement ps;
 		try {
 			ps = mConnection.prepareStatement(query);

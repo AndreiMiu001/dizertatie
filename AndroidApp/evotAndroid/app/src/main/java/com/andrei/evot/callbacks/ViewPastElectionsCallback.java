@@ -1,10 +1,9 @@
 package com.andrei.evot.callbacks;
 
-import java.util.ArrayList;
-
 import com.andrei.evot.model.ElectionModel;
 
-public interface ElectionCallback {
+import java.util.ArrayList;
 
+public interface ViewPastElectionsCallback {
     public void onResult(ArrayList<ElectionModel> electionList);
 }

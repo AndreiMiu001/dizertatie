@@ -25,7 +25,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.ElectionModel;
+import com.andrei.evot.model.ElectionModel;
 
 
 public class GetElectionsBW extends AsyncTask<String, Void, String> implements AdapterView.OnItemSelectedListener, MyCertificateManager {

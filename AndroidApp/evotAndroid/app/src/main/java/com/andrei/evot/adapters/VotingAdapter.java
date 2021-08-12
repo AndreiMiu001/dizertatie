@@ -1,5 +1,4 @@
-package com.andrei.evot;
-import android.content.Context;
+package com.andrei.evot.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,20 +11,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import model.CandidateModel;
+import com.andrei.evot.R;
+import com.andrei.evot.model.CandidateModel;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class VotingAdapter extends RecyclerView.Adapter<VotingAdapter.ViewHolder> {
 
     private final List<CandidateModel> candidateList;
 
-    public MyAdapter(List<CandidateModel> itemList) {
+    public VotingAdapter(List<CandidateModel> itemList) {
         this.candidateList = itemList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vote_item_list, viewGroup, false);
         return new ViewHolder(view);
     }
 
@@ -61,8 +61,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameTV = itemView.findViewById(R.id.nameTV);
-            infoTV = itemView.findViewById(R.id.infoTV);
+            nameTV = itemView.findViewById(R.id.viewNameTV);
+            infoTV = itemView.findViewById(R.id.viewDescTV);
             checkBox = itemView.findViewById(R.id.checkBox);
         }
     }

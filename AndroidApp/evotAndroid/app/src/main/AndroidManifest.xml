@@ -12,9 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EvotAndroid"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CommonBasicActivity"
-            android:exported="true"
-            />
+        <activity
+            android:name=".ViewPastVote"
+            android:exported="true" />
+        <activity
+            android:name=".PastElectionVotesList"
+            android:exported="true" />
+        <activity
+            android:name=".CommonBasicActivity"
+            android:exported="true" />
         <activity
             android:name=".SelectElection"
             android:exported="true"
@@ -27,6 +33,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

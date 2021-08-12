@@ -1,6 +1,6 @@
 package com.andrei.evot.callbacks;
 
-import model.CandidateModel;
+import com.andrei.evot.model.CandidateModel;
 
 import java.util.ArrayList;
 

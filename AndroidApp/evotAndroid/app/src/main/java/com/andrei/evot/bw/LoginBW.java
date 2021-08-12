@@ -8,10 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.andrei.evot.CommonBasicActivity;
 import com.andrei.evot.MainMenu;
 import com.andrei.evot.MyCertificateManager;
-import model.User;
+import com.andrei.evot.model.User;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -39,7 +38,7 @@ public class LoginBW extends AsyncTask<String, Void, String> implements AdapterV
         RequestQueue requestQueue = Volley.newRequestQueue(context.get());
         JSONObject postData = new JSONObject();
         try {
-            postData.put("name", User.mCnp);
+            postData.put("cnp", User.mCnp);
             postData.put("password", User.mPassword);
         } catch (JSONException e) {
             e.printStackTrace();

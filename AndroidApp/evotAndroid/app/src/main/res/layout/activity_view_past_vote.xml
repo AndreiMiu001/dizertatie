@@ -6,4 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".ViewPastVote">
 
+    <TextView
+        android:id="@+id/yourVoteTV"
+        android:layout_width="191dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:text="You voted for"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/yourVoteCandNameTV"
+        android:layout_width="199dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yourVoteTV" />
+
+    <TextView
+        android:id="@+id/yourVoteCandDescTV"
+        android:layout_width="142dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yourVoteCandNameTV" />
+
+    <TextView
+        android:id="@+id/otherCandidatesTV"
+        android:layout_width="143dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="32dp"
+        android:text="The other candidates"
+        app:layout_constraintBottom_toTopOf="@+id/otherCandidatesRV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yourVoteCandDescTV"
+        app:layout_constraintVertical_bias="0.547" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/otherCandidatesRV"
+        android:layout_width="409dp"
+        android:layout_height="358dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

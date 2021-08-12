@@ -13,6 +13,7 @@
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_main_menu.xml" value="0.1621376811594203" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_past_election_votes_list.xml" value="0.10009057971014493" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_select_election.xml" value="0.128125" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/activity_view_past_vote.xml" value="0.16" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/canditat_list.xml" value="0.20114472608340148" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/content_basic_common.xml" value="0.10914855072463768" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/fragment_dashboard.xml" value="0.11730072463768115" />
@@ -30,6 +31,7 @@
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/testt.xml" value="0.128125" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/top_menu.xml" value="0.12916666666666668" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/view_item_list.xml" value="0.264" />
+        <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/view_past_candidates_list.xml" value="0.2" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/layout/vote_item_list.xml" value="0.2" />
         <entry key="..\:/Dizertatie/Impl/AndroidApp/evotAndroid/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
       </map>

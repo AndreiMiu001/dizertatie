@@ -4,11 +4,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.andrei.evot.adapters.ViewingAdapter;
 import com.andrei.evot.bw.PastElectionVotesBW;
 import com.andrei.evot.callbacks.ViewPastElectionsCallback;
+import com.andrei.evot.callbacks.ViewPastVoteCallback;
 import com.andrei.evot.model.ElectionModel;
 
 import java.lang.ref.WeakReference;
@@ -31,7 +33,14 @@ public class PastElectionVotesList extends CommonBasicActivity {
             @Override
             public void onResult(ArrayList<ElectionModel> list) {
                 electionList = list;
-                adapter = new ViewingAdapter(electionList);
+                adapter = new ViewingAdapter(electionList, new ViewPastVoteCallback() {
+                    @Override
+                    public void onResult(ElectionModel election) {
+                        Intent showDetailActivity = new Intent(getBaseContext(), ViewPastVote.class);
+                        showDetailActivity.putExtra("SelectedElection", election);
+                        startActivity(showDetailActivity);
+                    }
+                });
                 recyclerView.setAdapter(adapter);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context.get()));

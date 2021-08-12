@@ -11,14 +11,14 @@ import java.sql.ResultSet;
 public class DaoLogin extends DAO{
     
     public ArrayList<AppUser> getAllUsers() {
-    	String query = "SELECT * FROM `users`";
+    	String query = "SELECT * FROM `persons`";
         ArrayList<AppUser> userList = new ArrayList<>();
     	try {
             PreparedStatement ps = mConnection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
             	AppUser tempUser =  new AppUser();
-            	tempUser.setName(rs.getString("username"));
+            	tempUser.setCnp(rs.getString("CNP"));
             	tempUser.setPassword(rs.getString("password"));
             	userList.add(tempUser);
             }
@@ -33,7 +33,7 @@ public class DaoLogin extends DAO{
     	boolean state = false;
     	try {
     		PreparedStatement ps = mConnection.prepareStatement(query);
-    		ps.setString(1, user.getName());
+    		ps.setString(1, user.getCnp());
     		ps.setString(2, user.getPassword());
             ResultSet rs = ps.executeQuery();
             rs.last();
@@ -44,7 +44,7 @@ public class DaoLogin extends DAO{
             }
             while (rs.next()) {
             	AppUser tempUser =  new AppUser();
-            	tempUser.setName(rs.getString("cnp"));
+            	tempUser.setCnp(rs.getString("cnp"));
             	tempUser.setPassword(rs.getString("password"));
             	state = tempUser.checkValues();
             }

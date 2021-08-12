@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.andrei.evot.ElectionResource;
+
+import common.AppUser;
 import common.Candidate;
 import common.Election;
 import common.Vote;
@@ -33,7 +36,7 @@ public class DaoElection extends DAO {
 		}
 		return electionsList;
 	}
-	
+
 	public ArrayList<Candidate> getCandidates(Election election) {
 		ArrayList<Candidate> candidateList = new ArrayList<>();
 		String query = "SELECT * FROM `candidates` WHERE `idElections`=?";
@@ -55,7 +58,7 @@ public class DaoElection extends DAO {
 		}
 		return candidateList;
 	}
-	
+
 	public void voteCandidate(Vote vote) {
 		String query = "INSERT INTO `votes` (`CNP`, `idElections`, `idCandidates`) VALUES (?, ?, ?);";
 		PreparedStatement ps;
@@ -65,7 +68,7 @@ public class DaoElection extends DAO {
 			ps.setInt(2, vote.election.getIdElection());
 			ps.setInt(3, vote.candidate.id);
 			int state = ps.executeUpdate();
-			if (state != 0 ) {
+			if (state != 0) {
 				System.out.print("vote succesful");
 			} else {
 				System.out.print("vote NOT succesful");
@@ -76,4 +79,6 @@ public class DaoElection extends DAO {
 			e.printStackTrace();
 		}
 	}
+
+	
 }

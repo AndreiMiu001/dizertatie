@@ -10,22 +10,23 @@ import android.widget.Button;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.andrei.evot.adapters.VotingAdapter;
 import com.andrei.evot.bw.ReadCandidatesBW;
 import com.andrei.evot.bw.VoteBW;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import model.CandidateModel;
-import model.ElectionModel;
-import model.User;
-import model.VoteModel;
+import com.andrei.evot.model.CandidateModel;
+import com.andrei.evot.model.ElectionModel;
+import com.andrei.evot.model.User;
+import com.andrei.evot.model.VoteModel;
 
 
 public class VotingScreen extends CommonBasicActivity {
 
     private RecyclerView recyclerView;
-    private MyAdapter adapter;
+    private VotingAdapter adapter;
     private ArrayList<CandidateModel> candidateList;
     private final WeakReference<Context> context = new WeakReference<>(this);
 
@@ -36,12 +37,12 @@ public class VotingScreen extends CommonBasicActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         ElectionModel election = (ElectionModel) getIntent().getSerializableExtra("SelectedElection");
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.voteCandidateRV);
         candidateList = new ArrayList<>();
 
         ReadCandidatesBW readBg = new ReadCandidatesBW(context, election, cList -> {
             candidateList = cList;
-            adapter = new MyAdapter(candidateList);
+            adapter = new VotingAdapter(candidateList);
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(context.get()));

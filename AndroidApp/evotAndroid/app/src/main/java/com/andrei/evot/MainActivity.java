@@ -14,7 +14,7 @@ import com.andrei.evot.bw.LoginBW;
 
 import java.lang.ref.WeakReference;
 
-import model.User;
+import com.andrei.evot.model.User;
 
 public class MainActivity extends AppCompatActivity {
 

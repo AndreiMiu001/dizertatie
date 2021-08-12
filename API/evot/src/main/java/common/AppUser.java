@@ -1,40 +1,57 @@
 package common;
 
 public class AppUser {
-	private String name;
+	private String cnp;
 	private String password;
+		
 	
-	public AppUser(String name, String password) {
-		this.name = name;
+	
+	public AppUser(String cnp, String password) {
+		super();
+		this.cnp = cnp;
 		this.password = password;
 	}
 	
 	public AppUser() {
-		name = "";
+		cnp = "";
 		password = "";
 	}
-	
-	public String getName() {
-		return name;
+
+
+
+	public String getCnp() {
+		return cnp;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+
+
+	public void setCnp(String cnp) {
+		this.cnp = cnp;
 	}
+
+
+
 	public String getPassword() {
 		return password;
 	}
+
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+
+
+	public String toString() {
+		return "Name = " + cnp + "; Password = " + password;
+	}
+
 	public boolean checkValues() {
-		if (name.isEmpty() || password.isEmpty()) {
+		if (cnp.isEmpty() || password.isEmpty()) {
 			return false;
 		}
 		return true;
 	}
-	
-	public String toString() {
-		return "Name = " + name + "; Password = " + password;
-	}
+
 }

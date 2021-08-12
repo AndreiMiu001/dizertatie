@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 
-import model.VoteModel;
+import com.andrei.evot.model.VoteModel;
 
 
 public class VoteBW extends AsyncTask<String, Void, String> implements MyCertificateManager {

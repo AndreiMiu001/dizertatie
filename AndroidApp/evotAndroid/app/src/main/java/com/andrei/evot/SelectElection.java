@@ -16,8 +16,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.ElectionModel;
-import model.User;
+import com.andrei.evot.model.ElectionModel;
+import com.andrei.evot.model.User;
 
 public class SelectElection extends CommonBasicActivity {
 

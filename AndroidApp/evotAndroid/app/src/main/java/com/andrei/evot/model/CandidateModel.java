@@ -1,4 +1,4 @@
-package model;
+package com.andrei.evot.model;
 
 import java.io.Serializable;
 

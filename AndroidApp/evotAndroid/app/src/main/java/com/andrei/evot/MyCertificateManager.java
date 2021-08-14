@@ -12,8 +12,6 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 public interface MyCertificateManager {
-    String reg_url = "https://10.0.2.2/eVot/eVot2.php";
-
     default void trustAllCertificates() {
         try {
             TrustManager[] trustAllCerts = new TrustManager[]{

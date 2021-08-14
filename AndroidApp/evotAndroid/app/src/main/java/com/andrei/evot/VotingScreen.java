@@ -3,10 +3,13 @@ package com.andrei.evot;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,6 +41,13 @@ public class VotingScreen extends CommonBasicActivity {
 
         ElectionModel election = (ElectionModel) getIntent().getSerializableExtra("SelectedElection");
         recyclerView = (RecyclerView) findViewById(R.id.voteCandidateRV);
+
+        Drawable mDivider = ContextCompat.getDrawable(this, R.drawable.rv_divider);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        dividerItemDecoration.setDrawable(mDivider);
+
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
         candidateList = new ArrayList<>();
 
         ReadCandidatesBW readBg = new ReadCandidatesBW(context, election, cList -> {

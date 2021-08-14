@@ -39,7 +39,8 @@ public class PastElectionVotesBW extends AsyncTask<String, Void, String> impleme
 
     @Override
     protected String doInBackground(String... strings) {
-        String URL = "http://10.0.2.2:8080/evot/webapi/view/elections";
+        String URL = "https://10.0.2.2:8442/evot/webapi/view/elections";
+        trustAllCertificates();
         RequestQueue requestQueue = Volley.newRequestQueue(context.get());
         Gson jsonConverter = new Gson();
         ArrayList<Person> tempList = new ArrayList<>();

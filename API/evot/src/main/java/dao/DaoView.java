@@ -22,6 +22,7 @@ public class DaoView extends DAO {
 				Election election = new Election();
 				election.setIdVotedCandidate(rs.getInt("idCandidates"));
 				int id = rs.getInt("idElections");
+				election.setIdWinnerCandidate(getIdWinner(id));
 				electionList.add(getSingleElection(id, election));
 			}
 		} catch (SQLException e) {
@@ -48,5 +49,23 @@ public class DaoView extends DAO {
 		}
 		return election;
 	}
-
+	
+	private int getIdWinner(int idElection) {
+		String query = "SELECT `idCandidates`,COUNT(`CNP`) AS `count` FROM `votes` WHERE `idElections`=?"
+				+ " GROUP BY `idCandidates` ORDER BY `count` DESC LIMIT 1";
+		PreparedStatement ps;
+		int idWinnerCandidate = -1;
+		try {
+			ps = mConnection.prepareStatement(query);
+			ps.setInt(1, idElection);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				idWinnerCandidate = rs.getInt("idCandidates");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return idWinnerCandidate;
+	}
 }

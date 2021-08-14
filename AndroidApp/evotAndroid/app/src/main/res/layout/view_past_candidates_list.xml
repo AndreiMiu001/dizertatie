@@ -7,47 +7,83 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/viewPastCandidatesCL"
-        android:layout_width="424dp"
-        android:layout_height="133dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <TextView
             android:id="@+id/viewCandidatePastNameTV"
-            android:layout_width="381dp"
-            android:layout_height="66dp"
+            android:layout_width="260dp"
+            android:layout_height="30dp"
             android:text="Element"
             android:textColor="@color/black"
             android:textSize="26sp"
-            app:autoSizeMaxTextSize="32sp"
+            app:autoSizeMaxTextSize="22sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeStepGranularity="2sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.175" />
 
         <TextView
             android:id="@+id/viewCandidatePastDescTV"
-            android:layout_width="284dp"
-            android:layout_height="52dp"
+            android:layout_width="210dp"
+            android:layout_height="26dp"
             android:text="Element"
             android:textColor="@color/black"
             android:textSize="26sp"
-            app:autoSizeMaxTextSize="32sp"
+            app:autoSizeMaxTextSize="16sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeStepGranularity="2sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.164"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintHorizontal_bias="0.156"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.962" />
+            app:layout_constraintTop_toBottomOf="@+id/viewCandidatePastNameTV"
+            app:layout_constraintVertical_bias="0.304" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="67dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/winnerIV"
+                android:layout_width="50dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="4dp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.428"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/star_big_on" />
+
+            <ImageView
+                android:id="@+id/votedIV"
+                android:layout_width="50dp"
+                android:layout_height="36dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.428"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/winnerIV"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@mipmap/checkmark3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

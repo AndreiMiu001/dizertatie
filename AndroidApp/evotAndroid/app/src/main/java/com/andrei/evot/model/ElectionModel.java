@@ -6,11 +6,13 @@ public class ElectionModel implements Serializable {
     private String electionName;
     private int idElection;
     private int idVotedCandidate;
+    private int idWinnerCandidate;
 
     public ElectionModel() {
         electionName = "";
         idElection = 0;
         idVotedCandidate = 0;
+        idWinnerCandidate = 0;
     }
 
     public String getElectionName() {
@@ -35,6 +37,14 @@ public class ElectionModel implements Serializable {
 
     public void setIdVotedCandidate(int idVotedCandidate) {
         this.idVotedCandidate = idVotedCandidate;
+    }
+
+    public int getIdWinnerCandidate() {
+        return idWinnerCandidate;
+    }
+
+    public void setIdWinnerCandidate(int idWinnerCandidate) {
+        this.idWinnerCandidate = idWinnerCandidate;
     }
 
     public String toString() {

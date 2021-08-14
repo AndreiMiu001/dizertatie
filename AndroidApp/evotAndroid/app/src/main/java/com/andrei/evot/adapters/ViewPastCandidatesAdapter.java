@@ -3,6 +3,7 @@ package com.andrei.evot.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,10 +17,15 @@ import java.util.ArrayList;
 
 public class ViewPastCandidatesAdapter extends RecyclerView.Adapter<ViewPastCandidatesAdapter.ViewHolder> {
 
-    ArrayList<CandidateModel> candidateList;
+    private final ArrayList<CandidateModel> candidateList;
+    private final CandidateModel votedCandidate;
+    private final CandidateModel winnerCandidate;
 
-    public ViewPastCandidatesAdapter(ArrayList<CandidateModel> candidateList) {
+    public ViewPastCandidatesAdapter(ArrayList<CandidateModel> candidateList,
+                                     CandidateModel votedCandidate, CandidateModel winnerCandidate) {
         this.candidateList = candidateList;
+        this.winnerCandidate = winnerCandidate;
+        this.votedCandidate = votedCandidate;
     }
 
     @NonNull
@@ -34,6 +40,13 @@ public class ViewPastCandidatesAdapter extends RecyclerView.Adapter<ViewPastCand
         final CandidateModel candidate = candidateList.get(position);
         holder.nameTV.setText(candidate.getName());
         holder.descTV.setText(candidate.getDescription());
+        if (candidate == votedCandidate) {
+            holder.votedIV.setVisibility(View.VISIBLE);
+        }
+        if (candidate == winnerCandidate) {
+            holder.winnerIV.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override
@@ -45,12 +58,16 @@ public class ViewPastCandidatesAdapter extends RecyclerView.Adapter<ViewPastCand
 
         public TextView nameTV;
         public TextView descTV;
+        public ImageView winnerIV;
+        public ImageView votedIV;
         public ConstraintLayout constraintLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTV = itemView.findViewById(R.id.viewCandidatePastNameTV);
             descTV = itemView.findViewById(R.id.viewCandidatePastDescTV);
+            winnerIV = itemView.findViewById(R.id.winnerIV);
+            votedIV = itemView.findViewById(R.id.votedIV);
             constraintLayout = itemView.findViewById(R.id.viewPastCandidatesCL);
         }
     }

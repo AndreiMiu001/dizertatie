@@ -45,7 +45,8 @@ public class GetElectionsBW extends AsyncTask<String, Void, String> implements A
 
     @Override
     protected String doInBackground(String[] strings) {
-        String URL = "http://10.0.2.2:8080/evot/webapi/elections";
+        String URL = "https://10.0.2.2:8442/evot/webapi/elections";
+        trustAllCertificates();
         RequestQueue requestQueue = Volley.newRequestQueue(context.get());
         JsonArrayRequest objectRequest = new JsonArrayRequest(
                 Request.Method.GET,

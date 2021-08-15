@@ -9,9 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.andrei.evot.R;
+import com.andrei.evot.callbacks.DisableCheckboxesCB;
 import com.andrei.evot.model.CandidateModel;
 
 public class VotingAdapter extends RecyclerView.Adapter<VotingAdapter.ViewHolder> {
@@ -34,7 +36,6 @@ public class VotingAdapter extends RecyclerView.Adapter<VotingAdapter.ViewHolder
         final CandidateModel tempList = candidateList.get(i);
         viewHolder.nameTV.setText(tempList.getName());
         viewHolder.infoTV.setText(tempList.getDescription());
-        // look into
         if (candidateList.get(i).getId() == 0 ) {
             viewHolder.checkBox.setTag(i);
         }

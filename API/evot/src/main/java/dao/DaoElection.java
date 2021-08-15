@@ -25,9 +25,6 @@ public class DaoElection extends DAO {
 				Election elTemp = new Election();
 				elTemp.setElectionName(rs.getString("nameElections"));
 				elTemp.setIdElection(rs.getInt("idElections"));
-				// elTemp.setStartingDate(rs.getDate("startDate").toString());
-				// elTemp.setEndingDate(rs.getDate("endDate").toString());
-				// elTemp.setCategory(getSingleElectionCategory(rs.getInt("idElectionType")));
 				electionsList.add(elTemp);
 			}
 		} catch (SQLException e) {
@@ -35,6 +32,24 @@ public class DaoElection extends DAO {
 			e.printStackTrace();
 		}
 		return electionsList;
+	}
+	
+	public ArrayList<Integer> getVotedElections(AppUser user) {
+		String query = "SELECT `idElections` FROM `votes` WHERE `cnp`=?";
+		ArrayList<Integer> idList = new ArrayList<>();
+		PreparedStatement ps;
+		try {
+			ps = mConnection.prepareStatement(query);
+			ps.setString(1, user.getCnp());
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				idList.add(rs.getInt("idElections"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return idList;
 	}
 
 	public ArrayList<Candidate> getCandidates(Election election) {

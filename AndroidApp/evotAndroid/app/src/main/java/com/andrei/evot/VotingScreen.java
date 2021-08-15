@@ -7,6 +7,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.core.content.ContextCompat;
@@ -21,6 +23,7 @@ import com.andrei.evot.bw.VoteBW;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
+import com.andrei.evot.callbacks.DisableCheckboxesCB;
 import com.andrei.evot.model.CandidateModel;
 import com.andrei.evot.model.ElectionModel;
 import com.andrei.evot.model.User;
@@ -79,6 +82,8 @@ public class VotingScreen extends CommonBackActionActivity {
                     context.get().startActivity(showDetailActivity);
                 });
                 bg.execute();
+            } else {
+                Toast.makeText(context.get(), "You can only vote for 1 candidate!", Toast.LENGTH_LONG).show();
             }
         });
     }

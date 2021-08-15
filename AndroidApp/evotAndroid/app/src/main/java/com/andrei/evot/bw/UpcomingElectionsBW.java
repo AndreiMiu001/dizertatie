@@ -3,11 +3,10 @@ package com.andrei.evot.bw;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 
 import com.andrei.evot.MyCertificateManager;
 import com.andrei.evot.callbacks.ElectionListCallback;
+import com.andrei.evot.model.CandidateModel;
 import com.andrei.evot.model.ElectionModel;
 import com.andrei.evot.model.Person;
 import com.andrei.evot.model.User;
@@ -27,18 +26,19 @@ import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class PastElectionVotesBW extends AsyncTask<String, Void, String> implements AdapterView.OnItemSelectedListener, MyCertificateManager  {
+public class UpcomingElectionsBW extends AsyncTask<String, Void, String> implements MyCertificateManager  {
 
     private final WeakReference<Context> context;
-    private final ElectionListCallback pastElectionsCallback;
-    public PastElectionVotesBW(WeakReference<Context> context, ElectionListCallback pastElectionsCallback) {
+    private final ElectionListCallback electionListCallback;
+
+    public UpcomingElectionsBW(WeakReference<Context> context, ElectionListCallback electionListCallback) {
         this.context = context;
-        this.pastElectionsCallback = pastElectionsCallback;
+        this.electionListCallback = electionListCallback;
     }
 
     @Override
     protected String doInBackground(String... strings) {
-        String URL = "https://10.0.2.2:8442/evot/webapi/view/elections";
+        String URL = "https://10.0.2.2:8442/evot/webapi/view/upcoming";
         trustAllCertificates();
         RequestQueue requestQueue = Volley.newRequestQueue(context.get());
         Gson jsonConverter = new Gson();
@@ -64,27 +64,18 @@ public class PastElectionVotesBW extends AsyncTask<String, Void, String> impleme
                         Type type = new TypeToken<ArrayList<ElectionModel>>(){}.getType();
                         ArrayList<ElectionModel> electionList =
                                 jsonConverter.fromJson(response.toString(), type);
-                        pastElectionsCallback.onResult(electionList);
+                        electionListCallback.onResult(electionList);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("rest err", error.toString());
+
                     }
                 }
         );
         requestQueue.add(objectRequest);
         return null;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

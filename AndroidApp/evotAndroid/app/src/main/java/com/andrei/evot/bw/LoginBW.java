@@ -26,7 +26,6 @@ import java.lang.ref.WeakReference;
 public class LoginBW extends AsyncTask<String, Void, String> implements AdapterView.OnItemSelectedListener, MyCertificateManager {
 
     private final WeakReference<Context> context;
-    private static boolean status;
 
     public LoginBW(WeakReference<Context> context) {
         this.context = context;
@@ -57,10 +56,8 @@ public class LoginBW extends AsyncTask<String, Void, String> implements AdapterV
                                 Log.e("rest resp2", "true");
                                 Intent showDetailActivity = new Intent(context.get(), MainMenu.class);
                                 context.get().startActivity(showDetailActivity);
-                                status = true;
                             } else {
                                 Log.e("rest resp2", "false");
-                                status = false;
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

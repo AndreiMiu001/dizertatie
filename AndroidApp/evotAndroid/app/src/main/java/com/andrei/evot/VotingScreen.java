@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,7 +27,7 @@ import com.andrei.evot.model.User;
 import com.andrei.evot.model.VoteModel;
 
 
-public class VotingScreen extends CommonBasicActivity {
+public class VotingScreen extends CommonBackActionActivity {
 
     private RecyclerView recyclerView;
     private VotingAdapter adapter;
@@ -39,10 +40,15 @@ public class VotingScreen extends CommonBasicActivity {
         setContentView(R.layout.canditat_list);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle("Let's vote");
+        }
+
         ElectionModel election = (ElectionModel) getIntent().getSerializableExtra("SelectedElection");
         recyclerView = (RecyclerView) findViewById(R.id.voteCandidateRV);
 
-        Drawable mDivider = ContextCompat.getDrawable(this, R.drawable.rv_divider);
+        Drawable mDivider = ContextCompat.getDrawable(this, R.drawable.divider);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(mDivider);
 
@@ -69,6 +75,7 @@ public class VotingScreen extends CommonBasicActivity {
                 vote.setCnp(User.mCnp);
                 VoteBW bg = new VoteBW(context, vote, () -> {
                     Intent showDetailActivity = new Intent(context.get(), ReturnScreen.class);
+                    showDetailActivity.putExtra("VotedCandidate", candidate);
                     context.get().startActivity(showDetailActivity);
                 });
                 bg.execute();

@@ -1,11 +1,17 @@
 package common;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+
 public class Election {
 
     protected String mElectionName;
     protected int mIdElection;
     protected int mIdVotedCandidate;
     protected int mIdWinnerCandidate;
+    private LocalDate mStartingDate;
+    private LocalDate mEndingDate;
     
     public Election() {
     	mElectionName = "";
@@ -42,5 +48,31 @@ public class Election {
 		this.mIdWinnerCandidate = mIdWinneCandidate;
 	}   
 	
-	
+	public LocalDate getStartingDate() {
+        return mStartingDate;
+    }
+
+    public void setStartingDate(LocalDate mStartingDate) {
+        this.mStartingDate = mStartingDate;
+    }
+
+    public LocalDate getEndingDate() {
+        return mEndingDate;
+    }
+
+    public void setEndingDate(LocalDate mEndingDate) {
+        this.mEndingDate = mEndingDate;
+    }
+
+    public void setStartingDate(String date) {
+        date = date.replace('/', '-');
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        mStartingDate = LocalDate.parse(date, formatter);
+    }
+
+    public void setEndingDate(String date) {
+        date = date.replace('/', '-');
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        mEndingDate = LocalDate.parse(date, formatter);
+    }	
 }

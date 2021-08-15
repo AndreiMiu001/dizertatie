@@ -51,10 +51,4 @@ public class LoginResource {
     	MyBoolean myState = new MyBoolean(state);
     	return myState;
     }
-    
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getIt() {
-        return "Got it!";
-    }
 }

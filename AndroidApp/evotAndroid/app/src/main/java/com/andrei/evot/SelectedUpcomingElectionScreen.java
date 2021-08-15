@@ -52,7 +52,7 @@ public class SelectedUpcomingElectionScreen extends CommonBackActionActivity {
         RecyclerView recyclerView = findViewById(R.id.upcomingCandidatesRV);
 
         electionNameTV.setText(election.getElectionName());
-        dateTV.setText(election.getStartingDate() + " -> " + election.getEndingDate());
+        dateTV.setText(election.getStartingDate() + " -- " + election.getEndingDate());
 
         ReadCandidatesBW bg = new ReadCandidatesBW(context, election, new CandidatesCallback() {
             @Override
@@ -77,36 +77,5 @@ public class SelectedUpcomingElectionScreen extends CommonBackActionActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(mDivider);
         recyclerView.addItemDecoration(dividerItemDecoration);
-
-        /*
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                DividerItemDecoration.HORIZONTAL);
-        recyclerView.addItemDecoration(dividerItemDecoration);
-
-
-        ShapeDrawable vLine = new ShapeDrawable(new Shape() {
-            @Override
-            public void draw(Canvas canvas, Paint paint) {
-                paint.setStrokeWidth(10);
-                paint.setColor(Color.BLACK);
-                canvas.drawLine(0, 0, 0, 500, paint);
-            }
-        });
-        ShapeDrawable hLine = new ShapeDrawable(new Shape() {
-            @Override
-            public void draw(Canvas canvas, Paint paint) {
-                paint.setStrokeWidth(10);
-                paint.setColor(Color.BLACK);
-                canvas.drawLine(0, 0, 500, 0, paint);
-            }
-        });
-        DividerItemDecoration vDID = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
-        DividerItemDecoration hDID = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.HORIZONTAL);
-        vDID.setDrawable(vLine);
-        hDID.setDrawable(hLine);
-        recyclerView.addItemDecoration(vDID);
-        recyclerView.addItemDecoration(hDID);
-
-         */
     }
 }

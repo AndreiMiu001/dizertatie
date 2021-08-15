@@ -64,6 +64,8 @@ public class DaoView extends DAO {
 			while (rs.next()) {
 				election.setIdElection(id);
 				election.setElectionName(rs.getString("nameElections"));
+				election.setStartingDate(rs.getDate("startDate").toString());
+				election.setEndingDate(rs.getDate("endDate").toString());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

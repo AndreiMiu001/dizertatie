@@ -17,6 +17,8 @@
             android:id="@+id/viewCandidatePastNameTV"
             android:layout_width="260dp"
             android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
             android:text="Element"
             android:textColor="@color/black"
             android:textSize="26sp"
@@ -26,28 +28,31 @@
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
-            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.175" />
+            app:layout_constraintVertical_bias="0.097" />
 
         <TextView
             android:id="@+id/viewCandidatePastDescTV"
             android:layout_width="210dp"
             android:layout_height="26dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
             android:text="Element"
             android:textColor="@color/black"
             android:textSize="26sp"
+            android:textStyle="italic"
             app:autoSizeMaxTextSize="16sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeStepGranularity="2sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
-            app:layout_constraintHorizontal_bias="0.156"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewCandidatePastNameTV"
-            app:layout_constraintVertical_bias="0.304" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"

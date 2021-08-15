@@ -14,6 +14,8 @@ import com.andrei.evot.R;
 import com.andrei.evot.callbacks.ElectionModelCallback;
 import com.andrei.evot.model.ElectionModel;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class ViewingAdapter extends RecyclerView.Adapter<ViewingAdapter.ViewHolder> {
@@ -37,6 +39,7 @@ public class ViewingAdapter extends RecyclerView.Adapter<ViewingAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewingAdapter.ViewHolder holder, int position) {
         final ElectionModel electionTemp = electionList.get(position);
         holder.nameTV.setText(electionTemp.getElectionName());
+        holder.startingDateTV.setText("Ended on: "+ (electionTemp.getEndingDate()));
         holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,11 +57,13 @@ public class ViewingAdapter extends RecyclerView.Adapter<ViewingAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView nameTV;
+        public TextView startingDateTV;
         public ConstraintLayout constraintLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTV = itemView.findViewById(R.id.viewNameTV);
+            startingDateTV = itemView.findViewById(R.id.futureElectionEndDateTV);
             constraintLayout = itemView.findViewById(R.id.viewElectionCL);
         }
     }

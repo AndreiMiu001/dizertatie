@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.andrei.evot.MainMenu;
 import com.andrei.evot.MyCertificateManager;
@@ -57,7 +58,7 @@ public class LoginBW extends AsyncTask<String, Void, String> implements AdapterV
                                 Intent showDetailActivity = new Intent(context.get(), MainMenu.class);
                                 context.get().startActivity(showDetailActivity);
                             } else {
-                                Log.e("rest resp2", "false");
+                                Toast.makeText(context.get(), "Invalid username of password!", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

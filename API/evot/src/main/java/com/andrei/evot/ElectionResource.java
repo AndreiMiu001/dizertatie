@@ -3,6 +3,7 @@ package com.andrei.evot;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import common.AppUser;
 import common.Candidate;
 import common.Election;
 import common.MyBoolean;
@@ -18,14 +19,15 @@ import jakarta.ws.rs.core.MediaType;
 @Path("elections")
 public class ElectionResource {
 	
-	@GET
+	@POST
     @Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Election> getElections() {
+	public ArrayList<Election> getElections(ArrayList<AppUser> user) {
 		DaoElection dao = new DaoElection();
 		ArrayList<Election> electionList = null;
 		try {
 			dao.connect();
 			electionList = dao.getElections();
+			removeVotedElections(electionList, user.get(0));
 			dao.disconnect();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -68,6 +70,27 @@ public class ElectionResource {
 			e.printStackTrace();
 		}
 		return status;
+	}
+	
+	private void removeVotedElections(ArrayList<Election> electionList, AppUser user) {
+		DaoElection dao = new DaoElection();
+		ArrayList<Integer> idList = null;
+		try {
+			dao.connect();
+			idList = dao.getVotedElections(user);
+			dao.disconnect();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		if (idList != null) {
+			for (int i = 0; i < electionList.size(); i++) {
+				if (idList.contains(electionList.get(i).getIdElection())) {
+					electionList.remove(i);
+					i--;
+				}
+			}
+		}
 	}
 
 }

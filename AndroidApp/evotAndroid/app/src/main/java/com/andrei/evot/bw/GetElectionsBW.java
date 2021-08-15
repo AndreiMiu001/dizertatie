@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 
 import com.andrei.evot.MyCertificateManager;
 import com.andrei.evot.callbacks.ElectionCallback;
+import com.andrei.evot.model.Person;
+import com.andrei.evot.model.User;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -19,6 +21,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
@@ -48,10 +52,21 @@ public class GetElectionsBW extends AsyncTask<String, Void, String> implements A
         String URL = "https://10.0.2.2:8442/evot/webapi/elections";
         trustAllCertificates();
         RequestQueue requestQueue = Volley.newRequestQueue(context.get());
+        Gson jsonConverter = new Gson();
+        ArrayList<Person> tempList = new ArrayList<>();
+        Person person = new Person(User.mCnp, User.mPassword);
+        tempList.add(person);
+        String jsonString = jsonConverter.toJson(tempList);
+        JSONArray postData = null;
+        try {
+            postData = new JSONArray(jsonString);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         JsonArrayRequest objectRequest = new JsonArrayRequest(
-                Request.Method.GET,
+                Request.Method.POST,
                 URL,
-                null,
+                postData,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

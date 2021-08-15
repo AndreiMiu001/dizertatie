@@ -4,7 +4,6 @@ import com.andrei.evot.model.ElectionModel;
 
 import java.util.ArrayList;
 
-public interface ViewPastVoteCallback {
-    public void onResult(ElectionModel electionList);
-
+public interface ElectionListCallback {
+    public void onResult(ArrayList<ElectionModel> electionList);
 }

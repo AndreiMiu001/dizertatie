@@ -31,6 +31,28 @@ public class DaoView extends DAO {
 		}
 		return electionList;
 	}
+	
+	public ArrayList<Election> getUpcomingElections(AppUser user) {
+		String query = "SELECT * FROM `elections` WHERE current_date() < startDate";
+		ArrayList<Election> electionList = new ArrayList<>();
+		PreparedStatement ps;
+		try {
+			ps = mConnection.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Election election = new Election();
+				election.setElectionName(rs.getString("nameElections"));
+				election.setIdElection(rs.getInt("idElections"));
+				election.setStartingDate(rs.getDate("startDate").toString());
+				election.setEndingDate(rs.getDate("endDate").toString());
+				electionList.add(election);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return electionList;
+	}
 
 	private Election getSingleElection(int id, Election election) {
 		String query = "SELECT * FROM `elections` WHERE `idElections`=?";

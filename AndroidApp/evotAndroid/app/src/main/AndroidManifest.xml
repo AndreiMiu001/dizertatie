@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.andrei.evot">
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,11 +12,21 @@
         android:theme="@style/Theme.EvotAndroid"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SelectedUpcomingElectionScreen"
+            android:exported="true"
+            android:parentActivityName=".UpcomingElectionsScreen"/>
+        <activity
+            android:name=".UpcomingElectionsScreen"
+            android:exported="true"
+            android:parentActivityName=".MainMenu"/>
+        <activity
             android:name=".ViewPastVote"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".PastElectionVotesList"/>
         <activity
             android:name=".PastElectionVotesList"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainMenu"/>
         <activity
             android:name=".CommonBasicActivity"
             android:exported="true" />
@@ -27,24 +36,24 @@
             android:parentActivityName=".MainMenu" />
         <activity
             android:name=".MainMenu"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".VotingScreen"
             android:exported="true"
-            android:parentActivityName=".MainMenu" />
+            android:parentActivityName=".SelectElection" />
         <activity
             android:name=".ReturnScreen"
             android:exported="true"
-            android:parentActivityName=".MainMenu" />
+            android:parentActivityName=".VotingScreen" />
     </application>
 
 </manifest>

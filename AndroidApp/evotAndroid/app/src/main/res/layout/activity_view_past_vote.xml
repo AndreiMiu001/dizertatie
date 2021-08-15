@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ViewPastVote">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="4dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/otherCandidatesTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -19,23 +29,24 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/yourVoteCL"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.49"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/winnerCL"
             app:layout_constraintHorizontal_bias="0.115"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25">
+            app:layout_constraintVertical_bias="0.25"
+            app:layout_constraintWidth_percent="0.49">
 
             <TextView
                 android:id="@+id/yourVoteTV"
-                android:layout_width="178dp"
-                android:layout_height="52dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="6dp"
                 android:text="You voted for"
                 android:textSize="26sp"
+                android:textStyle="bold"
                 app:autoSizeMaxTextSize="32sp"
                 app:autoSizeMinTextSize="26sp"
                 app:autoSizeStepGranularity="2sp"
@@ -47,15 +58,14 @@
                 android:id="@+id/yourVoteCandNameTV"
                 android:layout_width="160dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
                 android:text="TextView"
                 android:textSize="26sp"
                 app:autoSizeMaxTextSize="32sp"
                 app:autoSizeMinTextSize="26sp"
                 app:autoSizeStepGranularity="2sp"
                 app:autoSizeTextType="uniform"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/yourVoteTV" />
 
@@ -63,15 +73,15 @@
                 android:id="@+id/yourVoteCandDescTV"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
                 android:text="TextView"
                 android:textSize="26sp"
+                android:textStyle="italic"
                 app:autoSizeMaxTextSize="32sp"
                 app:autoSizeMinTextSize="14sp"
                 app:autoSizeStepGranularity="2sp"
                 app:autoSizeTextType="uniform"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/yourVoteCandNameTV" />
 
@@ -80,17 +90,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/winnerCL"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.49"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.49">
 
             <TextView
                 android:id="@+id/electionPastWinnerNameTV"
                 android:layout_width="160dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
                 android:text="TextView"
                 android:textSize="26sp"
                 app:autoSizeMaxTextSize="32sp"
@@ -104,26 +115,31 @@
 
             <TextView
                 android:id="@+id/electionPastWinnerTV"
-                android:layout_width="175dp"
-                android:layout_height="58dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="4dp"
-                android:text="Winner of the election"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="8dp"
+                android:text="Winner"
                 android:textSize="26sp"
+                android:textStyle="bold"
                 app:autoSizeMaxTextSize="32sp"
                 app:autoSizeMinTextSize="20sp"
                 app:autoSizeStepGranularity="2sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.087"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/electionPastWinnerDescTV"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
                 android:text="TextView"
                 android:textSize="26sp"
+                android:textStyle="italic"
                 app:autoSizeMaxTextSize="32sp"
                 app:autoSizeMinTextSize="14sp"
                 app:autoSizeStepGranularity="2sp"
@@ -141,10 +157,12 @@
         android:id="@+id/otherCandidatesTV"
         android:layout_width="match_parent"
         android:layout_height="49dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="The candidates"
+        android:textColor="@color/design_default_color_primary_dark"
         android:textSize="30sp"
+        android:textStyle="italic"
         app:autoSizeMaxTextSize="40sp"
         app:autoSizeMinTextSize="30sp"
         app:autoSizeStepGranularity="2sp"
@@ -158,6 +176,7 @@
         android:id="@+id/otherCandidatesRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:paddingBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"

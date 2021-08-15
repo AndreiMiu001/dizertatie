@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.ActionBar;
+
 import com.andrei.evot.bw.GetElectionsBW;
 import com.andrei.evot.callbacks.ElectionCallback;
 
@@ -19,7 +21,7 @@ import java.util.List;
 import com.andrei.evot.model.ElectionModel;
 import com.andrei.evot.model.User;
 
-public class SelectElection extends CommonBasicActivity {
+public class SelectElection extends CommonBackActionActivity {
 
     private Spinner spinner;
     private Button startBtn;
@@ -34,6 +36,11 @@ public class SelectElection extends CommonBasicActivity {
         electionList = new ArrayList<ElectionModel>();
         spinner = (Spinner) findViewById(R.id.spinner);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle("Select election");
+        }
+
         GetElectionsBW bg = new GetElectionsBW(context, new ElectionCallback() {
             @Override
             public void onResult(ArrayList<ElectionModel> list) {
@@ -42,7 +49,7 @@ public class SelectElection extends CommonBasicActivity {
                 for (ElectionModel election : electionList) {
                     electionNames.add(election.getElectionName());
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(context.get(), android.R.layout.simple_spinner_item, electionNames);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(context.get(), R.layout.spinner_item, electionNames);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter);
             }

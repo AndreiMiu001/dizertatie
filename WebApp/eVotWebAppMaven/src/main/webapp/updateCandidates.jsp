@@ -5,7 +5,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="CSS/DefaultStyle.css"> 
+        <link rel="stylesheet" href="Style/CSS/DefaultStyle.css"> 
+        <link rel="stylesheet" href="Style/CSS/insertCandidates.css"> 
+
         <title>eVot adauga candidati</title>
     </head>
     <body onload="init(candidatesArrayJson);">
@@ -22,7 +24,7 @@
             for (var i = 0; i < candidatesArrayLenght; i++) {
                 var div5 = document.createElement("div");
                 var h = document.createElement("H3");
-                var t = document.createTextNode("Candidate number " + i);
+                var t = document.createTextNode("Candidate number " + (i+1));
                 h.appendChild(t);
                 var h2 = document.createElement("H5");
                 var t2 = document.createTextNode("Candidate name");
@@ -34,13 +36,13 @@
                 candName.setAttribute("autocomplete", "off");
                 candName.setAttribute('type', "text");
                 candName.setAttribute('name', "candidateName" + i);
-                candName.setAttribute('class', 'form-control');
+                candName.setAttribute('class', 'form-control central');
                 candName.setAttribute('value', candidatesArrayJson[i]["mCandidateName"]);
                 var candDesc = document.createElement("input"); //input element, text
                 candDesc.setAttribute("autocomplete", "off");
                 candDesc.setAttribute('type', "text");
-                candDesc.setAttribute('name', "candidateDescription" + i);
-                candDesc.setAttribute('class', 'form-control');
+                candDesc.setAttribute('name', "candidateDescription" + (i+1));
+                candDesc.setAttribute('class', 'form-control central');
                 candDesc.setAttribute('value', candidatesArrayJson[i]["mDescription"]);
 
                 f.appendChild(h);
@@ -66,7 +68,7 @@
             f.appendChild(div);
 
             var finalDiv = document.createElement("div");
-            finalDiv.setAttribute('class', "central");
+            finalDiv.setAttribute('class', "content");
             finalDiv.appendChild(f);
 
             document.getElementsByTagName('body')[0].appendChild(finalDiv);

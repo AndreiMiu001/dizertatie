@@ -9,7 +9,7 @@ package common;
  *
  * @author Andrei
  */
-public class Candidate {
+public class Candidate implements Comparable<Candidate>{
 
     private String mCandidateName;
     private String mPoliticalParty;
@@ -85,6 +85,12 @@ public class Candidate {
 
     public void setIdElection(int idElection) {
         this.mIdElection = idElection;
+    }
+
+    @Override
+    public int compareTo(Candidate o) {
+        return (this.mVotesCount < o.getVotesCount()) ? -1 : 
+                (this.mVotesCount == o.getVotesCount() ? 0 : 1);
     }
 
 }

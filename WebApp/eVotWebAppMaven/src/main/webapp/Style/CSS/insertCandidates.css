@@ -19,6 +19,7 @@ and open the template in the editor.
 }
 .content {
     text-align: center;
+    padding: 1rem;
 }
 .centralDesc {
     margin-bottom: 3rem;

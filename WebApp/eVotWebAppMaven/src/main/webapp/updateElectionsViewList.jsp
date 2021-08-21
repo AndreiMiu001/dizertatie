@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="menuBarUpdated.jsp" />
+<jsp:include page="menuBar.jsp" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +7,7 @@
         <script src="scripts/searchFunctionView.js"></script> 
         <link rel="stylesheet" href="Style/CSS/default.css"> 
         <link rel="stylesheet" href="Style/CSS/updateElectionsViewList.css"> 
-        <title>Update elections</title>
+        <title>Actualizeaza alegerea</title>
     </head>
     <body  >
         <div id="content" class="content-all"> 

@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="menuBarUpdated.jsp" />
+<jsp:include page="menuBar.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="Style/CSS/updateElectionsViewList.css"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="scripts/searchFunctionDelete.js"></script> 
-        <title>Delete elections</title>
+        <title>Sterge candidat</title>
     </head>
     <body>
         <div id="content-all" class="content-all">

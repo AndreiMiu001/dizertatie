@@ -59,7 +59,6 @@ public class UpcomingElectionsBW extends AsyncTask<String, Void, String> impleme
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.e("rest resp", response.toString());
                         Gson jsonConverter = new Gson();
                         Type type = new TypeToken<ArrayList<ElectionModel>>(){}.getType();
                         ArrayList<ElectionModel> electionList =

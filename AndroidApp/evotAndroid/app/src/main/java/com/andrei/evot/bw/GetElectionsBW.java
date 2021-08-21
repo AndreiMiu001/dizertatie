@@ -77,7 +77,6 @@ public class GetElectionsBW extends AsyncTask<String, Void, String> implements A
                             Log.e("election: ", election.toString());
                         }
                         myCallback.onResult(electionList);
-                        Log.e("rest resp array", response.toString());
                     }
                 },
                 new Response.ErrorListener() {

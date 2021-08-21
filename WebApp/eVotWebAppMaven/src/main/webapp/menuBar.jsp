@@ -7,7 +7,6 @@
         <script src="Style/JS/jquery340.js"></script>
         <link rel="stylesheet" href="Style/CSS/menuBar.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bar de meniu</title>
     </head>
     <body> 
         <nav class="navbar navbar-dark bg-dark">

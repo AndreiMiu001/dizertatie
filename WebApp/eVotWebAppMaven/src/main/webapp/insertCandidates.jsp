@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<jsp:include page="menuBarUpdated.jsp" />
+<jsp:include page="menuBar.jsp" />
 
 <!DOCTYPE html>
 <html>

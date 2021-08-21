@@ -51,7 +51,6 @@ public class LoginBW extends AsyncTask<String, Void, String> implements AdapterV
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("rest resp", response.toString());
                         try {
                             if (response.getBoolean("state")) {
                                 Log.e("rest resp2", "true");

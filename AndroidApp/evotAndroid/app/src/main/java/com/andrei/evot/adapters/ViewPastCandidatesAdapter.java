@@ -1,5 +1,6 @@
 package com.andrei.evot.adapters;
 
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,8 @@ public class ViewPastCandidatesAdapter extends RecyclerView.Adapter<ViewPastCand
         }
         if (candidate == winnerCandidate) {
             holder.winnerIV.setVisibility(View.VISIBLE);
+            holder.descTV.setTypeface(null, Typeface.BOLD);
+            holder.nameTV.setTypeface(null, Typeface.BOLD);
         }
 
     }

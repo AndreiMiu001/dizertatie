@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<jsp:include page="menuBarUpdated.jsp" />
+<jsp:include page="menuBar.jsp" />
 
 
 <!DOCTYPE html>
@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="Style/CSS/default.css"> 
         <link rel="stylesheet" href="Style/CSS/AutocompleteInput.css">
         <script src="scripts/inputAutoComplete.js"></script>
+        <title>Actualizeaza</title>
 
         <script src="Style/JS/datepicker.js"></script>         
         <style>

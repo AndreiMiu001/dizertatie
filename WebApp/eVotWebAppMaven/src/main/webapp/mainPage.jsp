@@ -1,12 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="menuBarUpdated.jsp" />
+<jsp:include page="menuBar.jsp" />
 
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="Style/CSS/mainPage.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>eVot Main Page</title>
+        <title>eVot Pagina Principala</title>
     </head>
     <body>
         <div id="navigationMenu"></div>

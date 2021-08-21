@@ -55,7 +55,6 @@ public class VoteBW extends AsyncTask<String, Void, String> implements MyCertifi
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("rest resp", response.toString());
                         voteCallback.onResult();
                     }
                 },

@@ -61,7 +61,6 @@ public class ReadCandidatesBW extends AsyncTask<String, Void, String> implements
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.e("rest resp", response.toString());
                         ArrayList<CandidateModel> candidateList = new ArrayList<>();
                         Gson jsonConverter = new Gson();
                         Type type = new TypeToken<ArrayList<CandidateModel>>(){}.getType();

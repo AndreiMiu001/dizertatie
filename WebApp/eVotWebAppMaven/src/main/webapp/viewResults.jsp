@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="menuBarUpdated.jsp" />
+<jsp:include page="menuBar.jsp" />
 
 <html>
     <head>
@@ -9,7 +9,7 @@
         <script type="text/javascript" src="Style/JS/ChartSrc/chartloader.js"></script>
                 <link rel="stylesheet" href="Style/CSS/updateElectionsViewList.css"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Rezultate</title>
+        <title>Rezultate alegere</title>
     </head>
     <body>
         <div id="navigationMenu"></div>

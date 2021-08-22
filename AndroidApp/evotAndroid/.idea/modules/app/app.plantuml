@@ -1,0 +1,323 @@
+@startuml
+
+title __EVOTANDROID.APP's Class Diagram__\n
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.BuildConfig {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.CommonBackActionActivity {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.CommonBasicActivity {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.MainActivity {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.MainMenu {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    interface com.andrei.evot.MyCertificateManager {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.PastElectionVotesList {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.ReturnScreen {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.SelectElection {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.SelectedUpcomingElectionScreen {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.UpcomingElectionsScreen {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.ViewPastVote {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    class com.andrei.evot.VotingScreen {
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace adapters {
+      class com.andrei.evot.adapters.SelectedUpcomingElectionsAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace adapters {
+      class com.andrei.evot.adapters.UpcomingElectionsAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace adapters {
+      class com.andrei.evot.adapters.ViewPastCandidatesAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace adapters {
+      class com.andrei.evot.adapters.ViewingAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace adapters {
+      class com.andrei.evot.adapters.VotingAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace bw {
+      class com.andrei.evot.bw.GetElectionsBW {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace bw {
+      class com.andrei.evot.bw.LoginBW {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace bw {
+      class com.andrei.evot.bw.PastElectionVotesBW {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace bw {
+      class com.andrei.evot.bw.ReadCandidatesBW {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace bw {
+      class com.andrei.evot.bw.UpcomingElectionsBW {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace bw {
+      class com.andrei.evot.bw.VoteBW {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace callbacks {
+      interface com.andrei.evot.callbacks.CandidatesCallback {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace callbacks {
+      interface com.andrei.evot.callbacks.DisableCheckboxesCB {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace callbacks {
+      interface com.andrei.evot.callbacks.ElectionCallback {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace callbacks {
+      interface com.andrei.evot.callbacks.ElectionListCallback {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace callbacks {
+      interface com.andrei.evot.callbacks.ElectionModelCallback {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace callbacks {
+      interface com.andrei.evot.callbacks.VoteCallback {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace model {
+      class com.andrei.evot.model.CandidateModel {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace model {
+      class com.andrei.evot.model.ElectionModel {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace model {
+      class com.andrei.evot.model.Person {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace model {
+      class com.andrei.evot.model.User {
+      }
+    }
+  }
+  
+
+  namespace com.andrei.evot {
+    namespace model {
+      class com.andrei.evot.model.VoteModel {
+      }
+    }
+  }
+  
+
+  com.andrei.evot.CommonBackActionActivity -up-|> com.andrei.evot.CommonBasicActivity
+  com.andrei.evot.CommonBasicActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.andrei.evot.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.andrei.evot.MainMenu -up-|> com.andrei.evot.CommonBasicActivity
+  com.andrei.evot.PastElectionVotesList -up-|> com.andrei.evot.CommonBackActionActivity
+  com.andrei.evot.PastElectionVotesList o-- com.andrei.evot.adapters.ViewingAdapter : adapter
+  com.andrei.evot.ReturnScreen -up-|> com.andrei.evot.CommonBackActionActivity
+  com.andrei.evot.SelectElection -up-|> com.andrei.evot.CommonBackActionActivity
+  com.andrei.evot.SelectedUpcomingElectionScreen -up-|> com.andrei.evot.CommonBackActionActivity
+  com.andrei.evot.SelectedUpcomingElectionScreen o-- com.andrei.evot.adapters.SelectedUpcomingElectionsAdapter : adapter
+  com.andrei.evot.UpcomingElectionsScreen -up-|> com.andrei.evot.CommonBackActionActivity
+  com.andrei.evot.UpcomingElectionsScreen o-- com.andrei.evot.adapters.UpcomingElectionsAdapter : adapter
+  com.andrei.evot.ViewPastVote -up-|> com.andrei.evot.CommonBackActionActivity
+  com.andrei.evot.ViewPastVote o-- com.andrei.evot.adapters.ViewPastCandidatesAdapter : adapter
+  com.andrei.evot.ViewPastVote o-- com.andrei.evot.model.CandidateModel : votedCandidate
+  com.andrei.evot.ViewPastVote o-- com.andrei.evot.model.CandidateModel : winnerCandidate
+  com.andrei.evot.VotingScreen -up-|> com.andrei.evot.CommonBackActionActivity
+  com.andrei.evot.VotingScreen o-- com.andrei.evot.adapters.VotingAdapter : adapter
+  com.andrei.evot.adapters.SelectedUpcomingElectionsAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.andrei.evot.adapters.UpcomingElectionsAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.andrei.evot.adapters.UpcomingElectionsAdapter o-- com.andrei.evot.callbacks.ElectionModelCallback : electionModelCallback
+  com.andrei.evot.adapters.ViewPastCandidatesAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.andrei.evot.adapters.ViewPastCandidatesAdapter o-- com.andrei.evot.model.CandidateModel : votedCandidate
+  com.andrei.evot.adapters.ViewPastCandidatesAdapter o-- com.andrei.evot.model.CandidateModel : winnerCandidate
+  com.andrei.evot.adapters.ViewingAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.andrei.evot.adapters.ViewingAdapter o-- com.andrei.evot.callbacks.ElectionModelCallback : electionModelCallback
+  com.andrei.evot.adapters.VotingAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.andrei.evot.bw.GetElectionsBW .up.|> android.widget.AdapterView.OnItemSelectedListener
+  com.andrei.evot.bw.GetElectionsBW .up.|> com.andrei.evot.MyCertificateManager
+  com.andrei.evot.bw.GetElectionsBW -up-|> android.os.AsyncTask
+  com.andrei.evot.bw.GetElectionsBW o-- com.andrei.evot.callbacks.ElectionCallback : myCallback
+  com.andrei.evot.bw.LoginBW .up.|> android.widget.AdapterView.OnItemSelectedListener
+  com.andrei.evot.bw.LoginBW .up.|> com.andrei.evot.MyCertificateManager
+  com.andrei.evot.bw.LoginBW -up-|> android.os.AsyncTask
+  com.andrei.evot.bw.PastElectionVotesBW .up.|> android.widget.AdapterView.OnItemSelectedListener
+  com.andrei.evot.bw.PastElectionVotesBW .up.|> com.andrei.evot.MyCertificateManager
+  com.andrei.evot.bw.PastElectionVotesBW -up-|> android.os.AsyncTask
+  com.andrei.evot.bw.PastElectionVotesBW o-- com.andrei.evot.callbacks.ElectionListCallback : pastElectionsCallback
+  com.andrei.evot.bw.ReadCandidatesBW .up.|> com.andrei.evot.MyCertificateManager
+  com.andrei.evot.bw.ReadCandidatesBW -up-|> android.os.AsyncTask
+  com.andrei.evot.bw.ReadCandidatesBW o-- com.andrei.evot.callbacks.CandidatesCallback : candidatesCallback
+  com.andrei.evot.bw.ReadCandidatesBW o-- com.andrei.evot.model.ElectionModel : election
+  com.andrei.evot.bw.UpcomingElectionsBW .up.|> com.andrei.evot.MyCertificateManager
+  com.andrei.evot.bw.UpcomingElectionsBW -up-|> android.os.AsyncTask
+  com.andrei.evot.bw.UpcomingElectionsBW o-- com.andrei.evot.callbacks.ElectionListCallback : electionListCallback
+  com.andrei.evot.bw.VoteBW .up.|> com.andrei.evot.MyCertificateManager
+  com.andrei.evot.bw.VoteBW -up-|> android.os.AsyncTask
+  com.andrei.evot.bw.VoteBW o-- com.andrei.evot.model.VoteModel : vote
+  com.andrei.evot.bw.VoteBW o-- com.andrei.evot.callbacks.VoteCallback : voteCallback
+  com.andrei.evot.model.CandidateModel .up.|> java.io.Serializable
+  com.andrei.evot.model.ElectionModel .up.|> java.io.Serializable
+  com.andrei.evot.model.User .up.|> java.io.Serializable
+  com.andrei.evot.model.VoteModel .up.|> java.io.Serializable
+  com.andrei.evot.model.VoteModel o-- com.andrei.evot.model.CandidateModel : candidate
+  com.andrei.evot.model.VoteModel o-- com.andrei.evot.model.ElectionModel : election
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

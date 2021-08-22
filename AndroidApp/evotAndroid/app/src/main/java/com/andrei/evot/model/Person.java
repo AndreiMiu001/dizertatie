@@ -1,6 +1,8 @@
 package com.andrei.evot.model;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable  {
     private String cnp;
     private String password;
 

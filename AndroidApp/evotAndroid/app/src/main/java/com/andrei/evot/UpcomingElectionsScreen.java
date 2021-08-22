@@ -62,5 +62,5 @@ public class UpcomingElectionsScreen extends CommonBackActionActivity {
             }
         });
         bg.execute();
-            }
+    }
 }

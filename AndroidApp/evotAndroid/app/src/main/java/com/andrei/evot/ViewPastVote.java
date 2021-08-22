@@ -60,7 +60,7 @@ public class ViewPastVote extends CommonBackActionActivity {
             public void onResult(ArrayList<CandidateModel> candidateList) {
                 votedCandidate = getCandidateFromById(candidateList, election.getIdVotedCandidate());
                 winnerCandidate = getCandidateFromById(candidateList, election.getIdWinnerCandidate());
-                adapter = new ViewPastCandidatesAdapter(candidateList, winnerCandidate, votedCandidate);
+                adapter = new ViewPastCandidatesAdapter(candidateList, votedCandidate, winnerCandidate);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context.get()));

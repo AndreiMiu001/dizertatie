@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLLabProfile="http:///schemas/UMLLabProfile/NS/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/UMLLabProfile/NS/0 pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile">
+  <uml:Model xmi:id="_q6tKkANBEeyJvMkkGyJrNQ" name="evot">
+    <eAnnotations xmi:id="_rplCwANBEeyJvMkkGyJrNQ" source="http://ns.yatta.de/umllab">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_rplCwQNBEeyJvMkkGyJrNQ" source="codegen">
+        <details xmi:id="_rplp0ANBEeyJvMkkGyJrNQ" key="codegenDirectory" value="/evot/src/main/java"/>
+        <details xmi:id="_sXre4ANBEeyJvMkkGyJrNQ" key="AssociatedSourceCode" value="/evot/src/main/java/com/andrei/evot/ElectionResource.java;3699923716/1;/evot/src/main/java/com/andrei/evot/LoginResource.java;3236844619/1;/evot/src/main/java/com/andrei/evot/MyResource.java;2347253190/1;/evot/src/main/java/com/andrei/evot/ViewResource.java;375944167/1;/evot/src/main/java/common/AppUser.java;3755055665/1;/evot/src/main/java/common/Candidate.java;702619055/1;/evot/src/main/java/common/Election.java;2932498667/1;/evot/src/main/java/common/MyBoolean.java;3288777920/1;/evot/src/main/java/common/Vote.java;3843556360/1;/evot/src/main/java/dao/DAO.java;1507429241/1;/evot/src/main/java/dao/DaoElection.java;2724433466/1;/evot/src/main/java/dao/DaoLogin.java;2820158383/1;/evot/src/main/java/dao/DaoView.java;3474678540/1;"/>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_r559wANBEeyJvMkkGyJrNQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_r559wQNBEeyJvMkkGyJrNQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+    </elementImport>
+    <elementImport xmi:id="_r559wgNBEeyJvMkkGyJrNQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
+    </elementImport>
+    <elementImport xmi:id="_r559wwNBEeyJvMkkGyJrNQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+    </elementImport>
+    <elementImport xmi:id="_r559xANBEeyJvMkkGyJrNQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </elementImport>
+    <elementImport xmi:id="_r56k0ANBEeyJvMkkGyJrNQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </elementImport>
+    <elementImport xmi:id="_r56k0QNBEeyJvMkkGyJrNQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </elementImport>
+    <elementImport xmi:id="_r56k0gNBEeyJvMkkGyJrNQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+    </elementImport>
+    <elementImport xmi:id="_r56k0wNBEeyJvMkkGyJrNQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_r5cqwANBEeyJvMkkGyJrNQ" name="com">
+      <packagedElement xmi:type="uml:Package" xmi:id="_r5cqwQNBEeyJvMkkGyJrNQ" name="andrei">
+        <packagedElement xmi:type="uml:Package" xmi:id="_r5rUQANBEeyJvMkkGyJrNQ" name="evot">
+          <packagedElement xmi:type="uml:Class" xmi:id="_r6VbkANBEeyJvMkkGyJrNQ" name="ElectionResource">
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-dGkANBEeyJvMkkGyJrNQ" name="getElections" specification="_r95s8ANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r-dGkQNBEeyJvMkkGyJrNQ" name="user" type="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r-dGkgNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+              <language>java</language>
+              <body>DaoElection dao = new DaoElection();&#xD;
+		ArrayList&lt;Election> electionList = null;&#xD;
+		try {&#xD;
+			dao.connect();&#xD;
+			electionList = dao.getElections();&#xD;
+			removeVotedElections(electionList, user.get(0));&#xD;
+			dao.disconnect();&#xD;
+		} catch (ClassNotFoundException | SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return electionList;&#xD;
+	</body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-fi0ANBEeyJvMkkGyJrNQ" name="getCandidates" specification="_r98JMANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r-gJ4ANBEeyJvMkkGyJrNQ" name="election" type="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r-gJ4QNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+              <language>java</language>
+              <body>DaoElection dao = new DaoElection();&#xD;
+		ArrayList&lt;Candidate> candidateList = null;&#xD;
+		try {&#xD;
+			dao.connect();&#xD;
+			candidateList = dao.getCandidates(election.get(0));&#xD;
+			dao.disconnect();&#xD;
+		} catch (ClassNotFoundException | SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return candidateList;&#xD;
+	</body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-gJ4gNBEeyJvMkkGyJrNQ" name="voteCandidate" specification="_r9ZWoANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r-gJ4wNBEeyJvMkkGyJrNQ" name="vote" type="_r7GQkANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r-gJ5ANBEeyJvMkkGyJrNQ" type="_r7D0UANBEeyJvMkkGyJrNQ" direction="return"/>
+              <language>java</language>
+              <body>MyBoolean status = new MyBoolean(false);&#xD;
+		DaoElection dao = new DaoElection();&#xD;
+		try {&#xD;
+			dao.connect();&#xD;
+			status.state = true;&#xD;
+			dao.voteCandidate(vote);&#xD;
+			dao.disconnect();&#xD;
+		} catch (ClassNotFoundException | SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return status;&#xD;
+	</body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-gJ5QNBEeyJvMkkGyJrNQ" name="removeVotedElections" specification="_r9-ldANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r-gJ5gNBEeyJvMkkGyJrNQ" name="electionList" type="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r-gJ5wNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+              <language>java</language>
+              <body>DaoElection dao = new DaoElection();&#xD;
+		ArrayList&lt;Integer> idList = null;&#xD;
+		try {&#xD;
+			dao.connect();&#xD;
+			idList = dao.getVotedElections(user);&#xD;
+			dao.disconnect();&#xD;
+		} catch (ClassNotFoundException | SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}		&#xD;
+		if (idList != null) {&#xD;
+			for (int i = 0; i &lt; electionList.size(); i++) {&#xD;
+				if (idList.contains(electionList.get(i).getIdElection())) {&#xD;
+					electionList.remove(i);&#xD;
+					i--;&#xD;
+				}&#xD;
+			}&#xD;
+		}&#xD;
+	</body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_r9ZWoANBEeyJvMkkGyJrNQ" name="voteCandidate" method="_r-gJ4gNBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r9Z9sANBEeyJvMkkGyJrNQ" name="vote" type="_r7GQkANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r9Z9sQNBEeyJvMkkGyJrNQ" type="_r7D0UANBEeyJvMkkGyJrNQ" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_r95s8ANBEeyJvMkkGyJrNQ" name="getElections" method="_r-dGkANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r95s8QNBEeyJvMkkGyJrNQ" name="user" type="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r96UAQNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_r98JMANBEeyJvMkkGyJrNQ" name="getCandidates" method="_r-fi0ANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r98JMQNBEeyJvMkkGyJrNQ" name="election" type="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r99XUANBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_r9-ldANBEeyJvMkkGyJrNQ" name="removeVotedElections" visibility="private" method="_r-gJ5QNBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r9-ldQNBEeyJvMkkGyJrNQ" name="electionList" type="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r9-ldgNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_r6fMkANBEeyJvMkkGyJrNQ" name="LoginResource">
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-gw8ANBEeyJvMkkGyJrNQ" name="getAppUser" specification="_r6gasANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r-gw8QNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+              <language>java</language>
+              <body>DaoLogin dao = new DaoLogin();&#xD;
+ 	ArrayList&lt;AppUser> userList = null;&#xD;
+ 	try {&#xD;
+			dao.connect();&#xD;
+			userList = dao.getAllUsers();&#xD;
+	    	dao.disconnect();&#xD;
+		} catch (ClassNotFoundException | SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+ 	return userList;&#xD;
+ </body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-gw8gNBEeyJvMkkGyJrNQ" name="loginAPI" specification="_r9ePIANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r-gw8wNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r-gw9ANBEeyJvMkkGyJrNQ" type="_r7D0UANBEeyJvMkkGyJrNQ" direction="return"/>
+              <language>java</language>
+              <body>DaoLogin dao = new DaoLogin();&#xD;
+ 	boolean state = false;&#xD;
+ 	try {&#xD;
+			dao.connect();&#xD;
+			state = dao.login(user);&#xD;
+			dao.disconnect();&#xD;
+		} catch (ClassNotFoundException | SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			state = false;&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+ 	System.out.println(user);&#xD;
+ 	MyBoolean myState = new MyBoolean(state);&#xD;
+ 	return myState;&#xD;
+ </body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_r6gasANBEeyJvMkkGyJrNQ" name="getAppUser" method="_r-gw8ANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r9_zkQNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_r9ePIANBEeyJvMkkGyJrNQ" name="loginAPI" method="_r-gw8gNBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r9ePIQNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r9ePIgNBEeyJvMkkGyJrNQ" type="_r7D0UANBEeyJvMkkGyJrNQ" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_r6qLswNBEeyJvMkkGyJrNQ" name="ViewResource">
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-hYAgNBEeyJvMkkGyJrNQ" name="getElectionsWhereUserVoted" specification="_r-AaoANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r-hYAwNBEeyJvMkkGyJrNQ" name="user" type="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r-hYBANBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+              <language>java</language>
+              <body>DaoView dao = new DaoView();&#xD;
+		ArrayList&lt;Election> electionList = null;&#xD;
+		try {&#xD;
+			dao.connect();&#xD;
+			electionList = dao.viewElectionsWhereUserVoted(user.get(0));&#xD;
+			dao.disconnect();&#xD;
+		} catch (ClassNotFoundException | SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return electionList;&#xD;
+	</body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-hYBQNBEeyJvMkkGyJrNQ" name="getUpcomingElections" specification="_r-Dd8ANBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r-hYBgNBEeyJvMkkGyJrNQ" name="user" type="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r-hYBwNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+              <language>java</language>
+              <body>DaoView dao = new DaoView();&#xD;
+		ArrayList&lt;Election> electionList = null;&#xD;
+		try {&#xD;
+			dao.connect();&#xD;
+			electionList = dao.getUpcomingElections(user.get(0));&#xD;
+			dao.disconnect();&#xD;
+		} catch (ClassNotFoundException | SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return electionList;&#xD;
+	</body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_r-AaoANBEeyJvMkkGyJrNQ" name="getElectionsWhereUserVoted" method="_r-hYAgNBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r-AaoQNBEeyJvMkkGyJrNQ" name="user" type="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r-BowQNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_r-Dd8ANBEeyJvMkkGyJrNQ" name="getUpcomingElections" method="_r-hYBQNBEeyJvMkkGyJrNQ">
+              <ownedParameter xmi:id="_r-Dd8QNBEeyJvMkkGyJrNQ" name="user" type="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+              <ownedParameter xmi:id="_r-EsEANBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_r5g8MANBEeyJvMkkGyJrNQ" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_r5g8MQNBEeyJvMkkGyJrNQ" name="sql">
+        <packagedElement xmi:type="uml:Interface" xmi:id="_r9nZEANBEeyJvMkkGyJrNQ" name="Connection"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_r9oAIQNBEeyJvMkkGyJrNQ" name="DriverManager"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_r9p1UANBEeyJvMkkGyJrNQ" name="PreparedStatement"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_r9rDcQNBEeyJvMkkGyJrNQ" name="ResultSet"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_r5g8MgNBEeyJvMkkGyJrNQ" name="util">
+        <packagedElement xmi:type="uml:Class" xmi:id="_r9Ra0ANBEeyJvMkkGyJrNQ" name="ArrayList"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_r5_dUANBEeyJvMkkGyJrNQ" name="time">
+        <packagedElement xmi:type="uml:Package" xmi:id="_r5_dUQNBEeyJvMkkGyJrNQ" name="format">
+          <packagedElement xmi:type="uml:Class" xmi:id="_r9jusANBEeyJvMkkGyJrNQ" name="DateTimeFormatter"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_r9igkANBEeyJvMkkGyJrNQ" name="LocalDate"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_r-I9gANBEeyJvMkkGyJrNQ" name="lang"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_r5hjQANBEeyJvMkkGyJrNQ" name="common">
+      <packagedElement xmi:type="uml:Class" xmi:id="_r6vrQANBEeyJvMkkGyJrNQ" name="AppUser">
+        <ownedAttribute xmi:id="_r-Mn4ANBEeyJvMkkGyJrNQ" name="cnp">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_r-NO8ANBEeyJvMkkGyJrNQ" name="password">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-h_EANBEeyJvMkkGyJrNQ" name="AppUser" specification="_r6xgcANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-h_EQNBEeyJvMkkGyJrNQ" name="cnp">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_r-h_EgNBEeyJvMkkGyJrNQ" name="password">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_r-h_EwNBEeyJvMkkGyJrNQ" type="_r6vrQANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>super();&#xD;
+		this.cnp = cnp;&#xD;
+		this.password = password;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-imIANBEeyJvMkkGyJrNQ" name="AppUser" specification="_r6yukANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-imIQNBEeyJvMkkGyJrNQ" type="_r6vrQANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>cnp = &quot;&quot;;&#xD;
+		password = &quot;&quot;;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-imIgNBEeyJvMkkGyJrNQ" name="toString" specification="_r6yulANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-imIwNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return &quot;Name = &quot; + cnp + &quot;; Password = &quot; + password;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-imJANBEeyJvMkkGyJrNQ" name="checkValues" specification="_r6zVoQNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-imJQNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>if (cnp.isEmpty() || password.isEmpty()) {&#xD;
+			return false;&#xD;
+		}&#xD;
+		return true;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_r6xgcANBEeyJvMkkGyJrNQ" name="AppUser" method="_r-h_EANBEeyJvMkkGyJrNQ">
+          <eAnnotations xmi:id="_r6yHgANBEeyJvMkkGyJrNQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_r6yHgQNBEeyJvMkkGyJrNQ" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_r6xgcQNBEeyJvMkkGyJrNQ" name="cnp">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_r6xgcgNBEeyJvMkkGyJrNQ" name="password">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_r6yHggNBEeyJvMkkGyJrNQ" type="_r6vrQANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r6yukANBEeyJvMkkGyJrNQ" name="AppUser" method="_r-imIANBEeyJvMkkGyJrNQ">
+          <eAnnotations xmi:id="_r6yukQNBEeyJvMkkGyJrNQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_r6yukgNBEeyJvMkkGyJrNQ" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_r6yukwNBEeyJvMkkGyJrNQ" type="_r6vrQANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r6yulANBEeyJvMkkGyJrNQ" name="toString" method="_r-imIgNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r6zVoANBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r6zVoQNBEeyJvMkkGyJrNQ" name="checkValues" method="_r-imJANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r6zVogNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_r6z8sANBEeyJvMkkGyJrNQ" name="Candidate">
+        <ownedAttribute xmi:id="_r-N2AANBEeyJvMkkGyJrNQ" name="name">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_r-OdEQNBEeyJvMkkGyJrNQ" name="description">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_r-PEIQNBEeyJvMkkGyJrNQ" name="id">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_r61x4ANBEeyJvMkkGyJrNQ" name="Election">
+        <ownedAttribute xmi:id="_r-PrMQNBEeyJvMkkGyJrNQ" name="mElectionName" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_r-QSQQNBEeyJvMkkGyJrNQ" name="mIdElection" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_r-Q5UANBEeyJvMkkGyJrNQ" name="mIdVotedCandidate" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_r-Q5UgNBEeyJvMkkGyJrNQ" name="mIdWinnerCandidate" visibility="protected">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_r-RgYQNBEeyJvMkkGyJrNQ" name="mStartingDate" visibility="private" type="_r9igkANBEeyJvMkkGyJrNQ" association="_r-xPoANBEeyJvMkkGyJrNQ"/>
+        <ownedAttribute xmi:id="_r-SHcQNBEeyJvMkkGyJrNQ" name="mEndingDate" visibility="private" type="_r9igkANBEeyJvMkkGyJrNQ" association="_r-ydwANBEeyJvMkkGyJrNQ"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-jNMANBEeyJvMkkGyJrNQ" name="Election" specification="_r63AAANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-jNMQNBEeyJvMkkGyJrNQ" type="_r61x4ANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>mElectionName = &quot;&quot;;&#xD;
+ 	mIdElection = 0;&#xD;
+ 	mIdVotedCandidate = 0;&#xD;
+ 	mIdWinnerCandidate = 0;&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-jNMgNBEeyJvMkkGyJrNQ" name="getElectionName" specification="_r63nEANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-jNMwNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return mElectionName;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-jNNANBEeyJvMkkGyJrNQ" name="setElectionName" specification="_r64OIANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-jNNQNBEeyJvMkkGyJrNQ" name="mElectionName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>this.mElectionName = mElectionName;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-j0QANBEeyJvMkkGyJrNQ" name="getIdElection" specification="_r641MANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-j0QQNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return mIdElection;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-j0QgNBEeyJvMkkGyJrNQ" name="setIdElection" specification="_r65cQANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-j0QwNBEeyJvMkkGyJrNQ" name="mIdElection">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>this.mIdElection = mIdElection;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-j0RANBEeyJvMkkGyJrNQ" name="getIdVotedCandidate" specification="_r66DUANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-j0RQNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return mIdVotedCandidate;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-j0RgNBEeyJvMkkGyJrNQ" name="setIdVotedCandidate" specification="_r66qYANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-j0RwNBEeyJvMkkGyJrNQ" name="idVotedCandidate">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>this.mIdVotedCandidate = idVotedCandidate;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-kbUANBEeyJvMkkGyJrNQ" name="getIdWinnerCandidate" specification="_r67RcANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-kbUQNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>return mIdWinnerCandidate;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-kbUgNBEeyJvMkkGyJrNQ" name="setIdWinnerCandidate" specification="_r674gANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-kbUwNBEeyJvMkkGyJrNQ" name="mIdWinneCandidate">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>this.mIdWinnerCandidate = mIdWinneCandidate;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-lCYANBEeyJvMkkGyJrNQ" name="getStartingDate" specification="_r68fkANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-lCYQNBEeyJvMkkGyJrNQ" type="_r9igkANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>return mStartingDate;&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-lCYgNBEeyJvMkkGyJrNQ" name="setStartingDate" specification="_r-HIUANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-lCYwNBEeyJvMkkGyJrNQ" name="mStartingDate" type="_r9igkANBEeyJvMkkGyJrNQ"/>
+          <language>java</language>
+          <body>this.mStartingDate = mStartingDate;&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-lCZANBEeyJvMkkGyJrNQ" name="getEndingDate" specification="_r69GoANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-lCZQNBEeyJvMkkGyJrNQ" type="_r9igkANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>return mEndingDate;&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-lCZgNBEeyJvMkkGyJrNQ" name="setEndingDate" specification="_r-HvYANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-lCZwNBEeyJvMkkGyJrNQ" name="mEndingDate" type="_r9igkANBEeyJvMkkGyJrNQ"/>
+          <language>java</language>
+          <body>this.mEndingDate = mEndingDate;&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-lpcANBEeyJvMkkGyJrNQ" name="setStartingDate" specification="_r69tsANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-lpcQNBEeyJvMkkGyJrNQ" name="date">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>date = date.replace('/', '-');&#xD;
+     DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;);&#xD;
+     mStartingDate = LocalDate.parse(date, formatter);&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-lpcgNBEeyJvMkkGyJrNQ" name="setEndingDate" specification="_r6-UwANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-lpcwNBEeyJvMkkGyJrNQ" name="date">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>date = date.replace('/', '-');&#xD;
+     DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;);&#xD;
+     mEndingDate = LocalDate.parse(date, formatter);&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_r63AAANBEeyJvMkkGyJrNQ" name="Election" method="_r-jNMANBEeyJvMkkGyJrNQ">
+          <eAnnotations xmi:id="_r63AAQNBEeyJvMkkGyJrNQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_r63AAgNBEeyJvMkkGyJrNQ" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_r63AAwNBEeyJvMkkGyJrNQ" type="_r61x4ANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r63nEANBEeyJvMkkGyJrNQ" name="getElectionName" method="_r-jNMgNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r63nEQNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r64OIANBEeyJvMkkGyJrNQ" name="setElectionName" method="_r-jNNANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r64OIQNBEeyJvMkkGyJrNQ" name="mElectionName">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r641MANBEeyJvMkkGyJrNQ" name="getIdElection" method="_r-j0QANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r641MQNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r65cQANBEeyJvMkkGyJrNQ" name="setIdElection" method="_r-j0QgNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r65cQQNBEeyJvMkkGyJrNQ" name="mIdElection">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r66DUANBEeyJvMkkGyJrNQ" name="getIdVotedCandidate" method="_r-j0RANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r66DUQNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r66qYANBEeyJvMkkGyJrNQ" name="setIdVotedCandidate" method="_r-j0RgNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r66qYQNBEeyJvMkkGyJrNQ" name="idVotedCandidate">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r67RcANBEeyJvMkkGyJrNQ" name="getIdWinnerCandidate" method="_r-kbUANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r67RcQNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r674gANBEeyJvMkkGyJrNQ" name="setIdWinnerCandidate" method="_r-kbUgNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r674gQNBEeyJvMkkGyJrNQ" name="mIdWinneCandidate">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r68fkANBEeyJvMkkGyJrNQ" name="getStartingDate" method="_r-lCYANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-GhQANBEeyJvMkkGyJrNQ" type="_r9igkANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r69GoANBEeyJvMkkGyJrNQ" name="getEndingDate" method="_r-lCZANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-HIUgNBEeyJvMkkGyJrNQ" type="_r9igkANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r69tsANBEeyJvMkkGyJrNQ" name="setStartingDate" method="_r-lpcANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r69tsQNBEeyJvMkkGyJrNQ" name="date">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r6-UwANBEeyJvMkkGyJrNQ" name="setEndingDate" method="_r-lpcgNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r6-70ANBEeyJvMkkGyJrNQ" name="date">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r-HIUANBEeyJvMkkGyJrNQ" name="setStartingDate" method="_r-lCYgNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-HIUQNBEeyJvMkkGyJrNQ" name="mStartingDate" type="_r9igkANBEeyJvMkkGyJrNQ"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r-HvYANBEeyJvMkkGyJrNQ" name="setEndingDate" method="_r-lCZgNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-HvYQNBEeyJvMkkGyJrNQ" name="mEndingDate" type="_r9igkANBEeyJvMkkGyJrNQ"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_r7D0UANBEeyJvMkkGyJrNQ" name="MyBoolean">
+        <ownedAttribute xmi:id="_r-SugANBEeyJvMkkGyJrNQ" name="state">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-mQgANBEeyJvMkkGyJrNQ" name="MyBoolean" specification="_r7FCcANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-mQgQNBEeyJvMkkGyJrNQ" name="b">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_r-mQggNBEeyJvMkkGyJrNQ" type="_r7D0UANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>state = b;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_r7FCcANBEeyJvMkkGyJrNQ" name="MyBoolean" method="_r-mQgANBEeyJvMkkGyJrNQ">
+          <eAnnotations xmi:id="_r7FpgQNBEeyJvMkkGyJrNQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <details xmi:id="_r7FpggNBEeyJvMkkGyJrNQ" key="create"/>
+          </eAnnotations>
+          <ownedParameter xmi:id="_r7FpgANBEeyJvMkkGyJrNQ" name="b">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_r7FpgwNBEeyJvMkkGyJrNQ" type="_r7D0UANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_r7GQkANBEeyJvMkkGyJrNQ" name="Vote">
+        <ownedAttribute xmi:id="_r-T8oANBEeyJvMkkGyJrNQ" name="election" type="_r61x4ANBEeyJvMkkGyJrNQ" association="_r-zE0QNBEeyJvMkkGyJrNQ"/>
+        <ownedAttribute xmi:id="_r-T8ogNBEeyJvMkkGyJrNQ" name="candidate" type="_r6z8sANBEeyJvMkkGyJrNQ" association="_r-zr4QNBEeyJvMkkGyJrNQ"/>
+        <ownedAttribute xmi:id="_r-UjsQNBEeyJvMkkGyJrNQ" name="cnp">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_r-xPoANBEeyJvMkkGyJrNQ" name="" memberEnd="_r-xPoQNBEeyJvMkkGyJrNQ _r-RgYQNBEeyJvMkkGyJrNQ">
+        <ownedEnd xmi:id="_r-xPoQNBEeyJvMkkGyJrNQ" name="" type="_r61x4ANBEeyJvMkkGyJrNQ" association="_r-xPoANBEeyJvMkkGyJrNQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_r-ydwANBEeyJvMkkGyJrNQ" name="" memberEnd="_r-ydwQNBEeyJvMkkGyJrNQ _r-SHcQNBEeyJvMkkGyJrNQ">
+        <ownedEnd xmi:id="_r-ydwQNBEeyJvMkkGyJrNQ" name="" type="_r61x4ANBEeyJvMkkGyJrNQ" association="_r-ydwANBEeyJvMkkGyJrNQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_r-zE0QNBEeyJvMkkGyJrNQ" name="" memberEnd="_r-zE0gNBEeyJvMkkGyJrNQ _r-T8oANBEeyJvMkkGyJrNQ">
+        <ownedEnd xmi:id="_r-zE0gNBEeyJvMkkGyJrNQ" name="" type="_r7GQkANBEeyJvMkkGyJrNQ" association="_r-zE0QNBEeyJvMkkGyJrNQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_r-zr4QNBEeyJvMkkGyJrNQ" name="" memberEnd="_r-zr4gNBEeyJvMkkGyJrNQ _r-T8ogNBEeyJvMkkGyJrNQ">
+        <ownedEnd xmi:id="_r-zr4gNBEeyJvMkkGyJrNQ" name="" type="_r7GQkANBEeyJvMkkGyJrNQ" association="_r-zr4QNBEeyJvMkkGyJrNQ"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_r5iKUANBEeyJvMkkGyJrNQ" name="dao">
+      <packagedElement xmi:type="uml:Class" xmi:id="_r7Is0ANBEeyJvMkkGyJrNQ" name="DAO">
+        <ownedAttribute xmi:id="_r-VKwANBEeyJvMkkGyJrNQ" name="mConnectionDatabaseName" visibility="protected" isLeaf="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_r-VKwQNBEeyJvMkkGyJrNQ" value="&quot;jdbc:mysql://127.0.0.1:3306/evot2&quot;"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_r-Vx0ANBEeyJvMkkGyJrNQ" name="mConnectionUserName" visibility="protected" isLeaf="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_r-Vx0QNBEeyJvMkkGyJrNQ" value="&quot;root&quot;"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_r-WY4ANBEeyJvMkkGyJrNQ" name="mConnectionPassword" visibility="protected" isLeaf="true" isReadOnly="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_r-WY4QNBEeyJvMkkGyJrNQ" value="&quot;admin&quot;"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_r-WY4wNBEeyJvMkkGyJrNQ" name="mConnection" visibility="protected" type="_r9nZEANBEeyJvMkkGyJrNQ" association="_r-0S8QNBEeyJvMkkGyJrNQ">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_r-W_8ANBEeyJvMkkGyJrNQ" value="null"/>
+        </ownedAttribute>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-mQgwNBEeyJvMkkGyJrNQ" name="connect" specification="_r7J68ANBEeyJvMkkGyJrNQ">
+          <language>java</language>
+          <body>if (mConnection == null) {&#xD;
+         Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);&#xD;
+         mConnection = DriverManager.getConnection(mConnectionDatabaseName,&#xD;
+                 mConnectionUserName, mConnectionPassword);&#xD;
+         if (mConnection != null) {&#xD;
+             mConnection.setAutoCommit(false);&#xD;
+         }&#xD;
+     }&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-m3kANBEeyJvMkkGyJrNQ" name="disconnect" specification="_r7LJEANBEeyJvMkkGyJrNQ">
+          <language>java</language>
+          <body>if (mConnection != null) {&#xD;
+         mConnection.commit();&#xD;
+         mConnection.close();&#xD;
+         mConnection = null;&#xD;
+     }&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-m3kQNBEeyJvMkkGyJrNQ" name="disconnect" specification="_r7LwIANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-m3kgNBEeyJvMkkGyJrNQ" name="errState">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>if (mConnection != null &amp;&amp; errState == true) {&#xD;
+         mConnection.commit();&#xD;
+         mConnection.close();&#xD;
+     } else if (errState == false) {&#xD;
+         mConnection.rollback();&#xD;
+         mConnection.close();&#xD;
+     }&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_r7J68ANBEeyJvMkkGyJrNQ" name="connect" method="_r-mQgwNBEeyJvMkkGyJrNQ"/>
+        <ownedOperation xmi:id="_r7LJEANBEeyJvMkkGyJrNQ" name="disconnect" method="_r-m3kANBEeyJvMkkGyJrNQ"/>
+        <ownedOperation xmi:id="_r7LwIANBEeyJvMkkGyJrNQ" name="disconnect" method="_r-m3kQNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r7MXMANBEeyJvMkkGyJrNQ" name="errState">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_r7OzcANBEeyJvMkkGyJrNQ" name="DaoElection">
+        <generalization xmi:id="_r9vU4QNBEeyJvMkkGyJrNQ" general="_r7Is0ANBEeyJvMkkGyJrNQ"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-m3kwNBEeyJvMkkGyJrNQ" name="getElections" specification="_r7PagANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-m3lANBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>ArrayList&lt;Election> electionsList = new ArrayList&lt;>();&#xD;
+		String query = &quot;SELECT * FROM `elections`&quot;;&#xD;
+		PreparedStatement ps;&#xD;
+		try {&#xD;
+			ps = mConnection.prepareStatement(query);&#xD;
+			ResultSet rs = ps.executeQuery();&#xD;
+			while (rs.next()) {&#xD;
+				Election elTemp = new Election();&#xD;
+				elTemp.setElectionName(rs.getString(&quot;nameElections&quot;));&#xD;
+				elTemp.setIdElection(rs.getInt(&quot;idElections&quot;));&#xD;
+				electionsList.add(elTemp);&#xD;
+			}&#xD;
+		} catch (SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return electionsList;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-neoANBEeyJvMkkGyJrNQ" name="getVotedElections" specification="_r9sRkANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-neoQNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r-neogNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>String query = &quot;SELECT `idElections` FROM `votes` WHERE `cnp`=?&quot;;&#xD;
+		ArrayList&lt;Integer> idList = new ArrayList&lt;>();&#xD;
+		PreparedStatement ps;&#xD;
+		try {&#xD;
+			ps = mConnection.prepareStatement(query);&#xD;
+			ps.setString(1, user.getCnp());&#xD;
+			ResultSet rs = ps.executeQuery();&#xD;
+			while (rs.next()) {&#xD;
+				idList.add(rs.getInt(&quot;idElections&quot;));&#xD;
+			}&#xD;
+		} catch (SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return idList;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-neowNBEeyJvMkkGyJrNQ" name="getCandidates" specification="_r9tfsANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-nepANBEeyJvMkkGyJrNQ" name="election" type="_r61x4ANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r-nepQNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>ArrayList&lt;Candidate> candidateList = new ArrayList&lt;>();&#xD;
+		String query = &quot;SELECT * FROM `candidates` WHERE `idElections`=?&quot;;&#xD;
+		PreparedStatement ps;&#xD;
+		try {&#xD;
+			ps = mConnection.prepareStatement(query);&#xD;
+			ps.setInt(1, election.getIdElection());&#xD;
+			ResultSet rs = ps.executeQuery();&#xD;
+			while (rs.next()) {&#xD;
+				Candidate tempCandidate = new Candidate();&#xD;
+				tempCandidate.name = rs.getString(&quot;nameCandidates&quot;);&#xD;
+				tempCandidate.description = rs.getString(&quot;description&quot;);&#xD;
+				tempCandidate.id = rs.getInt(&quot;idCandidates&quot;);&#xD;
+				candidateList.add(tempCandidate);&#xD;
+			}&#xD;
+		} catch (SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return candidateList;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-oFsANBEeyJvMkkGyJrNQ" name="voteCandidate" specification="_r9ut0QNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-oFsQNBEeyJvMkkGyJrNQ" name="vote" type="_r7GQkANBEeyJvMkkGyJrNQ"/>
+          <language>java</language>
+          <body>String query = &quot;INSERT INTO `votes` (`CNP`, `idElections`, `idCandidates`) VALUES (?, ?, ?);&quot;;&#xD;
+		PreparedStatement ps;&#xD;
+		try {&#xD;
+			ps = mConnection.prepareStatement(query);&#xD;
+			ps.setString(1, vote.cnp);&#xD;
+			ps.setInt(2, vote.election.getIdElection());&#xD;
+			ps.setInt(3, vote.candidate.id);&#xD;
+			int state = ps.executeUpdate();&#xD;
+			if (state != 0) {&#xD;
+				System.out.print(&quot;vote succesful&quot;);&#xD;
+			} else {&#xD;
+				System.out.print(&quot;vote NOT succesful&quot;);&#xD;
+&#xD;
+			}&#xD;
+		} catch (SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_r7PagANBEeyJvMkkGyJrNQ" name="getElections" method="_r-m3kwNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-KysANBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r9sRkANBEeyJvMkkGyJrNQ" name="getVotedElections" method="_r-neoANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r9sRkQNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r-KysQNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r9tfsANBEeyJvMkkGyJrNQ" name="getCandidates" method="_r-neowNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r9tfsQNBEeyJvMkkGyJrNQ" name="election" type="_r61x4ANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r-KysgNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r9ut0QNBEeyJvMkkGyJrNQ" name="voteCandidate" method="_r-oFsANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r9vU4ANBEeyJvMkkGyJrNQ" name="vote" type="_r7GQkANBEeyJvMkkGyJrNQ"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_r7UTAANBEeyJvMkkGyJrNQ" name="DaoLogin">
+        <generalization xmi:id="_r9xxIANBEeyJvMkkGyJrNQ" general="_r7Is0ANBEeyJvMkkGyJrNQ"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-oFsgNBEeyJvMkkGyJrNQ" name="getAllUsers" specification="_r7U6EANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-oFswNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>String query = &quot;SELECT * FROM `persons`&quot;;&#xD;
+     ArrayList&lt;AppUser> userList = new ArrayList&lt;>();&#xD;
+ 	try {&#xD;
+         PreparedStatement ps = mConnection.prepareStatement(query);&#xD;
+         ResultSet rs = ps.executeQuery();&#xD;
+         while (rs.next()) {&#xD;
+         	AppUser tempUser =  new AppUser();&#xD;
+         	tempUser.setCnp(rs.getString(&quot;CNP&quot;));&#xD;
+         	tempUser.setPassword(rs.getString(&quot;password&quot;));&#xD;
+         	userList.add(tempUser);&#xD;
+         }&#xD;
+     } catch (SQLException ex) {&#xD;
+         ex.printStackTrace();&#xD;
+     }&#xD;
+ 	return userList;&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-oFtANBEeyJvMkkGyJrNQ" name="login" specification="_r9xKEANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-oFtQNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r-oFtgNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>String query = &quot;SELECT * FROM `persons` WHERE `CNP`=? AND `password`=?&quot;;&#xD;
+ 	boolean state = false;&#xD;
+ 	try {&#xD;
+ 		PreparedStatement ps = mConnection.prepareStatement(query);&#xD;
+ 		ps.setString(1, user.getCnp());&#xD;
+ 		ps.setString(2, user.getPassword());&#xD;
+         ResultSet rs = ps.executeQuery();&#xD;
+         rs.last();&#xD;
+         if (rs.getRow() != 1) {&#xD;
+         	return state;&#xD;
+         } else {&#xD;
+         	rs.beforeFirst();&#xD;
+         }&#xD;
+         while (rs.next()) {&#xD;
+         	AppUser tempUser =  new AppUser();&#xD;
+         	tempUser.setCnp(rs.getString(&quot;cnp&quot;));&#xD;
+         	tempUser.setPassword(rs.getString(&quot;password&quot;));&#xD;
+         	state = tempUser.checkValues();&#xD;
+         }&#xD;
+ 	}   catch (SQLException ex) {&#xD;
+         ex.printStackTrace();&#xD;
+     }&#xD;
+ 	return state;&#xD;
+ </body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_r7U6EANBEeyJvMkkGyJrNQ" name="getAllUsers" method="_r-oFsgNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-KyswNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r9xKEANBEeyJvMkkGyJrNQ" name="login" method="_r-oFtANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r9xKEQNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r9xKEgNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_r7XWUANBEeyJvMkkGyJrNQ" name="DaoView">
+        <generalization xmi:id="_r92CkANBEeyJvMkkGyJrNQ" general="_r7Is0ANBEeyJvMkkGyJrNQ"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-oFtwNBEeyJvMkkGyJrNQ" name="viewElectionsWhereUserVoted" specification="_r9yYMANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-oFuANBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r-oFuQNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>String query = &quot;SELECT `idElections`, `idCandidates` FROM `votes` WHERE `CNP`=?&quot;;&#xD;
+		ArrayList&lt;Election> electionList = new ArrayList&lt;>();&#xD;
+		PreparedStatement ps;&#xD;
+		try {&#xD;
+			ps = mConnection.prepareStatement(query);&#xD;
+			ps.setString(1, user.getCnp());&#xD;
+			ResultSet rs = ps.executeQuery();&#xD;
+			while (rs.next()) {&#xD;
+				Election election = new Election();&#xD;
+				election.setIdVotedCandidate(rs.getInt(&quot;idCandidates&quot;));&#xD;
+				int id = rs.getInt(&quot;idElections&quot;);&#xD;
+				election.setIdWinnerCandidate(getIdWinner(id));&#xD;
+				electionList.add(getSingleElection(id, election));&#xD;
+			}&#xD;
+		} catch (SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return electionList;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-oswANBEeyJvMkkGyJrNQ" name="getUpcomingElections" specification="_r90NYANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-oswQNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r-oswgNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>String query = &quot;SELECT * FROM `elections` WHERE current_date() &lt; startDate&quot;;&#xD;
+		ArrayList&lt;Election> electionList = new ArrayList&lt;>();&#xD;
+		PreparedStatement ps;&#xD;
+		try {&#xD;
+			ps = mConnection.prepareStatement(query);&#xD;
+			ResultSet rs = ps.executeQuery();&#xD;
+			while (rs.next()) {&#xD;
+				Election election = new Election();&#xD;
+				election.setElectionName(rs.getString(&quot;nameElections&quot;));&#xD;
+				election.setIdElection(rs.getInt(&quot;idElections&quot;));&#xD;
+				election.setStartingDate(rs.getDate(&quot;startDate&quot;).toString());&#xD;
+				election.setEndingDate(rs.getDate(&quot;endDate&quot;).toString());&#xD;
+				electionList.add(election);&#xD;
+			}&#xD;
+		} catch (SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return electionList;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-oswwNBEeyJvMkkGyJrNQ" name="getSingleElection" specification="_r91bgANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-osxANBEeyJvMkkGyJrNQ" name="id">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_r-osxQNBEeyJvMkkGyJrNQ" name="election" type="_r61x4ANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r-osxgNBEeyJvMkkGyJrNQ" type="_r61x4ANBEeyJvMkkGyJrNQ" direction="return"/>
+          <language>java</language>
+          <body>String query = &quot;SELECT * FROM `elections` WHERE `idElections`=?&quot;;&#xD;
+		PreparedStatement ps;&#xD;
+		try {&#xD;
+			ps = mConnection.prepareStatement(query);&#xD;
+			ps.setInt(1, id);&#xD;
+			ResultSet rs = ps.executeQuery();&#xD;
+			while (rs.next()) {&#xD;
+				election.setIdElection(id);&#xD;
+				election.setElectionName(rs.getString(&quot;nameElections&quot;));&#xD;
+				election.setStartingDate(rs.getDate(&quot;startDate&quot;).toString());&#xD;
+				election.setEndingDate(rs.getDate(&quot;endDate&quot;).toString());&#xD;
+			}&#xD;
+		} catch (SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return election;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_r-osxwNBEeyJvMkkGyJrNQ" name="getIdWinner" specification="_r7YkcANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r-osyANBEeyJvMkkGyJrNQ" name="idElection">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_r-osyQNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <language>java</language>
+          <body>String query = &quot;SELECT `idCandidates`,COUNT(`CNP`) AS `count` FROM `votes` WHERE `idElections`=?&quot;&#xD;
+				+ &quot; GROUP BY `idCandidates` ORDER BY `count` DESC LIMIT 1&quot;;&#xD;
+		PreparedStatement ps;&#xD;
+		int idWinnerCandidate = -1;&#xD;
+		try {&#xD;
+			ps = mConnection.prepareStatement(query);&#xD;
+			ps.setInt(1, idElection);&#xD;
+			ResultSet rs = ps.executeQuery();&#xD;
+			if (rs.next()) {&#xD;
+				idWinnerCandidate = rs.getInt(&quot;idCandidates&quot;);&#xD;
+			}&#xD;
+		} catch (SQLException e) {&#xD;
+			// TODO Auto-generated catch block&#xD;
+			e.printStackTrace();&#xD;
+		}&#xD;
+		return idWinnerCandidate;&#xD;
+	</body>
+        </ownedBehavior>
+        <ownedOperation xmi:id="_r7YkcANBEeyJvMkkGyJrNQ" name="getIdWinner" visibility="private" method="_r-osxwNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r7YkcQNBEeyJvMkkGyJrNQ" name="idElection">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_r7YkcgNBEeyJvMkkGyJrNQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r9yYMANBEeyJvMkkGyJrNQ" name="viewElectionsWhereUserVoted" method="_r-oFtwNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r9yYMQNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r-LZwANBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r90NYANBEeyJvMkkGyJrNQ" name="getUpcomingElections" method="_r-oswANBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r90NYQNBEeyJvMkkGyJrNQ" name="user" type="_r6vrQANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r-LZwQNBEeyJvMkkGyJrNQ" type="_r9Ra0ANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_r91bgANBEeyJvMkkGyJrNQ" name="getSingleElection" visibility="private" method="_r-oswwNBEeyJvMkkGyJrNQ">
+          <ownedParameter xmi:id="_r91bgQNBEeyJvMkkGyJrNQ" name="id">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_r91bggNBEeyJvMkkGyJrNQ" name="election" type="_r61x4ANBEeyJvMkkGyJrNQ"/>
+          <ownedParameter xmi:id="_r91bgwNBEeyJvMkkGyJrNQ" type="_r61x4ANBEeyJvMkkGyJrNQ" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_r-0S8QNBEeyJvMkkGyJrNQ" name="" memberEnd="_r-0S8gNBEeyJvMkkGyJrNQ _r-WY4wNBEeyJvMkkGyJrNQ">
+        <ownedEnd xmi:id="_r-0S8gNBEeyJvMkkGyJrNQ" name="" type="_r7Is0ANBEeyJvMkkGyJrNQ" association="_r-0S8QNBEeyJvMkkGyJrNQ"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_r5iKUQNBEeyJvMkkGyJrNQ" name="jakarta">
+      <packagedElement xmi:type="uml:Package" xmi:id="_r5ixYANBEeyJvMkkGyJrNQ" name="ws">
+        <packagedElement xmi:type="uml:Package" xmi:id="_r5ixYQNBEeyJvMkkGyJrNQ" name="rs">
+          <packagedElement xmi:type="uml:Package" xmi:id="_r5jYcANBEeyJvMkkGyJrNQ" name="core">
+            <packagedElement xmi:type="uml:Class" xmi:id="_r9YIgANBEeyJvMkkGyJrNQ" name="MediaType"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_r9So8ANBEeyJvMkkGyJrNQ" name="Consumes"/>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_r9T3EQNBEeyJvMkkGyJrNQ" name="GET"/>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_r9VFMANBEeyJvMkkGyJrNQ" name="POST"/>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_r9VsQQNBEeyJvMkkGyJrNQ" name="Path"/>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_r9W6YQNBEeyJvMkkGyJrNQ" name="Produces"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_rpoGEANBEeyJvMkkGyJrNQ">
+      <eAnnotations xmi:id="_rpuzwANBEeyJvMkkGyJrNQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLLabProfile:TargetLanguage xmi:id="_rpzsQANBEeyJvMkkGyJrNQ" base_Package="_q6tKkANBEeyJvMkkGyJrNQ">
+    <languageName>java</languageName>
+  </UMLLabProfile:TargetLanguage>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r6X30ANBEeyJvMkkGyJrNQ" base_Element="_r6VbkANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Annotations xmi:id="_r6ZtAANBEeyJvMkkGyJrNQ" base_Element="_r6VbkANBEeyJvMkkGyJrNQ">
+    <annotations xmi:id="_r6aUEANBEeyJvMkkGyJrNQ" name="Path">
+      <annotationParameters xmi:id="_r6aUEQNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-p64ANBEeyJvMkkGyJrNQ" value="&quot;elections&quot;"/>
+      </annotationParameters>
+    </annotations>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r6fzoANBEeyJvMkkGyJrNQ" base_Element="_r6fMkANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r6ho0ANBEeyJvMkkGyJrNQ" genericsValue="AppUser" base_Element="_r6gasANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Annotations xmi:id="_r6i28ANBEeyJvMkkGyJrNQ" base_Element="_r6gasANBEeyJvMkkGyJrNQ">
+    <annotations xmi:id="_r6i28QNBEeyJvMkkGyJrNQ" name="GET"/>
+    <annotations xmi:id="_r6i28gNBEeyJvMkkGyJrNQ" name="Path">
+      <annotationParameters xmi:id="_r6i28wNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh9wNBEeyJvMkkGyJrNQ" value="&quot;users&quot;"/>
+      </annotationParameters>
+    </annotations>
+    <annotations xmi:id="_r6jeAANBEeyJvMkkGyJrNQ" name="Produces">
+      <annotationParameters xmi:id="_r6jeAQNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh-ANBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Annotations xmi:id="_r6ksIANBEeyJvMkkGyJrNQ" base_Element="_r6fMkANBEeyJvMkkGyJrNQ">
+    <annotations xmi:id="_r6ksIQNBEeyJvMkkGyJrNQ" name="Path">
+      <annotationParameters xmi:id="_r6ksIgNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh9gNBEeyJvMkkGyJrNQ" value="&quot;login&quot;"/>
+      </annotationParameters>
+    </annotations>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r6rZ0ANBEeyJvMkkGyJrNQ" base_Element="_r6qLswNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Annotations xmi:id="_r6sn8ANBEeyJvMkkGyJrNQ" base_Element="_r6qLswNBEeyJvMkkGyJrNQ">
+    <annotations xmi:id="_r6sn8QNBEeyJvMkkGyJrNQ" name="Path">
+      <annotationParameters xmi:id="_r6sn8gNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-rJAgNBEeyJvMkkGyJrNQ" value="&quot;view&quot;"/>
+      </annotationParameters>
+    </annotations>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Generics xmi:id="_r7QooANBEeyJvMkkGyJrNQ" genericsValue="Election" base_Element="_r7PagANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r7WIMANBEeyJvMkkGyJrNQ" genericsValue="AppUser" base_Element="_r7U6EANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9SB4ANBEeyJvMkkGyJrNQ" base_Element="_r9Ra0ANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9T3EANBEeyJvMkkGyJrNQ" base_Element="_r9So8ANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9UeIANBEeyJvMkkGyJrNQ" base_Element="_r9T3EQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9VsQANBEeyJvMkkGyJrNQ" base_Element="_r9VFMANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9W6YANBEeyJvMkkGyJrNQ" base_Element="_r9VsQQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9XhcANBEeyJvMkkGyJrNQ" base_Element="_r9W6YQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9YvkANBEeyJvMkkGyJrNQ" base_Element="_r9YIgANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Annotations xmi:id="_r9akwANBEeyJvMkkGyJrNQ" base_Element="_r9ZWoANBEeyJvMkkGyJrNQ">
+    <annotations xmi:id="_r9akwQNBEeyJvMkkGyJrNQ" name="POST"/>
+    <annotations xmi:id="_r9akwgNBEeyJvMkkGyJrNQ" name="Path">
+      <annotationParameters xmi:id="_r9bL0ANBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh9ANBEeyJvMkkGyJrNQ" value="&quot;vote&quot;"/>
+      </annotationParameters>
+    </annotations>
+    <annotations xmi:id="_r9bL0QNBEeyJvMkkGyJrNQ" name="Consumes">
+      <annotationParameters xmi:id="_r9bL0gNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh9QNBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Annotations xmi:id="_r9e2MANBEeyJvMkkGyJrNQ" base_Element="_r9ePIANBEeyJvMkkGyJrNQ">
+    <annotations xmi:id="_r9e2MQNBEeyJvMkkGyJrNQ" name="POST"/>
+    <annotations xmi:id="_r9e2MgNBEeyJvMkkGyJrNQ" name="Consumes">
+      <annotationParameters xmi:id="_r9fdQANBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh-QNBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+    <annotations xmi:id="_r9fdQQNBEeyJvMkkGyJrNQ" name="Produces">
+      <annotationParameters xmi:id="_r9fdQgNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh-gNBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Reference xmi:id="_r9jHoANBEeyJvMkkGyJrNQ" base_Element="_r9igkANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9kVwANBEeyJvMkkGyJrNQ" base_Element="_r9jusANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9oAIANBEeyJvMkkGyJrNQ" base_Element="_r9nZEANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9onMANBEeyJvMkkGyJrNQ" base_Element="_r9oAIQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9rDcANBEeyJvMkkGyJrNQ" base_Element="_r9p1UANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r9rqgANBEeyJvMkkGyJrNQ" base_Element="_r9rDcQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r9s4oANBEeyJvMkkGyJrNQ" genericsValue="Integer" base_Element="_r9sRkANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r9ut0ANBEeyJvMkkGyJrNQ" genericsValue="Candidate" base_Element="_r9tfsANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r9zmUANBEeyJvMkkGyJrNQ" genericsValue="Election" base_Element="_r9yYMANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r900cANBEeyJvMkkGyJrNQ" genericsValue="Election" base_Element="_r90NYANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r96UAANBEeyJvMkkGyJrNQ" genericsValue="Election" base_Element="_r95s8ANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r967EANBEeyJvMkkGyJrNQ" genericsValue="AppUser" base_Element="_r95s8QNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Annotations xmi:id="_r97iIANBEeyJvMkkGyJrNQ" base_Element="_r95s8ANBEeyJvMkkGyJrNQ">
+    <annotations xmi:id="_r97iIQNBEeyJvMkkGyJrNQ" name="POST"/>
+    <annotations xmi:id="_r97iIgNBEeyJvMkkGyJrNQ" name="Produces">
+      <annotationParameters xmi:id="_r97iIwNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh8ANBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Generics xmi:id="_r98wQANBEeyJvMkkGyJrNQ" genericsValue="Candidate" base_Element="_r98JMANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r99-YANBEeyJvMkkGyJrNQ" genericsValue="Election" base_Element="_r98JMQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Annotations xmi:id="_r99-YQNBEeyJvMkkGyJrNQ" base_Element="_r98JMANBEeyJvMkkGyJrNQ">
+    <annotations xmi:id="_r99-YgNBEeyJvMkkGyJrNQ" name="POST"/>
+    <annotations xmi:id="_r99-YwNBEeyJvMkkGyJrNQ" name="Path">
+      <annotationParameters xmi:id="_r99-ZANBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh8QNBEeyJvMkkGyJrNQ" value="&quot;candidates&quot;"/>
+      </annotationParameters>
+    </annotations>
+    <annotations xmi:id="_r9-lcANBEeyJvMkkGyJrNQ" name="Produces">
+      <annotationParameters xmi:id="_r9-lcQNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh8gNBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+    <annotations xmi:id="_r9-lcgNBEeyJvMkkGyJrNQ" name="Consumes">
+      <annotationParameters xmi:id="_r9-lcwNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-qh8wNBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:StyledElement xmi:id="_r9_MgANBEeyJvMkkGyJrNQ" base_Element="_r9-ldANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r9_zkANBEeyJvMkkGyJrNQ" genericsValue="Election" base_Element="_r9-ldQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r-BowANBEeyJvMkkGyJrNQ" genericsValue="Election" base_Element="_r-AaoANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r-CP0ANBEeyJvMkkGyJrNQ" genericsValue="AppUser" base_Element="_r-AaoQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Annotations xmi:id="_r-C24ANBEeyJvMkkGyJrNQ" base_Element="_r-AaoANBEeyJvMkkGyJrNQ">
+    <annotations xmi:id="_r-C24QNBEeyJvMkkGyJrNQ" name="POST"/>
+    <annotations xmi:id="_r-C24gNBEeyJvMkkGyJrNQ" name="Path">
+      <annotationParameters xmi:id="_r-C24wNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-rJAwNBEeyJvMkkGyJrNQ" value="&quot;elections&quot;"/>
+      </annotationParameters>
+    </annotations>
+    <annotations xmi:id="_r-C25ANBEeyJvMkkGyJrNQ" name="Produces">
+      <annotationParameters xmi:id="_r-C25QNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-rJBANBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+    <annotations xmi:id="_r-C25gNBEeyJvMkkGyJrNQ" name="Consumes">
+      <annotationParameters xmi:id="_r-C25wNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-rJBQNBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Generics xmi:id="_r-EFAANBEeyJvMkkGyJrNQ" genericsValue="Election" base_Element="_r-Dd8ANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Generics xmi:id="_r-EsEQNBEeyJvMkkGyJrNQ" genericsValue="AppUser" base_Element="_r-Dd8QNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Annotations xmi:id="_r-FTIANBEeyJvMkkGyJrNQ" base_Element="_r-Dd8ANBEeyJvMkkGyJrNQ">
+    <annotations xmi:id="_r-FTIQNBEeyJvMkkGyJrNQ" name="POST"/>
+    <annotations xmi:id="_r-FTIgNBEeyJvMkkGyJrNQ" name="Path">
+      <annotationParameters xmi:id="_r-FTIwNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-rJBgNBEeyJvMkkGyJrNQ" value="&quot;upcoming&quot;"/>
+      </annotationParameters>
+    </annotations>
+    <annotations xmi:id="_r-FTJANBEeyJvMkkGyJrNQ" name="Produces">
+      <annotationParameters xmi:id="_r-FTJQNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-rJBwNBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+    <annotations xmi:id="_r-F6MANBEeyJvMkkGyJrNQ" name="Consumes">
+      <annotationParameters xmi:id="_r-F6MQNBEeyJvMkkGyJrNQ" skipName="true" skipArray="true">
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_r-rJCANBEeyJvMkkGyJrNQ" value="MediaType.APPLICATION_JSON"/>
+      </annotationParameters>
+    </annotations>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-OdEANBEeyJvMkkGyJrNQ" base_Element="_r-N2AANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-PEIANBEeyJvMkkGyJrNQ" base_Element="_r-OdEQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-PrMANBEeyJvMkkGyJrNQ" base_Element="_r-PEIQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-QSQANBEeyJvMkkGyJrNQ" base_Element="_r-PrMQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-QSQgNBEeyJvMkkGyJrNQ" base_Element="_r-QSQQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-Q5UQNBEeyJvMkkGyJrNQ" base_Element="_r-Q5UANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-RgYANBEeyJvMkkGyJrNQ" base_Element="_r-Q5UgNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-SHcANBEeyJvMkkGyJrNQ" base_Element="_r-RgYQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-SHcgNBEeyJvMkkGyJrNQ" base_Element="_r-SHcQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-TVkANBEeyJvMkkGyJrNQ" base_Element="_r-SugANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-T8oQNBEeyJvMkkGyJrNQ" base_Element="_r-T8oANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-UjsANBEeyJvMkkGyJrNQ" base_Element="_r-T8ogNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-UjsgNBEeyJvMkkGyJrNQ" base_Element="_r-UjsQNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-VKwgNBEeyJvMkkGyJrNQ" base_Element="_r-VKwANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-Vx0gNBEeyJvMkkGyJrNQ" base_Element="_r-Vx0ANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-WY4gNBEeyJvMkkGyJrNQ" base_Element="_r-WY4ANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_r-W_8QNBEeyJvMkkGyJrNQ" base_Element="_r-WY4wNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r-x2sANBEeyJvMkkGyJrNQ" base_Element="_r-xPoANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r-zE0ANBEeyJvMkkGyJrNQ" base_Element="_r-ydwANBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r-zr4ANBEeyJvMkkGyJrNQ" base_Element="_r-zE0QNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r-0S8ANBEeyJvMkkGyJrNQ" base_Element="_r-zr4QNBEeyJvMkkGyJrNQ"/>
+  <UMLLabProfile:Reference xmi:id="_r-06AANBEeyJvMkkGyJrNQ" base_Element="_r-0S8QNBEeyJvMkkGyJrNQ"/>
+</xmi:XMI>

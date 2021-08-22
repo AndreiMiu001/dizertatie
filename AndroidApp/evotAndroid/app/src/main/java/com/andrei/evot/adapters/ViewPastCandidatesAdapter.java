@@ -25,8 +25,8 @@ public class ViewPastCandidatesAdapter extends RecyclerView.Adapter<ViewPastCand
     public ViewPastCandidatesAdapter(ArrayList<CandidateModel> candidateList,
                                      CandidateModel votedCandidate, CandidateModel winnerCandidate) {
         this.candidateList = candidateList;
-        this.winnerCandidate = winnerCandidate;
         this.votedCandidate = votedCandidate;
+        this.winnerCandidate = winnerCandidate;
     }
 
     @NonNull

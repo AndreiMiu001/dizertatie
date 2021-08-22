@@ -1,0 +1,306 @@
+@startuml
+class com.andrei.evot.model.Person {
+- String cnp
+- String password
++ String getCnp()
++ void setCnp(String)
++ String getPassword()
++ void setPassword(String)
+}
+class com.andrei.evot.bw.ReadCandidatesBW {
+- CandidatesCallback candidatesCallback
+- WeakReference<Context> context
+- ElectionModel election
+# String doInBackground(String[])
+}
+class com.andrei.evot.SelectedUpcomingElectionScreen {
+- WeakReference<Context> context
+- SelectedUpcomingElectionsAdapter adapter
+# void onCreate(Bundle)
+}
+class com.andrei.evot.ReturnScreen {
+- WeakReference<Context> context
+# void onCreate(Bundle)
+}
+class com.andrei.evot.ExampleInstrumentedTest {
++ void useAppContext()
+}
+class com.andrei.evot.bw.PastElectionVotesBW {
+- WeakReference<Context> context
+- ElectionListCallback pastElectionsCallback
+# String doInBackground(String)
++ void onItemSelected(AdapterView<?>,View,int,long)
++ void onNothingSelected(AdapterView<?>)
+}
+class com.andrei.evot.bw.UpcomingElectionsBW {
+- WeakReference<Context> context
+- ElectionListCallback electionListCallback
+# String doInBackground(String)
+}
+class com.andrei.evot.UpcomingElectionsScreen {
+- WeakReference<Context> context
+- RecyclerView recyclerView
+- UpcomingElectionsAdapter adapter
+# void onCreate(Bundle)
+}
+class com.andrei.evot.adapters.VotingAdapter {
+- List<CandidateModel> candidateList
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
++ int getItemCount()
+}
+class com.andrei.evot.adapters.VotingAdapter.ViewHolder {
++ TextView nameTV
++ TextView infoTV
++ CheckBox checkBox
+}
+class com.andrei.evot.MainActivity {
+- EditText cnpET
+- EditText passET
+- WeakReference<Context> context
+# void onCreate(Bundle)
+- String normalizeString(String)
+}
+class com.andrei.evot.bw.GetElectionsBW {
+- WeakReference<Context> context
+- ArrayList<ElectionModel> electionList
+- List<String> elections
+- ElectionCallback myCallback
+# String doInBackground(String[])
+# void onPostExecute(String)
++ void onItemSelected(AdapterView<?>,View,int,long)
++ void onNothingSelected(AdapterView<?>)
+}
+class com.andrei.evot.model.VoteModel {
+- ElectionModel election
+- CandidateModel candidate
+- String cnp
++ ElectionModel getElection()
++ void setElection(ElectionModel)
++ CandidateModel getCandidate()
++ void setCandidate(CandidateModel)
++ String getCnp()
++ void setCnp(String)
+}
+class com.andrei.evot.PastElectionVotesList {
+- RecyclerView recyclerView
+- ViewingAdapter adapter
+- ArrayList<ElectionModel> electionList
+- WeakReference<Context> context
+# void onCreate(Bundle)
+}
+interface com.andrei.evot.MyCertificateManager {
+~ void trustAllCertificates()
+}
+class com.andrei.evot.SelectElection {
+- Spinner spinner
+- Button startBtn
+- ArrayList<ElectionModel> electionList
+- WeakReference<Context> context
+# void onCreate(Bundle)
+}
+class com.andrei.evot.bw.LoginBW {
+- WeakReference<Context> context
+# String doInBackground(String[])
+# void onPostExecute(String)
++ void onItemSelected(AdapterView<?>,View,int,long)
++ void onNothingSelected(AdapterView<?>)
+}
+class com.andrei.evot.model.CandidateModel {
+- String name
+- String description
+- int id
+- boolean isChecked
++ boolean isChecked()
++ void setChecked(boolean)
++ String getName()
++ void setName(String)
++ String getDescription()
++ void setDescription(String)
++ int getId()
++ void setId(int)
+}
+class com.andrei.evot.MainMenu {
+# void onCreate(Bundle)
+}
+class com.andrei.evot.ExampleUnitTest {
++ void addition_isCorrect()
+}
+class com.andrei.evot.model.ElectionModel {
+- String electionName
+- int idElection
+- int idVotedCandidate
+- int idWinnerCandidate
+- String startingDate
+- String endingDate
++ String getElectionName()
++ void setElectionName(String)
++ int getIdElection()
++ void setIdElection(int)
++ int getIdVotedCandidate()
++ void setIdVotedCandidate(int)
++ int getIdWinnerCandidate()
++ void setIdWinnerCandidate(int)
++ String getStartingDate()
++ void setStartingDate(String)
++ String getEndingDate()
++ void setEndingDate(String)
++ String toString()
+}
+class com.andrei.evot.CommonBasicActivity {
+- WeakReference<Context> context
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
+}
+class com.andrei.evot.model.User {
++ {static} String mCnp
++ {static} String mPassword
++ {static} String mIdElection
++ String toString()
++ {static} void clear()
+}
+interface com.andrei.evot.callbacks.ElectionModelCallback {
++ void onResult(ElectionModel)
+}
+class com.andrei.evot.adapters.ViewPastCandidatesAdapter {
+- ArrayList<CandidateModel> candidateList
+- CandidateModel votedCandidate
+- CandidateModel winnerCandidate
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
++ int getItemCount()
+}
+class com.andrei.evot.adapters.ViewPastCandidatesAdapter.ViewHolder {
++ TextView nameTV
++ TextView descTV
++ ImageView winnerIV
++ ImageView votedIV
++ ConstraintLayout constraintLayout
+}
+class com.andrei.evot.adapters.UpcomingElectionsAdapter {
+- ArrayList<ElectionModel> electionList
+- ElectionModelCallback electionModelCallback
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
++ int getItemCount()
+}
+class com.andrei.evot.adapters.UpcomingElectionsAdapter.ViewHolder {
++ TextView nameTV
++ TextView dateTV
++ ConstraintLayout constraintLayout
+}
+interface com.andrei.evot.callbacks.DisableCheckboxesCB {
++ void disable(ArrayList<CheckBox>)
+}
+class com.andrei.evot.adapters.ViewingAdapter {
+- ArrayList<ElectionModel> electionList
+- ElectionModelCallback electionModelCallback
++ ViewingAdapter.ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewingAdapter.ViewHolder,int)
++ int getItemCount()
+}
+class com.andrei.evot.adapters.ViewingAdapter.ViewHolder {
++ TextView nameTV
++ TextView startingDateTV
++ ConstraintLayout constraintLayout
+}
+class com.andrei.evot.ViewPastVote {
+- RecyclerView recyclerView
+- ViewPastCandidatesAdapter adapter
+- WeakReference<Context> context
+- CandidateModel votedCandidate
+- CandidateModel winnerCandidate
+# void onCreate(Bundle)
+- CandidateModel getCandidateFromById(ArrayList<CandidateModel>,int)
+}
+class com.andrei.evot.VotingScreen {
+- RecyclerView recyclerView
+- VotingAdapter adapter
+- ArrayList<CandidateModel> candidateList
+- WeakReference<Context> context
+# void onCreate(Bundle)
+- CandidateModel getCheckedCandidate(ArrayList<CandidateModel>)
+}
+interface com.andrei.evot.callbacks.ElectionListCallback {
++ void onResult(ArrayList<ElectionModel>)
+}
+class com.andrei.evot.adapters.SelectedUpcomingElectionsAdapter {
+- ArrayList<CandidateModel> candidateList
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
++ int getItemCount()
+}
+class com.andrei.evot.adapters.SelectedUpcomingElectionsAdapter.ViewHolder {
++ TextView nameTV
++ TextView descTV
++ ImageView winnerIV
++ ImageView votedIV
++ ConstraintLayout constraintLayout
+}
+class com.andrei.evot.bw.VoteBW {
+- WeakReference<Context> context
+- VoteCallback voteCallback
+- VoteModel vote
+# String doInBackground(String[])
+# void onPostExecute(String)
+}
+interface com.andrei.evot.callbacks.ElectionCallback {
++ void onResult(ArrayList<ElectionModel>)
+}
+interface com.andrei.evot.callbacks.CandidatesCallback {
++ void onResult(ArrayList<CandidateModel>)
+}
+class com.andrei.evot.CommonBackActionActivity {
+# void onCreate(Bundle)
+}
+interface com.andrei.evot.callbacks.VoteCallback {
++ void onResult()
+}
+
+
+com.andrei.evot.MyCertificateManager <|.. com.andrei.evot.bw.ReadCandidatesBW
+android.os.AsyncTask <|-- com.andrei.evot.bw.ReadCandidatesBW
+com.andrei.evot.CommonBackActionActivity <|-- com.andrei.evot.SelectedUpcomingElectionScreen
+com.andrei.evot.CommonBackActionActivity <|-- com.andrei.evot.ReturnScreen
+com.andrei.evot.bw.OnItemSelectedListener <|.. com.andrei.evot.bw.PastElectionVotesBW
+com.andrei.evot.MyCertificateManager <|.. com.andrei.evot.bw.PastElectionVotesBW
+android.os.AsyncTask <|-- com.andrei.evot.bw.PastElectionVotesBW
+com.andrei.evot.MyCertificateManager <|.. com.andrei.evot.bw.UpcomingElectionsBW
+android.os.AsyncTask <|-- com.andrei.evot.bw.UpcomingElectionsBW
+com.andrei.evot.CommonBackActionActivity <|-- com.andrei.evot.UpcomingElectionsScreen
+com.andrei.evot.adapters.Adapter <|-- com.andrei.evot.adapters.VotingAdapter
+com.andrei.evot.adapters.VotingAdapter +.. com.andrei.evot.adapters.VotingAdapter.ViewHolder
+com.andrei.evot.adapters.ViewHolder <|-- com.andrei.evot.adapters.VotingAdapter.ViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- com.andrei.evot.MainActivity
+com.andrei.evot.bw.OnItemSelectedListener <|.. com.andrei.evot.bw.GetElectionsBW
+com.andrei.evot.MyCertificateManager <|.. com.andrei.evot.bw.GetElectionsBW
+android.os.AsyncTask <|-- com.andrei.evot.bw.GetElectionsBW
+java.io.Serializable <|.. com.andrei.evot.model.VoteModel
+com.andrei.evot.CommonBackActionActivity <|-- com.andrei.evot.PastElectionVotesList
+com.andrei.evot.CommonBackActionActivity <|-- com.andrei.evot.SelectElection
+com.andrei.evot.bw.OnItemSelectedListener <|.. com.andrei.evot.bw.LoginBW
+com.andrei.evot.MyCertificateManager <|.. com.andrei.evot.bw.LoginBW
+android.os.AsyncTask <|-- com.andrei.evot.bw.LoginBW
+java.io.Serializable <|.. com.andrei.evot.model.CandidateModel
+com.andrei.evot.CommonBasicActivity <|-- com.andrei.evot.MainMenu
+java.io.Serializable <|.. com.andrei.evot.model.ElectionModel
+androidx.appcompat.app.AppCompatActivity <|-- com.andrei.evot.CommonBasicActivity
+java.io.Serializable <|.. com.andrei.evot.model.User
+com.andrei.evot.adapters.Adapter <|-- com.andrei.evot.adapters.ViewPastCandidatesAdapter
+com.andrei.evot.adapters.ViewPastCandidatesAdapter +.. com.andrei.evot.adapters.ViewPastCandidatesAdapter.ViewHolder
+com.andrei.evot.adapters.ViewHolder <|-- com.andrei.evot.adapters.ViewPastCandidatesAdapter.ViewHolder
+com.andrei.evot.adapters.Adapter <|-- com.andrei.evot.adapters.UpcomingElectionsAdapter
+com.andrei.evot.adapters.UpcomingElectionsAdapter +.. com.andrei.evot.adapters.UpcomingElectionsAdapter.ViewHolder
+com.andrei.evot.adapters.ViewHolder <|-- com.andrei.evot.adapters.UpcomingElectionsAdapter.ViewHolder
+com.andrei.evot.adapters.Adapter <|-- com.andrei.evot.adapters.ViewingAdapter
+com.andrei.evot.adapters.ViewingAdapter +.. com.andrei.evot.adapters.ViewingAdapter.ViewHolder
+com.andrei.evot.adapters.ViewHolder <|-- com.andrei.evot.adapters.ViewingAdapter.ViewHolder
+com.andrei.evot.CommonBackActionActivity <|-- com.andrei.evot.ViewPastVote
+com.andrei.evot.CommonBackActionActivity <|-- com.andrei.evot.VotingScreen
+com.andrei.evot.adapters.Adapter <|-- com.andrei.evot.adapters.SelectedUpcomingElectionsAdapter
+com.andrei.evot.adapters.SelectedUpcomingElectionsAdapter +.. com.andrei.evot.adapters.SelectedUpcomingElectionsAdapter.ViewHolder
+com.andrei.evot.adapters.ViewHolder <|-- com.andrei.evot.adapters.SelectedUpcomingElectionsAdapter.ViewHolder
+com.andrei.evot.MyCertificateManager <|.. com.andrei.evot.bw.VoteBW
+android.os.AsyncTask <|-- com.andrei.evot.bw.VoteBW
+com.andrei.evot.CommonBasicActivity <|-- com.andrei.evot.CommonBackActionActivity
+@enduml

@@ -3,9 +3,12 @@ package com.andrei.evot;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +40,11 @@ public class UpcomingElectionsScreen extends CommonBackActionActivity {
 
         recyclerView = findViewById(R.id.upcomingElectionsRV);
 
+        Drawable mDivider = ContextCompat.getDrawable(context.get(), R.drawable.divider);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        dividerItemDecoration.setDrawable(mDivider);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
         UpcomingElectionsBW bg = new UpcomingElectionsBW(context, new ElectionListCallback() {
             @Override
             public void onResult(ArrayList<ElectionModel> electionList) {
@@ -54,5 +62,5 @@ public class UpcomingElectionsScreen extends CommonBackActionActivity {
             }
         });
         bg.execute();
-    }
+            }
 }

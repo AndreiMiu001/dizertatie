@@ -26,7 +26,6 @@ public class DaoView extends DAO {
 				electionList.add(getSingleElection(id, election));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return electionList;
@@ -48,7 +47,6 @@ public class DaoView extends DAO {
 				electionList.add(election);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return electionList;
@@ -68,7 +66,6 @@ public class DaoView extends DAO {
 				election.setEndingDate(rs.getDate("endDate").toString());
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return election;
@@ -87,7 +84,6 @@ public class DaoView extends DAO {
 				idWinnerCandidate = rs.getInt("idCandidates");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return idWinnerCandidate;

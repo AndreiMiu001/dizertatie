@@ -7,7 +7,6 @@ import common.AppUser;
 import common.Election;
 import dao.DaoView;
 import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -28,7 +27,6 @@ public class ViewResource {
 			electionList = dao.viewElectionsWhereUserVoted(user.get(0));
 			dao.disconnect();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return electionList;
@@ -46,30 +44,8 @@ public class ViewResource {
 			electionList = dao.getUpcomingElections(user.get(0));
 			dao.disconnect();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return electionList;
 	}
-	
-	/*
-	@GET
-	@Path("up")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public ArrayList<Election> getUpcomingElections2() {
-		DaoView dao = new DaoView();
-		ArrayList<Election> electionList = null;
-		try {
-			dao.connect();
-			electionList = dao.getUpcomingElections(null);
-			dao.disconnect();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return electionList;
-	}
-	*/
-	
 }

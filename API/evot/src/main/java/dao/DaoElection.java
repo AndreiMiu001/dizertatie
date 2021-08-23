@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.andrei.evot.ElectionResource;
-
 import common.AppUser;
 import common.Candidate;
 import common.Election;
@@ -16,7 +14,7 @@ public class DaoElection extends DAO {
 
 	public ArrayList<Election> getElections() {
 		ArrayList<Election> electionsList = new ArrayList<>();
-		String query = "SELECT * FROM `elections`";
+		String query = "SELECT * FROM `elections` WHERE current_date() BETWEEN `startDate` AND `endDate`";
 		PreparedStatement ps;
 		try {
 			ps = mConnection.prepareStatement(query);
@@ -28,7 +26,6 @@ public class DaoElection extends DAO {
 				electionsList.add(elTemp);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return electionsList;
@@ -46,7 +43,6 @@ public class DaoElection extends DAO {
 				idList.add(rs.getInt("idElections"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return idList;
@@ -68,7 +64,6 @@ public class DaoElection extends DAO {
 				candidateList.add(tempCandidate);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return candidateList;
@@ -83,17 +78,8 @@ public class DaoElection extends DAO {
 			ps.setInt(2, vote.election.getIdElection());
 			ps.setInt(3, vote.candidate.id);
 			int state = ps.executeUpdate();
-			if (state != 0) {
-				System.out.print("vote succesful");
-			} else {
-				System.out.print("vote NOT succesful");
-
-			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
-	
 }

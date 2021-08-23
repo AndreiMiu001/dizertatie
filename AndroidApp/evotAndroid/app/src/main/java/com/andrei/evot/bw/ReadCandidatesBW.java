@@ -65,9 +65,6 @@ public class ReadCandidatesBW extends AsyncTask<String, Void, String> implements
                         Gson jsonConverter = new Gson();
                         Type type = new TypeToken<ArrayList<CandidateModel>>(){}.getType();
                         candidateList = jsonConverter.fromJson(response.toString(), type);
-                        for(CandidateModel election : candidateList) {
-                            Log.e("election: ", election.toString());
-                        }
                         candidatesCallback.onResult(candidateList);
                     }
                 },

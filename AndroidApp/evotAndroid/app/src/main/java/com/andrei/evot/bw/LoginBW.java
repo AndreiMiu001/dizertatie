@@ -53,7 +53,6 @@ public class LoginBW extends AsyncTask<String, Void, String> implements AdapterV
                     public void onResponse(JSONObject response) {
                         try {
                             if (response.getBoolean("state")) {
-                                Log.e("rest resp2", "true");
                                 Intent showDetailActivity = new Intent(context.get(), MainMenu.class);
                                 context.get().startActivity(showDetailActivity);
                             } else {

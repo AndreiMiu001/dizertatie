@@ -70,7 +70,6 @@ public class UpcomingElectionsBW extends AsyncTask<String, Void, String> impleme
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("rest err", error.toString());
-
                     }
                 }
         );

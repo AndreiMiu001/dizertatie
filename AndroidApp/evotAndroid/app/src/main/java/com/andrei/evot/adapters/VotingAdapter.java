@@ -9,11 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.andrei.evot.R;
-import com.andrei.evot.callbacks.DisableCheckboxesCB;
 import com.andrei.evot.model.CandidateModel;
 
 public class VotingAdapter extends RecyclerView.Adapter<VotingAdapter.ViewHolder> {

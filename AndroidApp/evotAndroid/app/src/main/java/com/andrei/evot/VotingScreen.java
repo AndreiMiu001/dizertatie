@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -23,7 +22,6 @@ import com.andrei.evot.bw.VoteBW;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import com.andrei.evot.callbacks.DisableCheckboxesCB;
 import com.andrei.evot.model.CandidateModel;
 import com.andrei.evot.model.ElectionModel;
 import com.andrei.evot.model.User;

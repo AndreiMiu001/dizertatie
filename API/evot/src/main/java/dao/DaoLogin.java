@@ -1,10 +1,8 @@
 package dao;
 
-import java.sql.Connection;
 import common.AppUser;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 

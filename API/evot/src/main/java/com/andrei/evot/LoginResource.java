@@ -15,6 +15,7 @@ import jakarta.ws.rs.core.MediaType;
 
 @Path("login")
 public class LoginResource {
+	
 	@GET
     @Path("users")
     @Produces(MediaType.APPLICATION_JSON)
@@ -26,7 +27,6 @@ public class LoginResource {
 			userList = dao.getAllUsers();
 	    	dao.disconnect();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	return userList;
@@ -43,11 +43,9 @@ public class LoginResource {
 			state = dao.login(user);
 			dao.disconnect();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			state = false;
 			e.printStackTrace();
 		}
-    	System.out.println(user);
     	MyBoolean myState = new MyBoolean(state);
     	return myState;
     }

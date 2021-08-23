@@ -3,7 +3,6 @@ package common;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
 public class Election {
 
     protected String mElectionName;

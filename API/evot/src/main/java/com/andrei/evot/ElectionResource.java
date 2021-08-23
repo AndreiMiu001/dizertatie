@@ -10,7 +10,6 @@ import common.MyBoolean;
 import common.Vote;
 import dao.DaoElection;
 import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -30,7 +29,6 @@ public class ElectionResource {
 			removeVotedElections(electionList, user.get(0));
 			dao.disconnect();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return electionList;
@@ -48,7 +46,6 @@ public class ElectionResource {
 			candidateList = dao.getCandidates(election.get(0));
 			dao.disconnect();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return candidateList;
@@ -66,7 +63,6 @@ public class ElectionResource {
 			dao.voteCandidate(vote);
 			dao.disconnect();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return status;
@@ -80,7 +76,6 @@ public class ElectionResource {
 			idList = dao.getVotedElections(user);
 			dao.disconnect();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 		if (idList != null) {

@@ -10,9 +10,33 @@
                 <link rel="stylesheet" href="Style/CSS/updateElectionsViewList.css"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Rezultate alegere</title>
+        <style>
+            .electionTitle {
+                font-size: 1.3rem;
+                font-weight: 625;
+                text-align: -webkit-center;
+                padding: 1rem;
+            }
+            .resultText {
+                font-size: 1.1rem;
+                font-weight: 625;
+                text-align: -webkit-center;
+            }
+            .detailsPadding {
+                padding-top: 0.2rem;
+            }
+            
+        </style>
     </head>
     <body>
+        <div class="detailsPadding">
         <div id="navigationMenu"></div>
+        <div class="electionTitle" id="electionNameDiv"></div>
+        <div class="resultText">Tip alegere: ${electionCategory} </div>
+        <div class="resultText">Judet: ${electionCounty}</div>
+        <div class="resultText">Oras: ${electionCity}</div>
+        <div class="resultText">Va avea loc in intervalul: ${startDate} - ${endDate}</div>
+        </div>
         <div id="chart_div"></div>
                 <script type="text/javascript">
             // Load the Visualization API and the corechart package.
@@ -21,6 +45,10 @@
             google.charts.setOnLoadCallback(drawChart);
             var electionJson = <%=request.getAttribute("electionsResultsJson")%>;
             var votesPrecentageJson = <%=request.getAttribute("votesPercentageJson")%>;
+            var electionName = electionJson["mElectionName"];
+            var electionNameDiv = document.getElementById("electionNameDiv");
+            var electionNameText = document.createTextNode("Nume alegere: " + electionName);
+            electionNameDiv.appendChild(electionNameText);
 
             // Callback that creates and populates a data table,
             // instantiates the pie chart, passes in the data and

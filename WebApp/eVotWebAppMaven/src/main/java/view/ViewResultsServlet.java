@@ -6,6 +6,7 @@
 package view;
 
 import common.Candidate;
+import common.ElectionBean;
 import common.ElectionResultsBean;
 import common.ObjectToJson;
 import common.UserBean;
@@ -36,6 +37,7 @@ public class ViewResultsServlet extends HttpServlet {
         ViewResultsImpl viewImpl = new ViewResultsImpl();
         int idElection = Integer.parseInt(request.getParameter("hiddenButton"));
         ElectionResultsBean electionResults = viewImpl.getVoteResults(idElection);
+        ElectionBean election = viewImpl.getSingleElection(idElection);
         Collections.sort(electionResults.getCandidates(), Collections.reverseOrder());
         DecimalFormat decFormat = new DecimalFormat("#%");
         ArrayList<String> perc = new ArrayList<>();
@@ -51,7 +53,11 @@ public class ViewResultsServlet extends HttpServlet {
         ObjectToJson<ArrayList<String>> jsonConverterString = new ObjectToJson<>();
         String percentageJson = jsonConverterString.convert(perc);
         String electionsResultsJson = jsonConverter.convert(electionResults);
-        System.out.println(electionsResultsJson);
+        request.setAttribute("electionCategory", election.getCategory().getName());
+        request.setAttribute("electionCounty", election.getCategory().getCounty().second);
+        request.setAttribute("electionCity", election.getCategory().getCity().second);
+        request.setAttribute("startDate", election.getStartingDate().toString());
+        request.setAttribute("endDate", election.getEndingDate().toString());
         request.setAttribute("electionsResultsJson", electionsResultsJson);
         request.setAttribute("votesPercentageJson", percentageJson);
         request.getRequestDispatcher("/viewResults.jsp").forward(request, response);

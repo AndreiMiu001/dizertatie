@@ -144,8 +144,8 @@ public class DAO {
                 election.setStartingDate(rs.getDate("startDate").toString());
                 election.setEndingDate(rs.getDate("endDate").toString());
                 election.setCategory(getSingleElectionCategory(rs.getInt("idElectionType")));
-                Pair<Integer, String> city = new Pair<>(rs.getInt("idCity"), "");
-                Pair<Integer, String> county = new Pair<>(rs.getInt("idCounty"), "");
+                Pair<Integer, String> city = getCity(rs.getInt("idCity"));
+                Pair<Integer, String> county = getCounty(rs.getInt("idCounty"));
                 Category cat = election.getCategory();
                 cat.setCity(city);
                 cat.setCounty(county);
@@ -156,6 +156,38 @@ public class DAO {
         return election;
     }
 
+    private Pair<Integer, String> getCity(int id) {
+        String query = "SELECT * FROM `cities` WHERE `idCity`=?";
+        Pair<Integer, String> city = null;
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                city = new Pair<>(id, rs.getString("nameCity"));  
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return city;         
+    }
+    
+        private Pair<Integer, String> getCounty(int id) {
+        String query = "SELECT * FROM `counties` WHERE `idCounty`=?";
+        Pair<Integer, String> county = null;
+        try {
+            PreparedStatement ps = mConnection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                county = new Pair<>(id, rs.getString("nameCounty"));  
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return county;         
+    }
+    
     public int getCandidatesNum(int id) {
         int candidatesNum = 0;
         String query = "SELECT COUNT(*) AS candidatesNum FROM `candidates` WHERE `idElections`=?";

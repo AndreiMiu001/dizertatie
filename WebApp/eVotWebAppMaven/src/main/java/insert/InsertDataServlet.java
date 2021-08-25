@@ -6,8 +6,6 @@
 package insert;
 
 import common.Category;
-import common.ObjectToJson;
-import common.Pair;
 import common.UserBean;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +33,7 @@ public class InsertDataServlet extends HttpServlet {
         InsertDataImpl insertDataImpl = new InsertDataImpl();
         ArrayList<Category> electionCategoryArray = insertDataImpl.getElectionCategories();
         Collections.reverse(electionCategoryArray);
-        request.setAttribute("listCategory", electionCategoryArray);        
+        session.setAttribute("listCategory", electionCategoryArray);        
         request.getRequestDispatcher("/createElection.jsp").forward(request, response);
     }
 }

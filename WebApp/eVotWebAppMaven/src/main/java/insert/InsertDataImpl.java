@@ -7,7 +7,6 @@ package insert;
 
 import common.Category;
 import common.Implementation;
-import common.Pair;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;

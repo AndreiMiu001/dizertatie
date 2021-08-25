@@ -34,7 +34,7 @@ public class LoginBW extends AsyncTask<String, Void, String> implements AdapterV
 
     @Override
     protected String doInBackground(String[] strings) {
-        String URL = "https://10.0.2.2:8442/evot/webapi/login";
+            String URL = "https://10.0.2.2:8442/evot/webapi/login";
         RequestQueue requestQueue = Volley.newRequestQueue(context.get());
         JSONObject postData = new JSONObject();
         trustAllCertificates();

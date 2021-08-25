@@ -1,0 +1,21 @@
+
+            .row {
+                width: 50%;
+            }
+            .row2{
+                width:35%;
+            }
+            .row3{
+                width:10%;
+            }
+            .mypdg {
+                padding: 5px;
+            }
+            .center {
+                margin: auto;
+                width: 50%;
+                padding: 10px;
+            }
+            .form-select {
+                margin-top: 1rem;
+            }

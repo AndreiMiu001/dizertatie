@@ -9,32 +9,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="Style/CSS/datepicker3.css">       
         <link rel="stylesheet" href="Style/CSS/default.css"> 
+        <link rel="stylesheet" href="Style/CSS/createElection.css"> 
         <link rel="stylesheet" href="Style/CSS/AutocompleteInput.css">
         <script src="scripts/inputAutoComplete.js"></script>
         <script src="Style/JS/datepicker.js"></script>   
         <title>Creaza alegere</title>
-        <style>
-            .row {
-                width: 50%;
-            }
-            .row2{
-                width:35%;
-            }
-            .row3{
-                width:10%;
-            }
-            .mypdg {
-                padding: 5px;
-            }
-            .center {
-                margin: auto;
-                width: 50%;
-                padding: 10px;
-            }
-            .form-select {
-                margin-top: 1rem;
-            }
-        </style>
     </head>
     <body>
         <div id="navigationMenu"></div>
@@ -52,16 +31,19 @@
                                     <option value="${category.id}">${category.name}</option>
                                 </c:forEach>
                             </select>
+                            <h5 style="color:red;font-size:90%">${electionCategoryNull}</h5>
                         </div>
                         <div class="row2">
                             <br><br>
                             <h4>Localitate</h4>
                             <div class="autocomplete">
-                                <input class="form-control" type="text" name="localitate" id="localitateInput" autocomplete="off"/>
+                                <input class="form-control" type="text" name="localitate" id="localitateInput" value="${cityField}" autocomplete="off"/>
+                                <h5 style="color:red;font-size:90%">${cityNull}</h5>
                             </div>
                             <h4>Judet</h4>
                             <div class="autocomplete">
-                                <input class="form-control" type="text" name="judet" id="judetInput" autocomplete="off"/>
+                                <input class="form-control" type="text" name="judet" id="judetInput" value="${countyField}" autocomplete="off"/>
+                                <h5 style="color:red;font-size:90%">${countyNull}</h5>
                             </div>
                             <br><br>
                         </div>

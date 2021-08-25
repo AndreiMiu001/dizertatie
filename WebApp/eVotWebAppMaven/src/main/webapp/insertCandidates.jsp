@@ -73,6 +73,7 @@
                 candName.setAttribute('class', 'form-control central');
                 candName.setAttribute('value', nameValue[i - 1]);
                 var candDesc = document.createElement("input"); //input element, text
+                candDesc.setAttribute("placeholder", "Optional");
                 candDesc.setAttribute("autocomplete", "off");
                 candDesc.setAttribute('type', "text");
                 candDesc.setAttribute('name', "description" + i);

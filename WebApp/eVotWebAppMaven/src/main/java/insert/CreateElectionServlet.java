@@ -39,7 +39,7 @@ public class CreateElectionServlet extends HttpServlet {
         String electionCategory = request.getParameter("category");
         if (electionCategory == null || electionCategory.isEmpty()) {
             formCompletionFlag = false;
-            request.setAttribute("electionCategoryNull", "Please provide an election name");
+            request.setAttribute("electionCategoryNull", "Please chose an election category.");
         } else {
             Category category = new Category(Integer.parseInt(electionCategory));
             // get judet and localitate names
@@ -53,7 +53,7 @@ public class CreateElectionServlet extends HttpServlet {
                     String localitate = request.getParameter("localitate");
                     if (localitate == null || localitate.isEmpty()) {
                         formCompletionFlag = false;
-                        request.setAttribute("localitateNull", "Please provide an localitate name");
+                        request.setAttribute("cityNull", "Please provide a city name.");
                     } else {
                         ArrayList<Pair<Integer, String>> cityArr = (ArrayList<Pair<Integer, String>>) session.getAttribute("cityArr");
                         for (Pair<Integer, String> city : cityArr) {
@@ -68,7 +68,7 @@ public class CreateElectionServlet extends HttpServlet {
                     String judet = request.getParameter("judet");
                     if (judet == null || judet.isEmpty()) {
                         formCompletionFlag = false;
-                        request.setAttribute("judetNull", "Please provide an judet name");
+                        request.setAttribute("countyNull", "Please provide a county name.");
                     } else {
                         ArrayList<Pair<Integer, String>> countyArr = (ArrayList<Pair<Integer, String>>) session.getAttribute("countyArr");
                         for (Pair<Integer, String> county : countyArr) {
@@ -118,7 +118,7 @@ public class CreateElectionServlet extends HttpServlet {
         String electionDateStart = request.getParameter("electionDateStart");
         if (electionDateStart == null || electionDateStart.isEmpty()) {
             formCompletionFlag = false;
-            request.setAttribute("electionDateStartNull", "Please provide a starting date");
+            request.setAttribute("electionDateStartNull", "Please provide a starting date for the election.");
         } else {
             election.setStartingDate(electionDateStart);
         }
@@ -126,7 +126,7 @@ public class CreateElectionServlet extends HttpServlet {
         String electionEndStart = request.getParameter("electionDateEnd");
         if (electionEndStart == null || electionEndStart.isEmpty()) {
             formCompletionFlag = false;
-            request.setAttribute("electionDateStartNull", "Please provide a electionEndStart date");
+            request.setAttribute("electionDateEndNull", "Please provide an ending date for the election.");
         } else {
             election.setEndingDate(electionEndStart);
         }

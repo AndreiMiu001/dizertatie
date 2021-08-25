@@ -32,6 +32,9 @@ public class InsertCandidatesServlet extends HttpServlet {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
             return;
         }
+        
+        request.setAttribute("candidatesNumber", election.getCandidatesCount());        
+        
         boolean globalFormCompletionFlag = true;
         for (int i = 1; i <= election.getCandidatesCount(); i++) {
             boolean currentFormCompletionFlag = true;
@@ -50,7 +53,6 @@ public class InsertCandidatesServlet extends HttpServlet {
                 candidateDescription = "No description available";
             } else {
                 request.setAttribute("candidatesDescriptionValue" + i, "\"" + candidateDescription + "\"");
-
             }
             if (currentFormCompletionFlag) {
                 candidate.setCandidateName(candidateName);

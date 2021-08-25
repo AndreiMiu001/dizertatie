@@ -9,19 +9,30 @@
         <link rel="stylesheet" href="Style/CSS/insertCandidates.css"> 
 
         <title>eVot adauga candidati</title>
+        <style>
+            .error {
+                color:red;
+                font-size:90%;
+                padding-bottom: 1rem;
+            }
+        </style>
     </head>
     <body onload="init(candidatesArrayJson);">
         <div id="navigationMenu"></div>
 
         <script>
+            debugger;
+        
             var candidatesArrayJson = ${candidatesArrayJson};
             var candidatesArrayLenght = ${candidatesNumber};
-            debugger;
+            var nameErrList = ${nameErrorList};
+            
             var f = document.createElement("form");
             f.setAttribute('method', "post");
             f.setAttribute('action', "UpdateElectionServlet");
 
             for (var i = 0; i < candidatesArrayLenght; i++) {
+                debugger;
                 var div5 = document.createElement("div");
                 var h = document.createElement("H3");
                 var t = document.createTextNode("Candidate number " + (i+1));
@@ -29,6 +40,10 @@
                 var h2 = document.createElement("H5");
                 var t2 = document.createTextNode("Candidate name");
                 h2.appendChild(t2);
+                var nameErrH = document.createElement("H5");
+                nameErrH.setAttribute('class', "error");
+                var nameErrText = document.createTextNode(nameErrList[i]);
+                nameErrH.appendChild(nameErrText);
                 var h3 = document.createElement("H5");
                 var t3 = document.createTextNode("Candidate description");
                 h3.appendChild(t3);
@@ -39,15 +54,17 @@
                 candName.setAttribute('class', 'form-control central');
                 candName.setAttribute('value', candidatesArrayJson[i]["mCandidateName"]);
                 var candDesc = document.createElement("input"); //input element, text
+                candDesc.setAttribute("placeholder", "Optional");
                 candDesc.setAttribute("autocomplete", "off");
                 candDesc.setAttribute('type', "text");
-                candDesc.setAttribute('name', "candidateDescription" + (i+1));
+                candDesc.setAttribute('name', "candidateDescription" + i);
                 candDesc.setAttribute('class', 'form-control central');
                 candDesc.setAttribute('value', candidatesArrayJson[i]["mDescription"]);
 
                 f.appendChild(h);
                 f.appendChild(h2);
                 f.appendChild(candName);
+                f.appendChild(nameErrH);
                 f.appendChild(div5);
                 f.appendChild(h3);
                 f.appendChild(candDesc);

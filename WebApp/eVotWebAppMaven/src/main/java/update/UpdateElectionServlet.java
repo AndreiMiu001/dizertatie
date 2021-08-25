@@ -143,6 +143,13 @@ public class UpdateElectionServlet extends HttpServlet {
             Candidate newCand = new Candidate();
             election.addCandidate(newCand);
         }
+        ArrayList<String> nameErrList = new ArrayList<>();
+        for (int i = 0; i < candidatesArr.size(); i++) {
+            nameErrList.add("");
+        }
+        ObjectToJson<ArrayList<String>> jsonConverterString = new ObjectToJson<>();
+        String errListJson = jsonConverterString.convert(nameErrList);
+        request.setAttribute("nameErrorList", errListJson);
         session.setAttribute("electionObject", election);
         ObjectToJson<ArrayList<Candidate>> jsonConverter = new ObjectToJson<>();
         String jsonString = jsonConverter.convert(candidatesArr);
@@ -162,15 +169,38 @@ public class UpdateElectionServlet extends HttpServlet {
         ElectionBean election = (ElectionBean) session.getAttribute("electionObject");
         ArrayList<Candidate> candidates = election.getCandidates();
         ArrayList<Candidate> candidatesUpdated = new ArrayList<>();
+        boolean globalFormCompletionFlag = true;
+        ArrayList<String> nameErrList = new ArrayList<>();
         for (int i = 0; i < election.getCandidatesCount(); i++) {
             String candidateName = request.getParameter("candidateName" + i);
             String candidateDescription = request.getParameter("candidateDescription" + i);
             Candidate tempCand = new Candidate();
-            tempCand.setCandidateName(candidateName);
+            if (candidateName == null || candidateName.isEmpty()) {
+                globalFormCompletionFlag = false;
+                nameErrList.add("Please provide a name for this candidate.");
+            } else {
+                tempCand.setCandidateName(candidateName);
+                nameErrList.add("");
+            }
+            if (candidateDescription == null || candidateDescription.isEmpty()) {
+                candidateDescription = "No description available";
+            } 
             tempCand.setDescription(candidateDescription);
             tempCand.setIdElection(election.getIdElection());
             tempCand.setIdCandidate(candidates.get(i).getIdCandidate());
             candidatesUpdated.add(tempCand);
+        }
+        if (!globalFormCompletionFlag) {
+            session.setAttribute("electionObject", election);
+            ObjectToJson<ArrayList<Candidate>> jsonConverter = new ObjectToJson<>();
+            ObjectToJson<ArrayList<String>> jsonConverterString = new ObjectToJson<>();
+            String errListJson = jsonConverterString.convert(nameErrList);
+            request.setAttribute("nameErrorList", errListJson);
+            String jsonString = jsonConverter.convert(candidatesUpdated);
+            request.setAttribute("candidatesArrayJson", jsonString);
+            request.setAttribute("candidatesNumber", election.getCandidatesCount());
+            request.getRequestDispatcher("/updateCandidates.jsp").forward(request, response);
+            return;
         }
         UpdateElectionImpl updateElection = new UpdateElectionImpl();
         election.setCandidatesArray(candidatesUpdated);

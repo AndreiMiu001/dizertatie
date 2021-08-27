@@ -5,11 +5,14 @@
  */
 package login;
 
+import common.Category;
 import common.ObjectToJson;
 import common.Pair;
 import common.UserBean;
+import insert.InsertDataImpl;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +45,10 @@ public class LoginServlet extends HttpServlet {
             String cityJson = converter.convert(cityArr);
             session.setAttribute("countyJson", countyJson);
             session.setAttribute("cityJson", cityJson);
+            InsertDataImpl insertDataImpl = new InsertDataImpl();
+            ArrayList<Category> electionCategoryArray = insertDataImpl.getElectionCategories();
+            Collections.reverse(electionCategoryArray);
+            session.setAttribute("listCategory", electionCategoryArray);
             request.getRequestDispatcher("/mainPage.jsp").forward(request, response);
         } else {
             request.setAttribute("response", "Username or password are invalid ! Please try again.");

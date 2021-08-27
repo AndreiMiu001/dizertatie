@@ -63,6 +63,7 @@ public class UpdateElectionServlet extends HttpServlet {
                         ArrayList<Pair<Integer, String>> cityArr = (ArrayList<Pair<Integer, String>>) session.getAttribute("cityArr");
                         for (Pair<Integer, String> city : cityArr) {
                             if (city.second.equals(localitate)) {
+                                request.setAttribute("cityName", city.second);
                                 category.setCity(city);
                                 break;
                             }
@@ -79,6 +80,7 @@ public class UpdateElectionServlet extends HttpServlet {
                         ArrayList<Pair<Integer, String>> countyArr = (ArrayList<Pair<Integer, String>>) session.getAttribute("countyArr");
                         for (Pair<Integer, String> county : countyArr) {
                             if (county.second.equals(judet)) {
+                                request.setAttribute("countyName", county.second);
                                 category.setCounty(county);
                                 break;
                             }
@@ -101,20 +103,22 @@ public class UpdateElectionServlet extends HttpServlet {
         if (electionName == null || electionName.isEmpty()) {
             formCompletionFlag = false;
             request.setAttribute("electionNameNull", "Please provide an election name");
+            election.setElectionName(electionName);
         } else {
             election.setElectionName(electionName);
         }
 
-        String candidateNumb = request.getParameter("candidatesNumber");
         String partiesCountStr = request.getParameter("candidatesNumber");
         if (partiesCountStr == null || partiesCountStr.isEmpty()) {
             formCompletionFlag = false;
             request.setAttribute("candidatesNumberNull", "Please provide the number of candidates");
+            election.setCandidatesCount(-1);
         } else {
             partiesCountStr = partiesCountStr.trim();
             if (!partiesCountStr.matches("[0-9]+")) {
                 formCompletionFlag = false;
                 request.setAttribute("candidatesNumberNull", "Please introduce a number");
+                election.setCandidatesCount(-1);
             }
             int partiesCount = Integer.parseInt(partiesCountStr);
             request.setAttribute("candidatesNumber", partiesCount);
@@ -134,7 +138,7 @@ public class UpdateElectionServlet extends HttpServlet {
         String electionEndStart = request.getParameter("electionDateEnd");
         if (electionEndStart == null || electionEndStart.isEmpty()) {
             formCompletionFlag = false;
-            request.setAttribute("electionDateStartNull", "Please provide a electionEndStart date");
+            request.setAttribute("electionDateEndNull", "Please provide a electionEndStart date");
         } else {
             election.setEndingDate(electionEndStart);
         }
@@ -155,7 +159,17 @@ public class UpdateElectionServlet extends HttpServlet {
         String jsonString = jsonConverter.convert(candidatesArr);
         request.setAttribute("candidatesArrayJson", jsonString);
         request.setAttribute("candidatesNumber", election.getCandidatesCount());
-        request.getRequestDispatcher("/updateCandidates.jsp").forward(request, response);
+        if (formCompletionFlag) { 
+            request.getRequestDispatcher("/updateCandidates.jsp").forward(request, response);
+        } else {
+            request.setAttribute("categoryId", election.getCategory().getId());
+            request.setAttribute("electionName", election.getElectionName());
+            request.setAttribute("candidatesNumber", election.getCandidatesCount());
+            request.setAttribute("electionDateStart", election.getStartingDate().toString().replace('-', '/'));
+            request.setAttribute("electionDateEnd", election.getEndingDate().toString().replace('-', '/'));
+            session.setAttribute("electionObject", election);
+            request.getRequestDispatcher("/updateElection.jsp").forward(request, response);
+        }
     }
 
     @Override

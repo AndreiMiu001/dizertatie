@@ -40,6 +40,9 @@ public class DeleteElectionViewServlet extends HttpServlet {
         if (user == null) {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
+        ObjectToJson<String> jsonConvereterStr = new ObjectToJson<>();
+        String errStr = "";
+        request.setAttribute("deleteError", jsonConvereterStr.convert(errStr));
         ViewElectionsImpl viewImpl = new ViewElectionsImpl();
         ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();
         ObjectToJson<ArrayList<ElectionBean>> jsonConvereter = new ObjectToJson<>();

@@ -80,6 +80,7 @@
             var form = document.createElement("form");
             form.setAttribute('method', "post");
             form.setAttribute('action', "DeleteElectionIdsServlet");
+            form.setAttribute('onclick', "errorAlert()");
             form.appendChild(divContainer);
             var sendBtn = document.createElement("button");
             sendBtn.setAttribute("class", "btn btn-danger content");
@@ -89,6 +90,15 @@
 
             var contentDiv = document.getElementById("content-all");
             contentDiv.appendChild(form);
+
+            // delete error pop-up
+            function errorAlert() {
+                debugger;
+                var errMsg = ${deleteError};
+                if (errMsg) {
+                    alert(errMsg);
+                }
+            }
         </script>
     </body>
 </html>

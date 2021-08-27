@@ -98,12 +98,18 @@ public class ElectionBean extends ElectionResultsBean {
     }
 
     public void setStartingDate(String date) {
+        if (date.isEmpty()) {
+            mStartingDate = null;
+        }
         date = date.replace('/', '-');
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         mStartingDate = LocalDate.parse(date, formatter);
     }
 
     public void setEndingDate(String date) {
+        if (date.isEmpty()) {
+            mEndingDate = null;
+        }
         date = date.replace('/', '-');
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         mEndingDate = LocalDate.parse(date, formatter);

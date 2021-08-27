@@ -2,7 +2,6 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <jsp:include page="menuBar.jsp" />
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,30 +9,10 @@
         <link rel="stylesheet" href="Style/CSS/datepicker3.css">       
         <link rel="stylesheet" href="Style/CSS/default.css"> 
         <link rel="stylesheet" href="Style/CSS/AutocompleteInput.css">
+        <link rel="stylesheet" href="Style/CSS/updateElection.css">
         <script src="scripts/inputAutoComplete.js"></script>
+        <script src="Style/JS/datepicker.js"></script>  
         <title>Actualizeaza</title>
-
-        <script src="Style/JS/datepicker.js"></script>         
-        <style>
-            .row {
-
-                width: 50%;
-            }
-            .row2{
-                width:35%;
-            }
-            .row3{
-                width:10%;
-            }
-            .mypdg {
-                padding: 5px;
-            }
-            .center {
-                margin: auto;
-                width: 50%;
-                padding: 10px;
-            }
-        </style>
     </head>
     <body>
         <div id="navigationMenu"></div>
@@ -73,7 +52,7 @@
                     <div class="container">
                         <h3>Numar intrari (partide/candidati)</h3>
                         <div class="row3">
-                            <input type="text" class="form-control" name="candidatesNumber" value="${candidatesNumber}"/>
+                            <input id="candidatesNumber" type="text" class="form-control" name="candidatesNumber" />
                         </div>
                         <h5 style="color:red;font-size:90%">${candidatesNumberNull}</h5>
                     </div>
@@ -143,6 +122,13 @@
             nameField.addEventListener("change", function () {
                 updateSelect();
             });
+            var candidateNumbInput = document.getElementById("candidatesNumber");
+            var candidateNumber = ${candidatesNumber};
+            if (candidateNumber === -1) {
+                candidateNumber = "";
+            } else {
+                candidateNumbInput.setAttribute('value', candidateNumber);
+            }
         </script>
         <script>
             $(document).ready(function () {
@@ -189,7 +175,6 @@
         <script>
             var counties = ${countyJson};
             var cities = ${cityJson};
-            debugger;
             autocomplete(document.getElementById("localitateInput"), cities);
             autocomplete(document.getElementById("judetInput"), counties);
         </script>

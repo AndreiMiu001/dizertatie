@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : Dec 31, 2020, 3:36:43 PM
-    Author     : Andrei
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

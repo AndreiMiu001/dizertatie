@@ -1,0 +1,14 @@
+.electionTitle {
+    font-size: 1.3rem;
+    font-weight: 625;
+    text-align: -webkit-center;
+    padding: 1rem;
+}
+.resultText {
+    font-size: 1.1rem;
+    font-weight: 625;
+    text-align: -webkit-center;
+}
+.detailsPadding {
+    padding-top: 0.2rem;
+}

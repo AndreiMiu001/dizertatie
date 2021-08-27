@@ -109,10 +109,11 @@ public class CreateElectionServlet extends HttpServlet {
             if (!partiesCountStr.matches("[0-9]+")) {
                 formCompletionFlag = false;
                 request.setAttribute("candidatesNumberNull", "Please introduce a number");
+            } else {
+                int partiesCount = Integer.parseInt(partiesCountStr);
+                request.setAttribute("candidatesNumber", partiesCount);
+                election.setCandidatesCount(partiesCount);
             }
-            int partiesCount = Integer.parseInt(partiesCountStr);
-            request.setAttribute("candidatesNumber", partiesCount);
-            election.setCandidatesCount(partiesCount);
         }
         // get election starting date
         String electionDateStart = request.getParameter("electionDateStart");

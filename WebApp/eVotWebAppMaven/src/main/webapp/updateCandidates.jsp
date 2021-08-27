@@ -7,26 +7,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="Style/CSS/DefaultStyle.css"> 
         <link rel="stylesheet" href="Style/CSS/insertCandidates.css"> 
-
+        <link rel="stylesheet" href="Style/CSS/errorMessage.css"> 
         <title>eVot adauga candidati</title>
-        <style>
-            .error {
-                color:red;
-                font-size:90%;
-                padding-bottom: 1rem;
-            }
-        </style>
     </head>
     <body onload="init(candidatesArrayJson);">
         <div id="navigationMenu"></div>
-
         <script>
-            debugger;
-        
             var candidatesArrayJson = ${candidatesArrayJson};
             var candidatesArrayLenght = ${candidatesNumber};
             var nameErrList = ${nameErrorList};
-            
+
             var f = document.createElement("form");
             f.setAttribute('method', "post");
             f.setAttribute('action', "UpdateElectionServlet");
@@ -35,7 +25,7 @@
                 debugger;
                 var div5 = document.createElement("div");
                 var h = document.createElement("H3");
-                var t = document.createTextNode("Candidate number " + (i+1));
+                var t = document.createTextNode("Candidate number " + (i + 1));
                 h.appendChild(t);
                 var h2 = document.createElement("H5");
                 var t2 = document.createTextNode("Candidate name");
@@ -77,7 +67,7 @@
             btn.setAttribute("value", "Create");
             btn.setAttribute("class", "btn btn-labeled btn-success");
             var span = document.createElement("span");
-            var txt = document.createTextNode("Finish election creation");
+            var txt = document.createTextNode("Finish election update");
             span.setAttribute("class", "btn-label");
             span.appendChild(txt);
             btn.appendChild(span);

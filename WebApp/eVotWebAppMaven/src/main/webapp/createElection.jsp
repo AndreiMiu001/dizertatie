@@ -2,7 +2,6 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <jsp:include page="menuBar.jsp" />
 
-
 <!DOCTYPE html>
 <html>
     <head>

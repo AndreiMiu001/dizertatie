@@ -3,42 +3,24 @@
 
 <html>
     <head>
-        <!--Load the AJAX API-->
-
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="Style/JS/ChartSrc/chartloader.js"></script>
-                <link rel="stylesheet" href="Style/CSS/updateElectionsViewList.css"/> 
+        <link rel="stylesheet" href="Style/CSS/updateElectionsViewList.css"/> 
+        <link rel="stylesheet" href="Style/CSS/viewResults.css"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Rezultate alegere</title>
-        <style>
-            .electionTitle {
-                font-size: 1.3rem;
-                font-weight: 625;
-                text-align: -webkit-center;
-                padding: 1rem;
-            }
-            .resultText {
-                font-size: 1.1rem;
-                font-weight: 625;
-                text-align: -webkit-center;
-            }
-            .detailsPadding {
-                padding-top: 0.2rem;
-            }
-            
-        </style>
     </head>
     <body>
         <div class="detailsPadding">
-        <div id="navigationMenu"></div>
-        <div class="electionTitle" id="electionNameDiv"></div>
-        <div class="resultText">Tip alegere: ${electionCategory} </div>
-        <div class="resultText">Judet: ${electionCounty}</div>
-        <div class="resultText">Oras: ${electionCity}</div>
-        <div class="resultText">Va avea loc in intervalul: ${startDate} - ${endDate}</div>
+            <div id="navigationMenu"></div>
+            <div class="electionTitle" id="electionNameDiv"></div>
+            <div class="resultText">Tip alegere: ${electionCategory} </div>
+            <div class="resultText">Judet: ${electionCounty}</div>
+            <div class="resultText">Oras: ${electionCity}</div>
+            <div class="resultText">Va avea loc in intervalul: ${startDate} - ${endDate}</div>
         </div>
         <div id="chart_div"></div>
-                <script type="text/javascript">
+        <script type="text/javascript">
             // Load the Visualization API and the corechart package.
             google.charts.load('current', {'packages': ['corechart']});
             // Set a callback to run when the Google Visualization API is loaded.
@@ -134,7 +116,7 @@
 
                 tTmp = document.createTextNode(electionJson["mCandidatesArray"][i - 1]["mVotesCount"]);
                 tdTmp2.appendChild(tTmp);
-                
+
                 var tdPercentage = document.createElement("td");
                 tPrecentageTmp = document.createTextNode(votesPrecentageJson[i - 1]);
                 tdPercentage.appendChild(tPrecentageTmp);
@@ -151,7 +133,7 @@
             divMyClass.appendChild(table);
 
             document.getElementsByTagName('body')[0].appendChild(divMyClass);
-            
+
         </script>
     </body>
 </html>

@@ -10,10 +10,8 @@ import common.ElectionBean;
 import common.ObjectToJson;
 import common.Pair;
 import common.UserBean;
-import insert.InsertDataImpl;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -57,10 +55,6 @@ public class UpdateElectionViewListServlet extends HttpServlet {
         ElectionBean election = updateImpl.getSingleElectionForUpdate(idElection);
         session.removeAttribute("electionObject");
         // get election category
-        InsertDataImpl insertDataImpl = new InsertDataImpl();
-        ArrayList<Category> electionCategoryArray = insertDataImpl.getElectionCategories();
-        Collections.reverse(electionCategoryArray);
-        request.setAttribute("listCategory", electionCategoryArray);
         request.setAttribute("categoryId", election.getCategory().getId());
         request.setAttribute("electionName", election.getElectionName());
         request.setAttribute("candidatesNumber", election.getCandidatesCount());

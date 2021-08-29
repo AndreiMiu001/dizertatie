@@ -38,7 +38,6 @@ public class DeleteElectionIdsServlet extends HttpServlet {
             DeleteElectionIdImpl deleteElection = new DeleteElectionIdImpl();
             if (!deleteElection.deleteId(id)) {
                 deleteErrStr = "Could not delete election with id:" + id;
-                System.out.println("Could not delete election with id:" + id);
             } 
         }
         ObjectToJson<String> jsonConvereterStr = new ObjectToJson<>();

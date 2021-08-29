@@ -32,9 +32,9 @@ public class InsertCandidatesServlet extends HttpServlet {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
             return;
         }
-        
-        request.setAttribute("candidatesNumber", election.getCandidatesCount());        
-        
+
+        request.setAttribute("candidatesNumber", election.getCandidatesCount());
+
         boolean globalFormCompletionFlag = true;
         for (int i = 1; i <= election.getCandidatesCount(); i++) {
             boolean currentFormCompletionFlag = true;
@@ -62,10 +62,7 @@ public class InsertCandidatesServlet extends HttpServlet {
         }
         if (globalFormCompletionFlag) {
             InsertCandidatesImpl insertImpl = new InsertCandidatesImpl();
-            if (insertImpl.insertElection(election)) {
-                // some error msg
-                // action failed
-            }
+            insertImpl.insertElection(election);
             request.getRequestDispatcher("/mainPage.jsp").forward(request, response);
         } else {
             election.dropCandidates();

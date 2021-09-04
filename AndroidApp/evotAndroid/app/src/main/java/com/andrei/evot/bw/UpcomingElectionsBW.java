@@ -6,7 +6,6 @@ import android.util.Log;
 
 import com.andrei.evot.MyCertificateManager;
 import com.andrei.evot.callbacks.ElectionListCallback;
-import com.andrei.evot.model.CandidateModel;
 import com.andrei.evot.model.ElectionModel;
 import com.andrei.evot.model.Person;
 import com.andrei.evot.model.User;

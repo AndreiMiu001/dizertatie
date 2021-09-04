@@ -69,7 +69,6 @@
             debugger;
             var contentDiv = document.getElementById("content-all");
             contentDiv.appendChild(div1);
-            //    document.getElementsByTagName('body')[0].appendChild(div1);
         </script>
     </body>
 </html>

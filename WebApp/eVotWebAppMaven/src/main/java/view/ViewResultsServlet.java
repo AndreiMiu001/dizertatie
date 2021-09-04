@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import common.Candidate;
@@ -20,10 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Andrei
- */
 public class ViewResultsServlet extends HttpServlet {
 
     @Override
@@ -62,5 +53,4 @@ public class ViewResultsServlet extends HttpServlet {
         request.setAttribute("votesPercentageJson", percentageJson);
         request.getRequestDispatcher("/viewResults.jsp").forward(request, response);
     }
-
 }

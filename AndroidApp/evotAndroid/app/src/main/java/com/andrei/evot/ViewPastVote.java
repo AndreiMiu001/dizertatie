@@ -1,7 +1,6 @@
 package com.andrei.evot;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,8 +12,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.andrei.evot.adapters.ViewPastCandidatesAdapter;
-import com.andrei.evot.adapters.ViewingAdapter;
-import com.andrei.evot.adapters.VotingAdapter;
 import com.andrei.evot.bw.ReadCandidatesBW;
 import com.andrei.evot.callbacks.CandidatesCallback;
 import com.andrei.evot.model.CandidateModel;

@@ -14,8 +14,6 @@ import com.andrei.evot.R;
 import com.andrei.evot.callbacks.ElectionModelCallback;
 import com.andrei.evot.model.ElectionModel;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class ViewingAdapter extends RecyclerView.Adapter<ViewingAdapter.ViewHolder> {

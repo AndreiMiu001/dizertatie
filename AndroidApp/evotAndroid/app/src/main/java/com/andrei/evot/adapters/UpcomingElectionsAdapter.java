@@ -10,7 +10,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.andrei.evot.R;
-import com.andrei.evot.callbacks.ElectionListCallback;
 import com.andrei.evot.callbacks.ElectionModelCallback;
 import com.andrei.evot.model.ElectionModel;
 

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package update;
 
 import common.Candidate;
@@ -14,10 +9,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Andrei
- */
 public class UpdateElectionImpl extends Implementation {
 
     private ElectionBean election;
@@ -80,7 +71,7 @@ public class UpdateElectionImpl extends Implementation {
         return true;
     }
 
-    public ArrayList<ElectionBean> getElectionsForUpdate() {
+    public ArrayList<ElectionBean> getElectionsForModify() {
         ArrayList<ElectionBean> electionsArray = new ArrayList<>();
         try {
             mDao.connect();

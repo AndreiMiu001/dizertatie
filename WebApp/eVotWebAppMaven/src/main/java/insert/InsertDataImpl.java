@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package insert;
 
 import common.Category;
@@ -14,10 +9,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Andrei
- */
 public class InsertDataImpl extends Implementation {
 
     private ArrayList<Category> mCategoryArray;
@@ -36,7 +27,6 @@ public class InsertDataImpl extends Implementation {
     }
 
     public ArrayList<Category> getElectionCategories() {
-        boolean status = false;
         ArrayList<Category> categories = new ArrayList<>();
         try {
             mDao.connect();

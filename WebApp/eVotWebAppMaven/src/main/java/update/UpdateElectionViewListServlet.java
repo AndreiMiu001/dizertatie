@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package update;
 
 import common.Category;
@@ -19,10 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Andrei
- */
 public class UpdateElectionViewListServlet extends HttpServlet {
 
     @Override
@@ -34,7 +25,7 @@ public class UpdateElectionViewListServlet extends HttpServlet {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
         UpdateElectionImpl updateImpl = new UpdateElectionImpl();
-        ArrayList<ElectionBean> electionsArray = updateImpl.getElectionsForUpdate();
+        ArrayList<ElectionBean> electionsArray = updateImpl.getElectionsForModify();
         ObjectToJson<ArrayList<ElectionBean>> jsonConverter = new ObjectToJson<>();
         String electionsArrayJson = jsonConverter.convert(electionsArray);
         request.setAttribute("electionsArrayJson", electionsArrayJson);

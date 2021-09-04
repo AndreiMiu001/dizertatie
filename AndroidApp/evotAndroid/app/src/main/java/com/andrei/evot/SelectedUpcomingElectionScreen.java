@@ -1,18 +1,15 @@
 package com.andrei.evot;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.Shape;
@@ -20,10 +17,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.andrei.evot.adapters.SelectedUpcomingElectionsAdapter;
-import com.andrei.evot.adapters.UpcomingElectionsAdapter;
 import com.andrei.evot.bw.ReadCandidatesBW;
 import com.andrei.evot.callbacks.CandidatesCallback;
-import com.andrei.evot.callbacks.ElectionModelCallback;
 import com.andrei.evot.model.CandidateModel;
 import com.andrei.evot.model.ElectionModel;
 

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package delete;
 
 import common.Implementation;
@@ -11,10 +6,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Andrei
- */
 public class DeleteElectionIdImpl extends Implementation {
     
     public boolean deleteId(int id) {
@@ -29,6 +20,5 @@ public class DeleteElectionIdImpl extends Implementation {
             Logger.getLogger(InsertCandidatesImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return status;
-    }
-    
+    }   
 }

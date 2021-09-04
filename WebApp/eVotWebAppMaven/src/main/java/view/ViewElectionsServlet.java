@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import common.ElectionBean;
@@ -17,10 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Andrei
- */
 public class ViewElectionsServlet extends HttpServlet {
 
     @Override
@@ -47,5 +38,4 @@ public class ViewElectionsServlet extends HttpServlet {
         request.setAttribute("electionsArrayJson", electionsArrayJson);
         request.getRequestDispatcher("/viewElections.jsp").forward(request, response);
     }
-
 }

@@ -1,6 +1,5 @@
 package com.andrei.evot.bw;
 
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -21,7 +20,6 @@ import org.json.JSONObject;
 import java.lang.ref.WeakReference;
 
 import com.andrei.evot.model.VoteModel;
-
 
 public class VoteBW extends AsyncTask<String, Void, String> implements MyCertificateManager {
 

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package delete;
 
 import common.ElectionBean;
@@ -15,12 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import view.ViewElectionsImpl;
+import update.UpdateElectionImpl;
 
-/**
- *
- * @author Andrei
- */
 public class DeleteElectionViewServlet extends HttpServlet {
 
     @Override
@@ -43,8 +34,8 @@ public class DeleteElectionViewServlet extends HttpServlet {
         ObjectToJson<String> jsonConvereterStr = new ObjectToJson<>();
         String errStr = "";
         request.setAttribute("deleteError", jsonConvereterStr.convert(errStr));
-        ViewElectionsImpl viewImpl = new ViewElectionsImpl();
-        ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();
+        UpdateElectionImpl updateImpl = new UpdateElectionImpl();
+        ArrayList<ElectionBean> electionsArray = updateImpl.getElectionsForModify();
         ObjectToJson<ArrayList<ElectionBean>> jsonConvereter = new ObjectToJson<>();
         String electionsArrayJson = jsonConvereter.convert(electionsArray);
         request.setAttribute("electionsArrayJson", electionsArrayJson);

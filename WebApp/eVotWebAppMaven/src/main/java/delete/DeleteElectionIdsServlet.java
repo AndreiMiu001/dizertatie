@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import view.ViewElectionsImpl;
+import update.UpdateElectionImpl;
 
 public class DeleteElectionIdsServlet extends HttpServlet {
     @Override
@@ -32,8 +32,8 @@ public class DeleteElectionIdsServlet extends HttpServlet {
         }
         ObjectToJson<String> jsonConvereterStr = new ObjectToJson<>();
         request.setAttribute("deleteError", jsonConvereterStr.convert(deleteErrStr));
-        ViewElectionsImpl viewImpl = new ViewElectionsImpl();
-        ArrayList<ElectionBean> electionsArray = viewImpl.getAllElections();
+        UpdateElectionImpl updateImpl = new UpdateElectionImpl();
+        ArrayList<ElectionBean> electionsArray = updateImpl.getElectionsForModify();
         ObjectToJson<ArrayList<ElectionBean>> jsonConvereter = new ObjectToJson<>();
         String electionsArrayJson = jsonConvereter.convert(electionsArray);
         request.setAttribute("electionsArrayJson", electionsArrayJson);

@@ -12,6 +12,7 @@ public class MainMenu extends CommonBasicActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkUserState();
         setContentView(R.layout.activity_main_menu);
 
         Button voteViewBtn = (Button) findViewById(R.id.voteViewBtn);

@@ -31,6 +31,7 @@ public class SelectElection extends CommonBackActionActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkUserState();
         setContentView(R.layout.activity_select_election);
 
         electionList = new ArrayList<ElectionModel>();

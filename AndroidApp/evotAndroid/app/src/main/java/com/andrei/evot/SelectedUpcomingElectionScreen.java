@@ -33,6 +33,7 @@ public class SelectedUpcomingElectionScreen extends CommonBackActionActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkUserState();
         setContentView(R.layout.activity_selected_upcoming_election_screen);
 
         ElectionModel election = (ElectionModel) getIntent().getSerializableExtra("SelectedUpcomingElection");

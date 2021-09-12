@@ -30,6 +30,7 @@ public class PastElectionVotesList extends CommonBackActionActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkUserState();
         setContentView(R.layout.activity_past_election_votes_list);
 
         ActionBar actionBar = getSupportActionBar();

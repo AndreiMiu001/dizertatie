@@ -38,4 +38,12 @@ public class CommonBasicActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void checkUserState() {
+        if (User.mCnp == null || User.mPassword == null) {
+            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 }

@@ -32,6 +32,7 @@ public class ViewPastVote extends CommonBackActionActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkUserState();
         setContentView(R.layout.activity_view_past_vote);
 
         ActionBar actionBar = getSupportActionBar();

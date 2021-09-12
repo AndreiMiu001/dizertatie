@@ -38,6 +38,7 @@ public class VotingScreen extends CommonBackActionActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkUserState();
         setContentView(R.layout.canditat_list);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 

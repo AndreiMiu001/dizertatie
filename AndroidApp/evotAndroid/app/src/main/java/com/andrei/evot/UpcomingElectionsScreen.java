@@ -31,6 +31,7 @@ public class UpcomingElectionsScreen extends CommonBackActionActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkUserState();
         setContentView(R.layout.activity_upcoming_elections_screen);
 
         ActionBar actionBar = getSupportActionBar();
